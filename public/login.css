@@ -1,0 +1,124 @@
+body {
+  background-color: aqua;
+}
+
+/* .navbar-nav {
+  margin-right: 20vw!important;
+} */
+
+.nav-item .dropdown {
+  position: relative;
+  margin-left: 20px!important;
+}
+
+.d-flex {
+  margin-right: 10px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  right: 0px;
+  left: auto!important;
+}
+
+.nav-item {
+  list-style-type: none;
+}
+
+.bi-box-arrow-in-right {
+  font-size: 30px;
+  margin-right: 10px;
+}
+
+.bi-person-circle {
+  font-size: 30px;
+  margin-right: 10px;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 12px;
+}
+
+.cart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 12px;
+}
+
+.logout-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 12px;
+}
+
+.dropdown-container {
+  display:flex;
+  justify-content: flex-start;
+}
+
+.user-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-page-container {
+  margin: 12px;
+  text-align: start;
+  font-size: 34px;
+}
+
+.sign-in-sign-up-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-in-container {
+  border: 1px solid #000000;
+  width: 400px;
+  height: 500px;
+  margin:0;
+  margin-left: 70px;
+}
+.sign-up-container {
+  border: 1px solid #000000;
+  width: 400px;
+  height: 500px;
+  margin:0;
+  border-left: 0;
+  margin-right: 70px;
+}
+
+@media only screen and (max-width: 768px) {
+  .dropdown-menu {
+    position: absolute;
+    left: 0!important;
+  }
+
+  .sign-in-container {
+    border: 1px solid #000000;
+    width: 400px;
+    height: 500px;
+    margin: 0;
+  }
+
+  .sign-up-container {
+    border: 1px solid #000000;
+    width: 400px;
+    height: 500px;
+    margin: 0;
+    margin-top: 20px;
+  }
+}
