@@ -7,6 +7,81 @@ CREATE TABLE users (
   birthday DATE,
   mobile varchar(255)
 );
+
+DROP TABLE IF EXISTS categories;
+CREATE TABLE categories (
+   id SERIAL PRIMARY KEY,
+   categories_name VARCHAR(255) NOT NULL,
+   categories_image  VARCHAR(255) NOT NULL,
+   categories_description VARCHAR(255) NOT NULL,
+)
+
+DROP TABLE IF EXISTS brands;
+CREATE TABLE brands (
+   id SERIAL PRIMARY KEY,
+   name VARCHAR(255) NOT NULL,
+   description VARCHAR(255) NOT NULL,
+)
+
+DROP TABLE IF EXISTS product_types;
+CREATE TABLE product_types (
+  id SERIAL PRIMARY KEY,
+  product_id integer NOT NULL,
+  type_id integer NOT NULL,
+  FOREIGN KEY (brands_id) REFERENCES brands(id)
+   )
+  
+DROP TABLE IF EXISTS product_categories;
+CREATE TABLE categories (
+  id SERIAL PRIMARY KEY,
+  product_id integer NOT NULL,
+  category_id integer NOT NULL
+  FOREIGN KEY (category_id) REFERENCES category(id)
+   )
+
+
+DROP TABLE IF EXISTS products;
+CREATE TABLE products (
+  id SERIAL PRIMARY KEY,
+  product_name VARCHAR(255) NOT NULL,
+  product_image VARCHAR(255) NOT NULL,
+  product_brand VARCHAR(255) NOT NULL,
+  product_type VARCHAR(255) NOT NULL,
+  product_category VARCHAR(255) NOT NULL,
+  description_ VARCHAR(255) NOT NULL,
+  unit_price DECIMAL(10000,2)
+  country_origin VARCHAR(255) NOT NULL,
+  stock integer,
+  create_at timestamp,
+  updated_at timestamp,
+  FOREIGN KEY (id) REFERENCES category(id)
+
+   )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 insert into users (
     id,
     email,
