@@ -10,15 +10,15 @@ export const client = new pg.Client({
 
 import express from "express";
 import http from "http";
-import { Server as SocketIO } from "socket.io";
+// import { Server as SocketIO } from "socket.io";
 import expressSession from "express-session";
 import path from "path";
-import { forumRoutes } from "./routers/forumRoute";
-import { datingRoutes } from "./routers/datingRoute";
+// import { forumRoutes } from "./routers/forumRoute";
+// import { datingRoutes } from "./routers/datingRoute";
 
 const app = express();
 const server = new http.Server(app);
-const io = new SocketIO(server);
+// const io = new SocketIO(server);
 const PORT = 8080;
 
 app.use(
@@ -32,8 +32,8 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded());
 
-app.use("/forum", forumRoutes);
-app.use(datingRoutes);
+// app.use("/forum", forumRoutes);
+// app.use(datingRoutes);
 
 app.use(express.static("public"));
 
@@ -48,8 +48,8 @@ app.post("/userData", async(req, res)=>{
     res.status(400).json({message:"missing username,email,password,phone,date"});
     return;
   }
-  
 
+res.status(201).json({message:"register successfully"})
 } )
 
 

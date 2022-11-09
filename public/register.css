@@ -83,6 +83,7 @@
     box-sizing: border-box;
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 800px;
     height: 800px;
     border: 2px solid black;
@@ -118,6 +119,8 @@
     display: flex;
 }
 
+#submit2 {display: flex;
+justify-content: center;}
 .submit2 {
     /* background-color: palegoldenrod; */
     background-image: linear-gradient(90deg, #003a83, #008570);
