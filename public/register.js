@@ -10,9 +10,9 @@ document.querySelector("#registerForm").addEventListener("submit", async (e) => 
     const date = form.date.value;
     formBody["username"] = username;
     formBody["email"] = email;
-    formBody["password"] = email;
-    formBody["phone"] = email;
-    formBody["date"] = email;
+    formBody["password"] = password;
+    formBody["phone"] = phone;
+    formBody["date"] = date;
     const resp = await fetch("/userData", {
         method: 'POST',
         headers: {
@@ -21,7 +21,9 @@ document.querySelector("#registerForm").addEventListener("submit", async (e) => 
         body: JSON.stringify(formBody)  })
 const data=await resp.json()
 if (resp.status!==201){alert(data.message)
-}else {form.removeEventListener()}
+}else {
+    alert("successful submission")
+                console.log("finished uploading post")}
 
 })
 

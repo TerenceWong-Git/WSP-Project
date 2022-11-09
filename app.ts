@@ -8,6 +8,8 @@ export const client = new pg.Client({
   password: process.env.DB_PASS,
 });
 
+client.connect();
+
 import express from "express";
 import http from "http";
 // import { Server as SocketIO } from "socket.io";
@@ -44,12 +46,19 @@ app.post("/userData", async(req, res)=>{
   const phone=req.body.phone;
   const date=req.body.date;
 
-  if (!username||!email||!password||!phone||!date){
+  if (!username||!email||!password||!phone||!date){      ///this checking missing input of registration is workable
     res.status(400).json({message:"missing username,email,password,phone,date"});
-    return;
+    return;  
   }
 
+  console.log(req.body); //succeeded to be triggered
+await client.query(
+  `INSERT INTO users (email, password,subscription, birthday, mobile) 
+  VALUES ($1, $2, $3, $4, $5)`,
+  [12,12, true, 12-12-2020,32422424]
+);
 res.status(201).json({message:"register successfully"})
+console.log(".ts ok")
 } )
 
 
