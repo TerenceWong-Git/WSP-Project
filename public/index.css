@@ -8,7 +8,7 @@
 }
 
 .d-flex {
-  margin-right: 20px;
+  margin-right: 10px;
 }
 
 .dropdown-menu {
@@ -19,4 +19,47 @@
 
 .nav-item {
   list-style-type: none;
+}
+
+.bi-box-arrow-in-right {
+  font-size: 30px;
+  margin-right: 10px;
+}
+
+.bi-person-circle {
+  font-size: 30px;
+  margin-right: 10px;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 12px;
+}
+
+.cart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 12px;
+}
+
+.logout-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 12px;
+}
+
+.user-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
