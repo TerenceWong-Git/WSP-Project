@@ -30,5 +30,6 @@
       "username": "postgres",
       "password": "postgres"
     }
-  ]
+  ],
+  "liveServer.settings.port": 5501
 }

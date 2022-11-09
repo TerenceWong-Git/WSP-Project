@@ -1,4 +1,3 @@
-
 :root {
   --bs-btn-hover-bg: #00000045 !important;
 }
@@ -8,8 +7,16 @@ body {
   top: 10px;
 }
 
-.bi, .bi-person-circle, .nav-link, .dropdown-toggle, .show {
+.bi,
+.nav-link,
+.bi-person-circle,
+.show,
+.dropdown-toggle {
   color: white !important;
+}
+
+.dropdownButton {
+  color: rgb(252, 186, 3) !important;
 }
 
 /* ------------------- Navbar CSS ------------------- */
@@ -18,11 +25,12 @@ body {
   --bs-navbar-padding-y: 0 !important;
   --bs-navbar-color: rgb(255 255 255 / 100%) !important;
   --bs-navbar-hover-color: rgb(255 255 255 / 50%) !important;
+  margin-bottom: 2vh;
   background: linear-gradient(
     to right,
     rgba(0, 57, 131, 1),
     rgba(0, 135, 112, 1)
-  )!important;
+  ) !important;
 }
 
 .navSpace {
@@ -30,9 +38,8 @@ body {
 }
 
 .teckyLogo {
-  height: 6vh;
-  margin: 1.4vh auto;
   margin-left: 1vw;
+  height: 6vh;
   /* color: rgb(255 255 255 / 100%) !important; */
 }
 
