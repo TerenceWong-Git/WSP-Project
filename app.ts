@@ -8,7 +8,6 @@ export const client = new pg.Client({
   password: process.env.DB_PASS,
 });
 
-client.connect();
 
 import express from "express";
 import http from "http";
@@ -37,9 +36,21 @@ app.use(express.urlencoded());
 // app.use("/forum", forumRoutes);
 // app.use(datingRoutes);
 
+async function testConnection() {
+  await client.connect()
+const usertable_result= await client.query(`SELECT *
+FROM users;`)
+console.log(usertable_result.rows)
+}
+testConnection()
+// db function
+
 app.use(express.static("public"));
 
 app.post("/userData", async(req, res)=>{
+  
+
+await client.connect();
   const username=req.body.username;
   const email=req.body.email;
   const password=req.body.password;
@@ -59,7 +70,10 @@ await client.query(
 );
 res.status(201).json({message:"register successfully"})
 console.log(".ts ok")
-} )
+await client.end()
+}
+
+)
 
 
 app.use((req, res) => {
