@@ -1,14 +1,24 @@
 {
-    "sqltools.connections": [
-        {
-            "previewLimit": 50,
-            "server": "localhost",
-            "port": 5432,
-            "driver": "PostgreSQL",
-            "name": "gundams",
-            "database": "gundams",
-            "password": "postgres",
-            "username": "postgres"
-        }
-    ]
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "driver": "PostgreSQL",
+      "name": "gundams",
+      "database": "gundams",
+      "password": "postgres",
+      "username": "postgres"
+    },
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "driver": "PostgreSQL",
+      "name": "WSP-PROJECT",
+      "database": "WSP-PROJECT",
+      "username": "postgres",
+      "password": "postgres"
+    }
+  ]
 }
