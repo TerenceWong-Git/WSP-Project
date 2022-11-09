@@ -7,6 +7,8 @@ CREATE TABLE users (
   birthday DATE,
   mobile varchar(255)
 );
+SELECT *
+FROM users;
 insert into users (
     id,
     email,

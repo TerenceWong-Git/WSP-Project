@@ -1,0 +1,22 @@
+/* .navbar-nav {
+  margin-right: 20vw!important;
+} */
+
+.nav-item .dropdown {
+  position: relative;
+  margin-left: 20px!important;
+}
+
+.d-flex {
+  margin-right: 20px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  right: 0px;
+  left: auto!important;
+}
+
+.nav-item {
+  list-style-type: none;
+}
