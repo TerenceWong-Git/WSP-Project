@@ -58,6 +58,11 @@
   margin-left: 12px;
 }
 
+.dropdown-container {
+  display:flex;
+  justify-content: flex-start;
+}
+
 .user-container {
   display: flex;
   justify-content: center;
