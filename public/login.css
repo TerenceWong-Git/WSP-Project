@@ -1,3 +1,7 @@
+body {
+  background-color: aqua;
+}
+
 /* .navbar-nav {
   margin-right: 20vw!important;
 } */
@@ -67,4 +71,54 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.login-page-container {
+  margin: 12px;
+  text-align: start;
+  font-size: 34px;
+}
+
+.sign-in-sign-up-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-in-container {
+  border: 1px solid #000000;
+  width: 400px;
+  height: 500px;
+  margin:0;
+  margin-left: 70px;
+}
+.sign-up-container {
+  border: 1px solid #000000;
+  width: 400px;
+  height: 500px;
+  margin:0;
+  border-left: 0;
+  margin-right: 70px;
+}
+
+@media only screen and (max-width: 768px) {
+  .dropdown-menu {
+    position: absolute;
+    left: 0!important;
+  }
+
+  .sign-in-container {
+    border: 1px solid #000000;
+    width: 400px;
+    height: 500px;
+    margin: 0;
+  }
+
+  .sign-up-container {
+    border: 1px solid #000000;
+    width: 400px;
+    height: 500px;
+    margin: 0;
+    margin-top: 20px;
+  }
 }
