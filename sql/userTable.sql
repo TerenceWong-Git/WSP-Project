@@ -7,6 +7,7 @@ CREATE TABLE users (
   birthday DATE,
   mobile varchar(255)
 );
+<<<<<<< HEAD
 
 DROP TABLE IF EXISTS categories;
 CREATE TABLE categories (
@@ -82,6 +83,10 @@ CREATE TABLE products (
 
 
 
+=======
+SELECT *
+FROM users;
+>>>>>>> b1bce19f1e74cbcde22ddb335aaa9e5c0f41b3e4
 insert into users (
     id,
     email,

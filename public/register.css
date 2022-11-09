@@ -1,13 +1,130 @@
-#container1 {background-color: red;
-    width: 100%;
-    height: 700px;
-    display:flex;}
-    
-    #roundCornerContainer {
-        box-sizing: border-box;
-        width: 500px;
-        height: 500px;
-        border: 2px solid black;
-        border-radius: 10px;
-        background-color: yellow;
-    }
+.nav-item .dropdown {
+    position: relative;
+    margin-left: 20px !important;
+}
+
+.d-flex {
+    margin-right: 10px;
+}
+
+.dropdown-menu {
+    position: absolute;
+    right: 0px;
+    left: auto !important;
+}
+
+.nav-item {
+    list-style-type: none;
+}
+
+.bi-box-arrow-in-right {
+    font-size: 30px;
+    margin-right: 10px;
+}
+
+.bi-person-circle {
+    font-size: 30px;
+    margin-right: 10px;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 12px;
+}
+
+.cart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 12px;
+}
+
+.logout-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 12px;
+}
+
+.dropdown-container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.user-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+/* ........................................CSS of navbar ends................................................ */
+
+
+#container1 {
+    /* background-color: red; */
+    max-width: 100%;
+    height: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#roundCornerContainer {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    width: 800px;
+    height: 800px;
+    border: 2px solid black;
+    border-radius: 50px;
+    /* background-color: yellow; */
+}
+
+#contact-form1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 90%;
+    height: 100%;
+    /* background-color: blue;  */
+
+}
+
+/* .inputPlace{} */
+
+#username,
+#email,
+#password,
+#phone {
+    width: 30vw;
+    height: 80px;
+    width: 450px;
+    /* background-color:palegoldenrod; */
+    margin: 5px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    display: flex;
+}
+
+.submit2 {
+    /* background-color: palegoldenrod; */
+    background-image: linear-gradient(90deg, #003a83, #008570);
+    width: 150px;
+    height: 40px;
+    border-radius: 8px;
+    margin-top: 20px;
+    color: white;
+    font-weight: bold;
+}
