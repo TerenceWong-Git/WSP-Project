@@ -37,6 +37,22 @@ app.use(datingRoutes);
 
 app.use(express.static("public"));
 
+app.post("/userData", async(req, res)=>{
+  const username=req.body.username;
+  const email=req.body.email;
+  const password=req.body.password;
+  const phone=req.body.phone;
+  const date=req.body.date;
+
+  if (!username||!email||!password||!phone||!date){
+    res.status(400).json({message:"missing username,email,password,phone,date"});
+    return;
+  }
+  
+
+} )
+
+
 app.use((req, res) => {
   res.sendFile(path.join(__dirname, "public", "404.html"));
 });
