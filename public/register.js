@@ -8,7 +8,10 @@ for (let i=1; i<=12; i++){     //choice of birth month
     <option value="" class="monthValue">${i}</option>
 `}
 
-for (let i=1; i<=31; i++){     //choice of birth month
+for (let i=1; i<=31; i++){     //choice of birth date
     document.querySelector("#date").innerHTML+=`
     <option value="" class="dateValue">${i}</option>
 `}
+
+// let month=document.querySelector()
+// if ()
