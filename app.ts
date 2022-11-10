@@ -38,7 +38,7 @@ app.use(express.urlencoded());
 
 
 
-//////////////////////////////////////////////////////////
+/////////////////  for testing database connection  //////////////////////
 /* async function testConnection() {
   await client.connect()
 const usertable_result= await client.query(`SELECT *
@@ -48,7 +48,7 @@ await client.end();
 }
 testConnection() */
 // db function
-//////////////////////////////////////////////////////////
+////////////////////database connection testing ends /////////////////////
 
 app.use(express.static("public"));
  
