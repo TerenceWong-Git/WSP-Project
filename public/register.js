@@ -1,4 +1,5 @@
-document.querySelector("#registerForm").addEventListener("submit", async (e) => {
+window.onload = () => {
+  document.querySelector("#registerForm").addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const form = e.target;
@@ -8,7 +9,7 @@ document.querySelector("#registerForm").addEventListener("submit", async (e) => 
     const password = form.password.value;
     const phone = form.phone.value;
     const date = form.date.value;
-    const checkbox=form.checkbox.checked;
+    const checkbox = form.checkbox.checked;
     formBody["username"] = username;
     formBody["email"] = email;
     formBody["password"] = password;
@@ -16,23 +17,21 @@ document.querySelector("#registerForm").addEventListener("submit", async (e) => 
     formBody["date"] = date;
     formBody["checkbox"] = checkbox;
     const resp = await fetch("/userData", {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formBody)
-    })
-    const data = await resp.json()
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formBody),
+    });
+    const data = await resp.json();
     if (resp.status !== 201) {
-        
-        alert(data.message)
+      alert(data.message);
     } else {
-        alert("successful submission")
-        form.reset();
-       
-        console.log("finished uploading post")
+      alert("successful submission");
+      form.reset();
+
+      console.log("finished uploading post");
+      window.location = "/";
     }
-
-})
-
-
+  });
+};
