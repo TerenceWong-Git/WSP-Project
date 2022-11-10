@@ -16,6 +16,7 @@ import expressSession from "express-session";
 import path from "path";
 // import { forumRoutes } from "./routers/forumRoute";
 import { loginRoutes } from "./routers/loginRoute";
+import { hashPassword } from "./bcrypt";
 
 const app = express();
 const server = new http.Server(app);
@@ -51,7 +52,6 @@ testConnection() */
 
 app.use(express.static("public"));
 
-
 app.post("/userData", async (req, res) => {
   const username = req.body.username;
   const email = req.body.email;
@@ -60,57 +60,48 @@ app.post("/userData", async (req, res) => {
   const date = req.body.date;
   const checkbox = req.body.checkbox;
 
-
-  if (!username || !email || !password || !phone || !date) {      ///this checking missing input of registration is workable
+  if (!username || !email || !password || !phone || !date) {
+    ///this checking missing input of registration is workable
     res.status(400).json({ message: "missing username,email,password, phone number or birthday ! " });
     return;
   }
 
-  let tableUserName = await client.query(`SELECT username from users`)
-  const b= tableUserName.rows;
-  console.log(b)
+  let tableUserName = await client.query(`SELECT username from users`);
+  const b = tableUserName.rows;
+  console.log(b);
 
-  let tableEmail=await client.query(`SELECT email from users`);
-  const c=tableEmail.rows;
+  let tableEmail = await client.query(`SELECT email from users`);
+  const c = tableEmail.rows;
 
-
+  const hashedPassword = hashPassword(password);
 
   await client.query(
     `INSERT INTO users (username, email,password, birthday, mobile, subscription) 
   VALUES ($1, $2, $3, $4, $5, $6)`,
-    [username, email, password, date, phone, checkbox]
+    [username, email, hashedPassword, date, phone, checkbox]
   );
-  
- 
 
-let x=b.find((data)=>username===data.username);  //find whether there is a value of username in data.username
-let y=c.find((data)=>email===data.email);        // same thing
-if(x && !y){
+  let x = b.find((data) => username === data.username); //find whether there is a value of username in data.username
+  let y = c.find((data) => email === data.email); // same thing
+  if (x && !y) {
     res.status(202).json({ message: "Sorry...username already taken, please try again" });
     // console.log(x);
-    return}
-if(!x && y){
-  res.status(202).json({ message: "Sorry...email already taken, please try again" });
-  // console.log(y);
-  return;}
-  if(x && y){
+    return;
+  }
+  if (!x && y) {
+    res.status(202).json({ message: "Sorry...email already taken, please try again" });
+    // console.log(y);
+    return;
+  }
+  if (x && y) {
     res.status(202).json({ message: "Sorry...username and email already taken, please try again" });
     // console.log(y);
-    return;}
-  
+    return;
+  }
 
-
-  
-
-res.status(201).json({ message: "register successfully" })
-    console.log(".ts ok")
-  
-
-
-
-
-})
-
+  res.status(201).json({ message: "register successfully" });
+  console.log(".ts ok");
+});
 
 app.use(express.static("public"));
 
