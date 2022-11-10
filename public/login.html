@@ -17,7 +17,7 @@
     <!-- NAV BAR -->
     <nav class="navbar navbar-expand-md bg-light">
         <div class="container-fluid">
-            <a href="./index.html"><img class="teckyLogo" src="./indexImages/teckyLogo.png" /></a>
+            <a href="/"><img class=" teckyLogo" src="./indexImages/teckyLogo.png" /></a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -42,12 +42,13 @@
                         <i class="bi bi-search"></i>
                     </button>
                 </form>
-                <li class="nav-item" hidden="">
-                    <div class="login-container">
-                        <i class="bi bi-box-arrow-in-right"></i><a class="nav-link">Login</a>
-                    </div>
+                <li class="nav-item">
+                    <a class="login-container" href="./login.html">
+                        <i class="bi bi-box-arrow-in-right"></i>
+                        <div class="nav-link">Login</div>
+                    </a>
                 </li>
-                <div class="dropdown-container">
+                <div class="dropdown-container" hidden>
                     <li class="nav-item dropdown user-container">
                         <i class="bi bi-person-circle"></i><a class="nav-link dropdown-toggle" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -87,14 +88,14 @@
 
         <div class="sign-in-sign-up-container row">
 
-            <form class="sign-in-container col-md" id="sign-in-form">
+            <form class="sign-in-container col-md" id="signinform">
                 <a class="google-login">
                     <img class="google-icon" src="./indexImages/WSP-PROJECT.session.png">
                     <div class="google-login-text">Sign in with Google</div>
                 </a>
                 <div class="or-middleline"> or </div>
-                <input class="sign-in-email" type="email" placeholder="email">
-                <input class="sign-in-password" type="password" placeholder="password">
+                <input class="sign-in-email" name="email" type="email" placeholder="email">
+                <input class="sign-in-password" name="password" type="password" placeholder="password">
                 <button class="sign-in-submit" type="submit">Login</button>
             </form>
             <div class="sign-up-container col-md">
