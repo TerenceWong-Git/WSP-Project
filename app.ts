@@ -15,7 +15,7 @@ import http from "http";
 import expressSession from "express-session";
 import path from "path";
 // import { forumRoutes } from "./routers/forumRoute";
-// import { datingRoutes } from "./routers/datingRoute";
+import { loginRoutes } from "./routers/loginRoute";
 
 const app = express();
 const server = new http.Server(app);
@@ -35,6 +35,7 @@ app.use(express.urlencoded());
 
 // app.use("/forum", forumRoutes);
 // app.use(datingRoutes);
+app.use("/login", loginRoutes);
 
 /////////////////  for testing database connection  //////////////////////
 /* async function testConnection() {
