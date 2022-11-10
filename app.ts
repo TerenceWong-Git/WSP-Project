@@ -58,6 +58,7 @@ app.use(express.static("public"));
   const password=req.body.password;
   const phone=req.body.phone;
   const date=req.body.date;
+  const checkbox=req.body.checkbox;
 
 
   if (!username||!email||!password||!phone||!date){      ///this checking missing input of registration is workable
@@ -66,9 +67,9 @@ app.use(express.static("public"));
   }
 
 await client.query(
-  `INSERT INTO users (username, email,password, birthday, mobile) 
-  VALUES ($1, $2, $3, $4, $5)`,
-  [username,email, password, date, phone]
+  `INSERT INTO users (username, email,password, birthday, mobile, subscription) 
+  VALUES ($1, $2, $3, $4, $5, $6)`,
+  [username,email, password, date, phone, checkbox]
 );
 res.status(201).json({message:"register successfully"})
 console.log(".ts ok")
