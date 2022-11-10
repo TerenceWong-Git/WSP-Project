@@ -8,7 +8,7 @@ export const client = new pg.Client({
   password: process.env.DB_PASS,
 });
 
-
+ client.connect();
 import express from "express";
 import http from "http";
 // import { Server as SocketIO } from "socket.io";
@@ -36,44 +36,46 @@ app.use(express.urlencoded());
 // app.use("/forum", forumRoutes);
 // app.use(datingRoutes);
 
-async function testConnection() {
+
+
+//////////////////////////////////////////////////////////
+/* async function testConnection() {
   await client.connect()
 const usertable_result= await client.query(`SELECT *
 FROM users;`)
 console.log(usertable_result.rows)
+await client.end();
 }
-testConnection()
+testConnection() */
 // db function
+//////////////////////////////////////////////////////////
 
 app.use(express.static("public"));
-
-app.post("/userData", async(req, res)=>{
-  
-
-await client.connect();
+ 
+ app.post("/userData", async(req, res)=>{
   const username=req.body.username;
   const email=req.body.email;
   const password=req.body.password;
   const phone=req.body.phone;
   const date=req.body.date;
 
+
   if (!username||!email||!password||!phone||!date){      ///this checking missing input of registration is workable
-    res.status(400).json({message:"missing username,email,password,phone,date"});
+    res.status(400).json({message:"missing username,email,password, phone number or birthday ! "});
     return;  
   }
 
-  console.log(req.body); //succeeded to be triggered
 await client.query(
-  `INSERT INTO users (email, password,subscription, birthday, mobile) 
+  `INSERT INTO users (username, email,password, birthday, mobile) 
   VALUES ($1, $2, $3, $4, $5)`,
-  [12,12, true, 12-12-2020,32422424]
+  [username,email, password, date, phone]
 );
 res.status(201).json({message:"register successfully"})
 console.log(".ts ok")
-await client.end()
-}
 
+}
 )
+
 
 
 app.use((req, res) => {

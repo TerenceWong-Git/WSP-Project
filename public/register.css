@@ -164,6 +164,7 @@
     border-left: none;
     border-right: none;
     display: flex;
+    font-size: 30px;
 }
 
 #submit2 {display: flex;

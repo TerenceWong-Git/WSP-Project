@@ -18,12 +18,18 @@ document.querySelector("#registerForm").addEventListener("submit", async (e) => 
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formBody)  })
-const data=await resp.json()
-if (resp.status!==201){alert(data.message)
-}else {
-    alert("successful submission")
-                console.log("finished uploading post")}
+        body: JSON.stringify(formBody)
+    })
+    const data = await resp.json()
+    if (resp.status !== 201) {
+        
+        alert(data.message)
+    } else {
+        alert("successful submission")
+        form.reset();
+       
+        console.log("finished uploading post")
+    }
 
 })
 

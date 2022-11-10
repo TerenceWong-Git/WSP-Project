@@ -1,10 +1,8 @@
 DROP TABLE IF EXISTS users;
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
-  username VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL,
-  phone integer,
   subscription BOOLEAN,
   birthday DATE,
   mobile varchar(255)
@@ -13,7 +11,6 @@ SELECT *
 FROM users;
 insert into users (
     id,
-    
     email,
     password,
     subscription,
