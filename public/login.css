@@ -161,7 +161,7 @@ body {
 .google-login {
   border: #AAAAAA 1px solid;
   border-radius: 30px;
-  width: 300px;
+  width: 340px;
   height: 50px;
   font-size: 20px;
   display: flex;
@@ -196,12 +196,16 @@ body {
   border-top: 0!important;
   border-right: 0!important;
   border-left: 0!important;
+  font-size: 30px;
+  width: 340px;
 }
 .sign-in-password {
   margin-top: 10px;
   border-top: 0!important;
   border-right: 0!important;
   border-left: 0!important;
+  font-size: 30px;
+  width: 340px;
 }
 
 .sign-in-submit {
@@ -224,10 +228,16 @@ body {
   height: 54px;
   font-size: 24px;
 }
+
+.sign-up-button a:hover {
+  color: #FFFFFF;
+}
+
 .sign-up-link-text {
   text-decoration: none;
   color: #FFFFFF;
 }
+
 
 @media only screen and (max-width: 768px) {
   .dropdown-menu {
@@ -256,6 +266,7 @@ body {
     border-right: 0!important;
     border-left: 0!important;
     width: 57vw;
+    font-size: 30px;
   }
   .sign-in-password {
     margin-top: 10px;
@@ -263,8 +274,14 @@ body {
     border-right: 0!important;
     border-left: 0!important;
     width: 57vw;
+    font-size: 30px;
   }
-
+  .or-middleline {
+    font-size: 5vw;
+  }
+  .google-login {
+    width: 60vw;
+  }
 }
 
 header {
