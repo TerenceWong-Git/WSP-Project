@@ -73,7 +73,7 @@ app.post("/userData", async (req, res) => {
   let tableEmail = await client.query(`SELECT email from users`);
   const c = tableEmail.rows;
 
-  const hashedPassword = hashPassword(password);
+  const hashedPassword = await hashPassword(password);
 
   await client.query(
     `INSERT INTO users (username, email,password, birthday, mobile, subscription) 
