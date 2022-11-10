@@ -17,7 +17,7 @@ async function postLoginRoutes(req: express.Request, res: express.Response, next
       result = await checkPassword(password, user.password);
       if (result) {
         req.session.user = true;
-        res.status(201).json({ message: "ok" });
+        res.status(200).json({ message: "ok" });
         console.log(req.session.user);
         return;
       }

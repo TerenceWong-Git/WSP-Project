@@ -10,8 +10,8 @@ export interface Post {
 
 export interface User {
   id: number;
-  name: string;
-  password: string;
+  username: string;
+  email: string;
 }
 
 export interface Comment {
