@@ -8,7 +8,7 @@ export const client = new pg.Client({
   password: process.env.DB_PASS,
 });
 
- client.connect();
+client.connect();
 import express from "express";
 import http from "http";
 // import { Server as SocketIO } from "socket.io";
@@ -36,8 +36,6 @@ app.use(express.urlencoded());
 // app.use("/forum", forumRoutes);
 // app.use(datingRoutes);
 
-
-
 /////////////////  for testing database connection  //////////////////////
 /* async function testConnection() {
   await client.connect()
@@ -50,34 +48,30 @@ testConnection() */
 // db function
 ////////////////////database connection testing ends /////////////////////
 
-app.use(express.static("public"));
- 
- app.post("/userData", async(req, res)=>{
-  const username=req.body.username;
-  const email=req.body.email;
-  const password=req.body.password;
-  const phone=req.body.phone;
-  const date=req.body.date;
-  const checkbox=req.body.checkbox;
+app.post("/userData", async (req, res) => {
+  const username = req.body.username;
+  const email = req.body.email;
+  const password = req.body.password;
+  const phone = req.body.phone;
+  const date = req.body.date;
+  const checkbox = req.body.checkbox;
 
-
-  if (!username||!email||!password||!phone||!date){      ///this checking missing input of registration is workable
-    res.status(400).json({message:"missing username,email,password, phone number or birthday ! "});
-    return;  
+  if (!username || !email || !password || !phone || !date) {
+    ///this checking missing input of registration is workable
+    res.status(400).json({ message: "missing username,email,password, phone number or birthday ! " });
+    return;
   }
 
-await client.query(
-  `INSERT INTO users (username, email,password, birthday, mobile, subscription) 
-  VALUES ($1, $2, $3, $4, $5, $6)`,
-  [username,email, password, date, phone, checkbox]
-);
-res.status(201).json({message:"register successfully"})
-console.log(".ts ok")
+  await client.query(
+    `INSERT INTO users (username, email,password, birthday, mobile, subscription) 
+    VALUES ($1, $2, $3, $4, $5, $6)`,
+    [username, email, password, date, phone, checkbox]
+  );
+  res.status(201).json({ message: "register successfully" });
+  console.log(".ts ok");
+});
 
-}
-)
-
-
+app.use(express.static("public"));
 
 app.use((req, res) => {
   res.sendFile(path.join(__dirname, "public", "404.html"));
