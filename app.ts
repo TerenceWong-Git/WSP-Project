@@ -36,8 +36,6 @@ app.use(express.urlencoded());
 // app.use("/forum", forumRoutes);
 // app.use(datingRoutes);
 
-
-
 /////////////////  for testing database connection  //////////////////////
 /* async function testConnection() {
   await client.connect()
@@ -113,6 +111,7 @@ res.status(201).json({ message: "register successfully" })
 })
 
 
+app.use(express.static("public"));
 
 app.use((req, res) => {
   res.sendFile(path.join(__dirname, "public", "404.html"));
