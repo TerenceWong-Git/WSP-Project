@@ -1,122 +1,137 @@
-
 :root {
-    --bs-btn-hover-bg: #00000045 !important;
-  }
-  
-  body {
-    margin: 0;
-    top: 10px;
-  }
-  
-  .bi, .bi-person-circle, .nav-link, .dropdown-toggle, .show {
-    color: white !important;
-  }
-  
-  /* ------------------- Navbar CSS ------------------- */
-  
-  .navbar {
-    --bs-navbar-padding-y: 0 !important;
-    --bs-navbar-color: rgb(255 255 255 / 100%) !important;
-    --bs-navbar-hover-color: rgb(255 255 255 / 50%) !important;
-    background: linear-gradient(
-      to right,
-      rgba(0, 57, 131, 1),
-      rgba(0, 135, 112, 1)
-    )!important;
-  }
-  
-  .navSpace {
-    margin-left: 1vw;
-  }
-  
-  .teckyLogo {
-    margin-left: 1vw;
-    height: 6vh;
-    /* color: rgb(255 255 255 / 100%) !important; */
-  }
-  
-  .btn {
-    color: white !important;
-    border: 2px solid #ffffff !important;
-  }
-  
-  .btn-outline-success {
-    --bs-btn-hover-bg: #50bb89 !important;
-    --bs-btn-active-bg: #50bb89 !important;
-  }
-  
-  .nav-item .dropdown {
-    position: relative;
-    margin-left: 20px !important;
-  }
-  
-  .d-flex {
-    margin-right: 10px;
-  }
-  
-  .dropdown-menu {
-    position: absolute;
-    right: 0px;
-    left: auto !important;
-  }
-  
-  .nav-item {
-    list-style-type: none;
-  }
-  
-  .bi-box-arrow-in-right {
-    font-size: 30px;
-    margin-right: 10px;
-  }
-  
-  .bi-person-circle {
-    font-size: 30px;
-    margin-right: 10px;
-  }
-  
-  .login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .profile-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 12px;
-  }
-  
-  .cart-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 12px;
-  }
-  
-  .logout-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 12px;
-  }
-  
-  .dropdown-container {
-    display: flex;
-    justify-content: flex-start;
-  }
-  
-  .user-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+  --bs-btn-hover-bg: #00000045 !important;
+}
+
+body {
+  margin: 0;
+  top: 10px;
+}
+
+.bi,
+.nav-link,
+.bi-person-circle,
+.show,
+.dropdown-toggle {
+  color: white !important;
+}
+
+.dropdownButton {
+  color: rgb(252, 186, 3) !important;
+}
+
+/* ------------------- Navbar CSS ------------------- */
+
+.navbar {
+  --bs-navbar-padding-y: 0 !important;
+  --bs-navbar-color: rgb(255 255 255 / 100%) !important;
+  --bs-navbar-hover-color: rgb(255 255 255 / 50%) !important;
+  margin-bottom: 2vh;
+  background: linear-gradient(
+    to right,
+    rgba(0, 57, 131, 1),
+    rgba(0, 135, 112, 1)
+  ) !important;
+}
+
+.navSpace {
+  margin-left: 7px;
+}
+
+.teckyLogo {
+  margin: 7px 7px;
+  /* margin-left: 1vw; */
+  height: 50px;
+  /* color: rgb(255 255 255 / 100%) !important; */
+}
+
+.btn {
+  color: white !important;
+  border: 2px solid #ffffff !important;
+}
+
+.btn-outline-success {
+  --bs-btn-hover-bg: #50bb89 !important;
+  --bs-btn-active-bg: #50bb89 !important;
+}
+
+.nav-item .dropdown {
+  position: relative;
+  margin-left: 20px !important;
+}
+
+.d-flex {
+  margin-right: 10px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  right: 0px;
+  left: auto !important;
+}
+
+.nav-item {
+  list-style-type: none;
+}
+
+.bi-box-arrow-in-right {
+  font-size: 30px;
+  margin-right: 10px;
+}
+
+.bi-person-circle {
+  font-size: 30px;
+  margin-right: 10px;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 12px;
+}
+
+.cart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 12px;
+}
+
+.logout-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 12px;
+}
+
+.dropdown-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.user-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 
 
 /* ........................................CSS of navbar ends................................................ */
 
+#welcome{display:flex;
+justify-content: center;
+font-size: 30px;
+color:black;
+}
 
+h1{color: #424257c8}
 #container1 {
     /* background-color: red; */
     max-width: 100%;
@@ -124,6 +139,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 15px;
 }
 
 #roundCornerContainer {
@@ -131,14 +147,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 800px;
-    height: 800px;
+  
+
     border: 2px solid black;
     border-radius: 50px;
     /* background-color: yellow; */
+    margin-left:30px;
+    margin-right:30px;
+    padding: 50px;
 }
 
-#contact-form1 {
+
+
+#registerForm {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -149,28 +170,33 @@
 
 }
 
-/* .inputPlace{} */
+.inputPlace{display: flex;
+justify-content: center;
+margin-left: 5px;
+margin-right: 5px;}
 
 #username,
 #email,
 #password,
 #phone {
-    width: 30vw;
+    
     height: 64px;
-    width: 450px;
+    max-width: 450px;
     /* background-color:palegoldenrod; */
-    margin: 5px;
+    margin-left: 5px ;
+    margin-right: 5px ;
     border-top: none;
     border-left: none;
     border-right: none;
     display: flex;
     font-size: 30px;
+
 }
 
 #submit2 {display: flex;
 justify-content: center;}
 .submit2 {
-    /* background-color: palegoldenrod; */
+    background-color: palegoldenrod;
     background-image: linear-gradient(90deg, #003a83, #008570);
     width: 150px;
     height: 40px;
@@ -179,3 +205,39 @@ justify-content: center;}
     color: white;
     font-weight: bold;
 }
+
+/* ...............................  end of register page ...................................................... */
+
+ @media only screen and (max-width: 480px) {
+  #roundCornerContainer {  box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 90vw;
+    height: 800px;
+    border: 2px solid black;
+    border-radius: 50px;
+    /* background-color: yellow; */
+    margin: auto 70px;
+     padding: 10px;} 
+  
+    #username,
+    #email,
+    #password,
+    #phone {
+        
+       
+        /* background-color:palegoldenrod; */
+        margin: 5px ;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        display: flex;
+        font-size: 30px;
+    
+    }
+
+
+
+
+} 

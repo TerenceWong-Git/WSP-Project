@@ -8,7 +8,7 @@ export const client = new pg.Client({
   password: process.env.DB_PASS,
 });
 
- client.connect();
+client.connect();
 import express from "express";
 import http from "http";
 // import { Server as SocketIO } from "socket.io";
@@ -51,31 +51,66 @@ testConnection() */
 ////////////////////database connection testing ends /////////////////////
 
 app.use(express.static("public"));
- 
- app.post("/userData", async(req, res)=>{
-  const username=req.body.username;
-  const email=req.body.email;
-  const password=req.body.password;
-  const phone=req.body.phone;
-  const date=req.body.date;
-  const checkbox=req.body.checkbox;
 
 
-  if (!username||!email||!password||!phone||!date){      ///this checking missing input of registration is workable
-    res.status(400).json({message:"missing username,email,password, phone number or birthday ! "});
-    return;  
+app.post("/userData", async (req, res) => {
+  const username = req.body.username;
+  const email = req.body.email;
+  const password = req.body.password;
+  const phone = req.body.phone;
+  const date = req.body.date;
+  const checkbox = req.body.checkbox;
+
+
+  if (!username || !email || !password || !phone || !date) {      ///this checking missing input of registration is workable
+    res.status(400).json({ message: "missing username,email,password, phone number or birthday ! " });
+    return;
   }
 
-await client.query(
-  `INSERT INTO users (username, email,password, birthday, mobile, subscription) 
-  VALUES ($1, $2, $3, $4, $5, $6)`,
-  [username,email, password, date, phone, checkbox]
-);
-res.status(201).json({message:"register successfully"})
-console.log(".ts ok")
+  let tableUserName = await client.query(`SELECT username from users`)
+  const b= tableUserName.rows;
+  console.log(b)
 
-}
-)
+  let tableEmail=await client.query(`SELECT email from users`);
+  const c=tableEmail.rows;
+
+
+
+  await client.query(
+    `INSERT INTO users (username, email,password, birthday, mobile, subscription) 
+  VALUES ($1, $2, $3, $4, $5, $6)`,
+    [username, email, password, date, phone, checkbox]
+  );
+  
+ 
+
+let x=b.find((data)=>username===data.username);  //find whether there is a value of username in data.username
+let y=c.find((data)=>email===data.email);        // same thing
+if(x && !y){
+    res.status(202).json({ message: "Sorry...username already taken, please try again" });
+    // console.log(x);
+    return}
+if(!x && y){
+  res.status(202).json({ message: "Sorry...email already taken, please try again" });
+  // console.log(y);
+  return;}
+  if(x && y){
+    res.status(202).json({ message: "Sorry...username and email already taken, please try again" });
+    // console.log(y);
+    return;}
+  
+
+
+  
+
+res.status(201).json({ message: "register successfully" })
+    console.log(".ts ok")
+  
+
+
+
+
+})
 
 
 

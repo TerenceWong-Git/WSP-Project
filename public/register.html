@@ -14,17 +14,18 @@
 
 <body>
 
-     <!-- NAV BAR -->
-     <nav class="navbar navbar-expand-lg bg-light">
+    <!-- NAV BAR -->
+    <nav class="navbar navbar-expand-md bg-light">
       <div class="container-fluid">
-          <img class="teckyLogo" src="./indexImages/teckyLogo.png" />
+          <a href="./index.html"><img class="teckyLogo" src="./indexImages/teckyLogo.png" /></a>
+
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
               data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
               aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <ul class="navbar-nav me-auto mb-2 mb-md-0">
                   <li class="nav-item navSpace">
                       <a class="nav-link" href="#">零食</a>
                   </li>
@@ -55,16 +56,19 @@
 
                       <ul class="dropdown-menu">
                           <li class="profile-container">
-                              <i class="bi bi-file-earmark-person"></i><a class="dropdown-item" href="#">Profile</a>
+                              <i class="bi bi-file-earmark-person dropdownButton"></i><a class="dropdown-item"
+                                  href="#">Profile</a>
                           </li>
                           <li class="cart-container">
-                              <i class="bi bi-cart4"></i><a class="dropdown-item" href="#">Shopping Cart</a>
+                              <i class="bi bi-cart4 dropdownButton"></i><a class="dropdown-item" href="#">Shopping
+                                  Cart</a>
                           </li>
                           <li>
                               <hr class="dropdown-divider" />
                           </li>
                           <li class="logout-container">
-                              <i class="bi bi-box-arrow-left"></i><a class="dropdown-item" href="#">Logout</a>
+                              <i class="bi bi-box-arrow-left dropdownButton"></i><a class="dropdown-item"
+                                  href="#">Logout</a>
                           </li>
                       </ul>
                   </li>
@@ -73,11 +77,15 @@
       </div>
   </nav>
   <!-- END OF NAV BAR -->
+ 
+<!-- registration part -->
 
+  <div id="welcome">Welcome To Be One Of Our Members !</div><br><hr>
   <div id="container1">
     <div id="roundCornerContainer">
 
       <form id="registerForm">
+        <h1>Registration</h1><br><br>
         <div class="inputPlace">
           <input type="text" name="username" placeholder="username" id="username"></textarea>
         </div>
@@ -116,7 +124,7 @@
     </div>
 
   </div>
-
+<!-- end of registratiob part -->
 
 
 
