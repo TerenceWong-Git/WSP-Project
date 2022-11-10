@@ -18,6 +18,12 @@ import path from "path";
 import { loginRoutes } from "./routers/loginRoute";
 import { hashPassword } from "./bcrypt";
 
+declare module "express-session" {
+  interface Session {
+    user: boolean;
+  }
+}
+
 const app = express();
 const server = new http.Server(app);
 // const io = new SocketIO(server);
@@ -75,12 +81,6 @@ app.post("/userData", async (req, res) => {
 
   const hashedPassword = await hashPassword(password);
 
-  await client.query(
-    `INSERT INTO users (username, email,password, birthday, mobile, subscription) 
-  VALUES ($1, $2, $3, $4, $5, $6)`,
-    [username, email, hashedPassword, date, phone, checkbox]
-  );
-
   let x = b.find((data) => username === data.username); //find whether there is a value of username in data.username
   let y = c.find((data) => email === data.email); // same thing
   if (x && !y) {
@@ -99,6 +99,11 @@ app.post("/userData", async (req, res) => {
     return;
   }
 
+  await client.query(
+    `INSERT INTO users (username, email,password, birthday, mobile, subscription) 
+  VALUES ($1, $2, $3, $4, $5, $6)`,
+    [username, email, hashedPassword, date, phone, checkbox]
+  );
   res.status(201).json({ message: "register successfully" });
   console.log(".ts ok");
 });
