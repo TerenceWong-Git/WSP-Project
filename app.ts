@@ -56,7 +56,9 @@ console.log(views)
 
 // app.use("/forum", forumRoutes);
 // app.use(datingRoutes);
-app.use("/login", loginRoutes);   // request received from login.js
+app.use(loginRoutes);                          // request received from login.js
+
+
 
 /////////////////  for testing database connection  //////////////////////
 /* async function testConnection() {

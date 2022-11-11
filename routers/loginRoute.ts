@@ -3,9 +3,9 @@ import { client } from "../app";
 import { checkPassword } from "../bcrypt";
 import type { Login } from "../models";
 
-export const loginRoutes = express.Router();
+export const loginRoutes = express.Router();     //export to app.ts
 
-loginRoutes.post("/", postLoginRoutes);
+loginRoutes.post("/login", postLoginRoutes);
 
 async function postLoginRoutes(req: express.Request, res: express.Response, next: express.NextFunction) {
   const { email, password } = req.body;

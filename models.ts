@@ -23,7 +23,7 @@ export interface Comment {
   post_id: number;
 }
 
-export interface Login {
+export interface Login {               // export to loginRoute.ts
   email: string;
   password: string;
 }
