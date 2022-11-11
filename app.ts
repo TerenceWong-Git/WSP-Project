@@ -34,6 +34,24 @@ const server = new http.Server(app);
 // const io = new SocketIO(server);
 const PORT = 8080;
 
+import grant from "grant";
+
+const grantExpress = grant.express({
+  defaults: {
+    origin: "http://localhost:8080",
+    transport: "session",
+    state: true,
+  },
+  google: {
+    key: process.env.GOOGLE_CLIENT_ID || "",
+    secret: process.env.GOOGLE_CLIENT_SECRET || "",
+    scope: ["profile", "email"],
+    callback: "/login/google",
+  },
+});
+
+app.use(grantExpress as express.RequestHandler);
+
 app.use(
   expressSession({
     secret: Math.random().toString(32).slice(2),

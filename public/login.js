@@ -2,6 +2,7 @@ console.log("hi");
 window.onload = () => {
   login();
   logout();
+  googleLogin();
 };
 
 function login() {
@@ -42,6 +43,20 @@ function logout() {
     if (resp.status === 200) {
       alert("You signed out!!");
       window.location = "/";
+    }
+  });
+}
+function googleLogin() {
+  const googleLoginButton = document.querySelector(".google-login");
+  googleLoginButton.addEventListener("click", async (e) => {
+    // e.preventDefault();
+    const resp = await fetch("/login/google", { method: "GET" });
+    if (resp.status === 200) {
+      alert("signed in with google");
+      window.location = "/";
+    } else {
+      alert("please register first");
+      window.location = "/register.html";
     }
   });
 }
