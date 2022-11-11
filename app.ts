@@ -20,6 +20,7 @@ import { hashPassword } from "./bcrypt";
 import { User } from "./models";
 import { userLogin } from "./middleware";
 import { logoutRoutes } from "./routers/logoutRoute";
+import { indexRoute } from "./routers/indexRoute";
 
 declare module "express-session" {
   interface Session {
@@ -49,6 +50,7 @@ app.use(express.urlencoded());
 // app.use(datingRoutes);
 app.use(loginRoutes); // request received from login.js
 app.use(logoutRoutes); // request received from login.js
+app.use(indexRoute); // request received from index.js
 
 /////////////////  for testing database connection  //////////////////////
 /* async function testConnection() {

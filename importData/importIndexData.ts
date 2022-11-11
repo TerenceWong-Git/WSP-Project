@@ -4,10 +4,6 @@ import pg from "pg";
 
 dotenv.config();
 
-console.log('db: ', process.env.DB_NAME)
-console.log('USER: ', process.env.DB_USER)
-console.log('PAWS: ', process.env.DB_PASS)
-
 async function importData() {
   const client = new pg.Client({
     database: process.env.DB_NAME,

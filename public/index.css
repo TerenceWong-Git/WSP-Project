@@ -66,6 +66,10 @@ body {
   position: absolute;
   right: 0px;
   left: auto !important;
+  --bs-dropdown-link-hover-color: #ffc107 !important;
+  --bs-dropdown-link-hover-bg: #ffffff00 !important;
+  --bs-dropdown-link-active-color: #ffc107 !important;
+  --bs-dropdown-link-active-bg: #ffffff00 !important;
 }
 
 .nav-item {
