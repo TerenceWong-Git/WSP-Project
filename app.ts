@@ -17,10 +17,11 @@ import path from "path";
 // import { forumRoutes } from "./routers/forumRoute";
 import { loginRoutes } from "./routers/loginRoute";
 import { hashPassword } from "./bcrypt";
+import { User } from "./models";
 
 declare module "express-session" {
   interface Session {
-    user: boolean;
+    user: User;
   }
 }
 

@@ -9,9 +9,9 @@ export interface Post {
 }
 
 export interface User {
-  id: number;
-  username: string;
-  email: string;
+  id?: number;
+  username?: string;
+  email?: string;
 }
 
 export interface Comment {
@@ -23,7 +23,9 @@ export interface Comment {
   post_id: number;
 }
 
-export interface Login {               // export to loginRoute.ts
+export interface Login {
+  id: number;
+  username: string;
   email: string;
   password: string;
 }
