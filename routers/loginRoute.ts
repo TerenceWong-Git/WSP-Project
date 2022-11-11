@@ -3,7 +3,7 @@ import { client } from "../app";
 import { checkPassword } from "../bcrypt";
 import type { Login } from "../models";
 
-export const loginRoutes = express.Router();     //export to app.ts
+export const loginRoutes = express.Router(); //export to app.ts
 
 loginRoutes.post("/login", postLoginRoutes);
 
