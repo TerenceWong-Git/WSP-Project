@@ -25,7 +25,7 @@ declare module "express-session" {
 }
 
 const app = express();
-const server = new http.Server(app);
+const server = new http.Server(app); 
 // const io = new SocketIO(server);
 const PORT = 8080;
 
@@ -39,6 +39,20 @@ app.use(
 
 app.use(express.json());
 app.use(express.urlencoded());
+
+//////////////////////////////////   END OF CONFIGURATION PART ////////////////////////////////////////////////
+
+app.get('/', function(req, res, next) {
+  let views = req.session["views"]
+  if(!req.session["views"]){
+    req.session["views"] = 1
+  } else{
+    req.session["views"] ++
+    
+}
+console.log(views)
+}
+)
 
 // app.use("/forum", forumRoutes);
 // app.use(datingRoutes);
@@ -56,8 +70,11 @@ testConnection() */
 // db function
 ////////////////////database connection testing ends /////////////////////
 
+
+
 app.use(express.static("public"));
 
+//////////////////  registration route handler START   ////////////////////////////////////////
 app.post("/userData", async (req, res) => {
   const username = req.body.username;
   const email = req.body.email;
@@ -67,22 +84,21 @@ app.post("/userData", async (req, res) => {
   const checkbox = req.body.checkbox;
 
   if (!username || !email || !password || !phone || !date) {
-    ///this checking missing input of registration is workable
     res.status(400).json({ message: "missing username,email,password, phone number or birthday ! " });
     return;
   }
 
   let tableUserName = await client.query(`SELECT username from users`);
   const b = tableUserName.rows;
-  console.log(b);
+  // console.log(b);
 
   let tableEmail = await client.query(`SELECT email from users`);
   const c = tableEmail.rows;
 
-  const hashedPassword = await hashPassword(password);
+  const hashedPassword = await hashPassword(password); 
 
   let x = b.find((data) => username === data.username); //find whether there is a value of username in data.username
-  let y = c.find((data) => email === data.email); // same thing
+  let y = c.find((data) => email === data.email); // find whether there is a value of username in data.email
   if (x && !y) {
     res.status(202).json({ message: "Sorry...username already taken, please try again" });
     // console.log(x);
@@ -107,6 +123,9 @@ app.post("/userData", async (req, res) => {
   res.status(201).json({ message: "register successfully" });
   console.log(".ts ok");
 });
+
+
+//////////////////////  registration route handler END ////////////////////////////////
 
 app.use(express.static("public"));
 

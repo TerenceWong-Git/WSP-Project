@@ -31,7 +31,7 @@ window.onload = () => {
       form.reset();
 
       console.log("finished uploading post");
-      window.location = "/";
+      window.location = "/";   //succeed to get to the product page
     }
   });
 };

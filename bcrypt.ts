@@ -12,3 +12,5 @@ export async function checkPassword(plainPassword: string, hashedPassword: strin
   // console.log(isMatched);
   return isMatched;
 }
+
+//////////  from WSP011 Local Login and Bcrypt.js  ////////////////
