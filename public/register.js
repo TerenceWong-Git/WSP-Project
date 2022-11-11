@@ -1,4 +1,21 @@
 window.onload = () => {
+  register();
+  logout();
+};
+
+function logout() {
+  const logoutButton = document.querySelector(".logoutbutton");
+  logoutButton.addEventListener("click", async (e) => {
+    e.preventDefault();
+    const resp = await fetch("/logout", { method: "GET" });
+    if (resp.status === 200) {
+      alert("You signed out!!");
+      window.location = "/";
+    }
+  });
+}
+
+function register() {
   document.querySelector("#registerForm").addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -31,7 +48,7 @@ window.onload = () => {
       form.reset();
 
       console.log("finished uploading post");
-      window.location = "/";   //succeed to get to the product page
+      window.location = "/"; //succeed to get to the product page
     }
   });
-};
+}

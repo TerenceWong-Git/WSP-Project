@@ -16,16 +16,20 @@ import expressSession from "express-session";
 import path from "path";
 // import { forumRoutes } from "./routers/forumRoute";
 import { loginRoutes } from "./routers/loginRoute";
-import { hashPassword } from "./bcrypt";
+// import { hashPassword } from "./bcrypt";
+import { User } from "./models";
+import { userLogin } from "./middleware";
+import { logoutRoutes } from "./routers/logoutRoute";
+import {registerRoutes} from "./routers/registerRoute" ;
 
 declare module "express-session" {
   interface Session {
-    user: boolean;
+    user: User | false;
   }
 }
 
 const app = express();
-const server = new http.Server(app); 
+const server = new http.Server(app);
 // const io = new SocketIO(server);
 const PORT = 8080;
 
@@ -42,23 +46,10 @@ app.use(express.urlencoded());
 
 //////////////////////////////////   END OF CONFIGURATION PART ////////////////////////////////////////////////
 
-app.get('/', function(req, res, next) {
-  let views = req.session["views"]
-  if(!req.session["views"]){
-    req.session["views"] = 1
-  } else{
-    req.session["views"] ++
-    
-}
-console.log(views)
-}
-)
-
 // app.use("/forum", forumRoutes);
 // app.use(datingRoutes);
-app.use(loginRoutes);                          // request received from login.js
-
-
+app.use(loginRoutes); // request received from login.js
+app.use(logoutRoutes); // request received from login.js
 
 /////////////////  for testing database connection  //////////////////////
 /* async function testConnection() {
@@ -72,61 +63,12 @@ testConnection() */
 // db function
 ////////////////////database connection testing ends /////////////////////
 
-
-
-app.use(express.static("public"));
-
-//////////////////  registration route handler START   //////////////////////////////////////////////////////////////////////////
-app.post("/userData", async (req, res) => {
-  const username = req.body.username;
-  const email = req.body.email;
-  const password = req.body.password;
-  const phone = req.body.phone;
-  const date = req.body.date;
-  const checkbox = req.body.checkbox;
-
-  if (!username || !email || !password || !phone || !date) {
-    res.status(400).json({ message: "missing username,email,password, phone number or birthday ! " });
-    return;
-  }
-
-  let tableUserName = await client.query(`SELECT username from users`);
-  const b = tableUserName.rows;
-
-  let tableEmail = await client.query(`SELECT email from users`);
-  const c = tableEmail.rows;
-
-  const hashedPassword = await hashPassword(password);  // function imported from ./bcrypt
-
-  let x = b.find((data) => username === data.username); 
-  let y = c.find((data) => email === data.email); 
-  if (x && !y) {
-    res.status(202).json({ message: "Sorry...username already taken, please try again" });
-    return;
-  }
-  if (!x && y) {
-    res.status(202).json({ message: "Sorry...email already taken, please try again" });
-    return;
-  }
-  if (x && y) {
-    res.status(202).json({ message: "Sorry...username and email already taken, please try again" });
-    
-    return;
-  }
-
-  await client.query(
-    `INSERT INTO users (username, email,password, birthday, mobile, subscription) 
-  VALUES ($1, $2, $3, $4, $5, $6)`,
-    [username, email, hashedPassword, date, phone, checkbox] 
-  );
-  res.status(201).json({ message: "register successfully" });
-  console.log(".ts ok");
-});
-
+app.use(registerRoutes);
 
 //////////////////////  registration route handler END ////////////////////////////////////////////////////////////////////////
 
 app.use(express.static("public"));
+app.use("/user", userLogin, express.static("user"));
 
 app.use((req, res) => {
   res.sendFile(path.join(__dirname, "public", "404.html"));

@@ -14,7 +14,7 @@ export interface User {               // export to loginRoute.ts
   email: string;
 }
 
-export interface Comment {
+export interface Comment {            
   id: number;
   content: string;
   created_at: Date;
@@ -23,7 +23,9 @@ export interface Comment {
   post_id: number;
 }
 
-export interface Login {               // export to loginRoute.ts
+export interface Login {    
+  id: number;
+  username:string;           // export to loginRoute.ts
   email: string;
   password: string;
 }
