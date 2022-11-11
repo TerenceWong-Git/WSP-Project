@@ -6,5 +6,6 @@ logoutRoutes.get("/logout", getLogoutRoutes);
 
 function getLogoutRoutes(req: express.Request, res: express.Response) {
   req.session.user = false;
+  req.session.destroy();
   res.status(200).json({ message: "signed out" });
 }

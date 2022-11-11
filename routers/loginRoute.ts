@@ -2,6 +2,7 @@ import express from "express";
 import { client } from "../app";
 import { checkPassword } from "../bcrypt";
 import type { Login } from "../models";
+import fetch from "cross-fetch";
 
 export const loginRoutes = express.Router(); //export to app.ts
 
@@ -42,6 +43,7 @@ async function loginGoogle(req: express.Request, res: express.Response) {
   });
 
   const result = await fetchRes.json();
+  console.log(result);
   const users = (await client.query<Login>(/* sql */ `SELECT * FROM users WHERE users.email = $1`, [result.email])).rows;
 
   let user = users[0];
@@ -52,6 +54,7 @@ async function loginGoogle(req: express.Request, res: express.Response) {
     return;
   } else {
     req.session.user = { id: users[0].id, username: users[0].username, email: users[0].email };
-    res.status(200).json({ message: "logged in with google" });
+    // res.status(200).json({ message: "logged in with google" });
+    res.redirect("/");
   }
 }
