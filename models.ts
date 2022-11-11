@@ -29,3 +29,9 @@ export interface Login {
   email: string;
   password: string;
 }
+
+export interface Products {
+  id: number;
+  product_name: string;
+  image: string;
+}
