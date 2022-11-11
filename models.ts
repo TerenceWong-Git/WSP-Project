@@ -8,7 +8,7 @@ export interface Post {
   user_id: number;
 }
 
-export interface User {
+export interface User {               // export to loginRoute.ts
   id: number;
   username: string;
   email: string;
