@@ -29,3 +29,29 @@ async function postLoginRoutes(req: express.Request, res: express.Response, next
 }
 
 ////////////  from WSP011 Local Login and Bcrypt.js  Local Route part   ////////////////////////////////
+
+loginRoutes.get("/login/google", loginGoogle);
+
+async function loginGoogle(req: express.Request, res: express.Response) {
+  const accessToken = req.session?.["grant"].response.access_token;
+  const fetchRes = await fetch("https://www.googleapis.com/oauth2/v2/userinfo", {
+    method: "get",
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+
+  const result = await fetchRes.json();
+  const users = (await client.query<Login>(/* sql */ `SELECT * FROM users WHERE users.email = $1`, [result.email])).rows;
+
+  let user = users[0];
+
+  if (!user) {
+    // Create the user when the user does not exist
+    res.status(400).json({ message: "not registered" });
+    return;
+  } else {
+    req.session.user = { id: users[0].id, username: users[0].username, email: users[0].email };
+    res.status(200).json({ message: "logged in with google" });
+  }
+}

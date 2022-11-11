@@ -21,18 +21,48 @@ async function loadProducts() {
   console.log(products);
 
   // Version 1
-  let htmlStr = ``;
-  let count = 1
+  let drinkStr = ``;
+  let snackStr = ``;
+  let noodleStr = ``;
+  let drinkCount = 1;
+  let snackCount = 1;
+  let noodleCount = 1;
+
   for (const product of products) {
-    console.log(product);
-    htmlStr += `
-    <div class="topSalesDrinks${count}">
-      <img class="drinksImage" src="./${product.image}" alt="..."/>
+    if (product.product_category === "drinks") {
+      drinkStr += `
+    <div class="topSalesProducts${drinkCount}">
+      <img class="productsImage" src="./${product.image}" alt="..."/>
       <div class="productsName">${product.product_name}</div>
-      <div class="productsPrice">${product.product_category}</div>
+      <div class="productsPrice">$${product.product_price}</div>
     </div>
     `;
-    count++;
+    drinkCount++;
+    }
+
+    if (product.product_category === "snacks") {
+      snackStr += `
+    <div class="topSalesProducts${snackCount}">
+      <img class="productsImage" src="./${product.image}" alt="..."/>
+      <div class="productsName">${product.product_name}</div>
+      <div class="productsPrice">$${product.product_price}</div>
+    </div>
+    `;
+    snackCount++;
+    }
+
+    if (product.product_category === "noodles") {
+      noodleStr += `
+    <div class="topSalesProducts${noodleCount}">
+      <img class="productsImage" src="./${product.image}" alt="..."/>
+      <div class="productsName">${product.product_name}</div>
+      <div class="productsPrice">$${product.product_price}</div>
+    </div>
+    `;
+    noodleCount++;
+    }
   }
-  document.querySelector(".topSalesProductsGroup").innerHTML = htmlStr;
+  document.querySelector(".topSalesDrinksGroup").innerHTML = drinkStr;
+  document.querySelector(".topSalesSnacksGroup").innerHTML = snackStr;
+  document.querySelector(".topSalesNoodlesGroup").innerHTML = noodleStr;
 }
