@@ -14,7 +14,7 @@ function login() {
       password: form.password.value,
     };
     console.log(formBody);
-    const resp = await fetch("/login", {
+    const resp = await fetch("/login", {       //send request to app.ts to trigger the route handler
       method: "POST",
       headers: {
         "content-type": "application/json;charset=utf-8",

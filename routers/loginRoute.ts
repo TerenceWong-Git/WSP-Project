@@ -28,3 +28,5 @@ async function postLoginRoutes(req: express.Request, res: express.Response, next
   res.status(400).json({ message: "unsuccessful login" });
   return;
 }
+
+////////////  from WSP011 Local Login and Bcrypt.js  Local Route part   ////////////////////////////////
