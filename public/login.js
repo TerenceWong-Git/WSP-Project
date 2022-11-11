@@ -14,7 +14,8 @@ function login() {
       password: form.password.value,
     };
     console.log(formBody);
-    const resp = await fetch("/login", {       //send request to app.ts to trigger the route handler
+    const resp = await fetch("/login", {
+      //send request to app.ts to trigger the route handler
       method: "POST",
       headers: {
         "content-type": "application/json;charset=utf-8",
@@ -22,8 +23,8 @@ function login() {
       body: JSON.stringify(formBody),
     });
     if (resp.status === 200) {
-      const newNavBar = document.querySelector(".dropdown-container");
-      newNavBar.removeAttribute("hidden");
+      // const newNavBar = document.querySelector(".dropdown-container");
+      // newNavBar.removeAttribute("hidden");
       window.location = "/";
     } else {
       const data = await resp.json();

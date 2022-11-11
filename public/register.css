@@ -121,6 +121,14 @@ body {
     justify-content: center;
     align-items: center;
   }
+
+  #userbutton {
+    display: none;
+  }
+  
+  #loginbutton {
+    display: static;
+  }
   
   
   /* ------------------- Navbar CSS ------------------- */

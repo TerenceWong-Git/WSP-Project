@@ -18,10 +18,11 @@ import path from "path";
 import { loginRoutes } from "./routers/loginRoute";
 import { hashPassword } from "./bcrypt";
 import { User } from "./models";
+import { userLogin } from "./middleware";
 
 declare module "express-session" {
   interface Session {
-    user: User;
+    user: User | false;
   }
 }
 
@@ -58,8 +59,6 @@ await client.end();
 testConnection() */
 // db function
 ////////////////////database connection testing ends /////////////////////
-
-app.use(express.static("public"));
 
 //////////////////  registration route handler START   //////////////////////////////////////////////////////////////////////////
 app.post("/userData", async (req, res) => {
@@ -101,7 +100,7 @@ app.post("/userData", async (req, res) => {
 
   await client.query(
     `INSERT INTO users (username, email,password, birthday, mobile, subscription) 
-  VALUES ($1, $2, $3, $4, $5, $6)`,
+    VALUES ($1, $2, $3, $4, $5, $6)`,
     [username, email, hashedPassword, date, phone, checkbox]
   );
   res.status(201).json({ message: "register successfully" });
@@ -111,6 +110,7 @@ app.post("/userData", async (req, res) => {
 //////////////////////  registration route handler END ////////////////////////////////////////////////////////////////////////
 
 app.use(express.static("public"));
+app.use("/user", userLogin, express.static("user"));
 
 app.use((req, res) => {
   res.sendFile(path.join(__dirname, "public", "404.html"));

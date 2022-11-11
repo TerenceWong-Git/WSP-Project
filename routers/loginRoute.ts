@@ -22,7 +22,7 @@ async function postLoginRoutes(req: express.Request, res: express.Response, next
       }
     }
   }
-  req.session.user = {};
+  req.session.user = false;
   console.log(req.session.user);
   res.status(400).json({ message: "unsuccessful login" });
   return;
