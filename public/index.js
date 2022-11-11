@@ -1,5 +1,6 @@
 window.onload = () => {
   logout();
+  loadProducts();
 };
 
 function logout() {
@@ -12,4 +13,26 @@ function logout() {
       window.location = "/";
     }
   });
+}
+
+async function loadProducts() {
+  const resp = await fetch("/index");
+  const products = await resp.json();
+  console.log(products);
+
+  // Version 1
+  let htmlStr = ``;
+  let count = 1
+  for (const product of products) {
+    console.log(product);
+    htmlStr += `
+    <div class="topSalesDrinks${count}">
+      <img class="drinksImage" src="./${product.image}" alt="..."/>
+      <div class="productsName">${product.product_name}</div>
+      <div class="productsPrice">${product.product_category}</div>
+    </div>
+    `;
+    count++;
+  }
+  document.querySelector(".topSalesProductsGroup").innerHTML = htmlStr;
 }
