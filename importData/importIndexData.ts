@@ -11,6 +11,8 @@ async function importData() {
     password: process.env.DB_PASS,
   });
   await client.connect();
+  await client.query("drop table products if exists");
+  await client.query("create table products");
 
   // DELETE FROM tables
   await client.query("DELETE FROM products");
@@ -23,11 +25,7 @@ async function importData() {
     { product_name: "Vita Soy", image: "./productImages/OOHA_PEACH_OOLONG_TEA.jpg", product_price: "66" },
   ];
   for (const product of products) {
-    await client.query("INSERT INTO products (product_name, image, product_price) VALUES ($1, $2, $3)", [
-      product.product_name,
-      product.image,
-      product.product_price,
-    ]);
+    await client.query("INSERT INTO products (product_name, image, product_price) VALUES ($1, $2, $3)", [product.product_name, product.image, product.product_price]);
   }
 
   await client.end();
