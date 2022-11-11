@@ -143,103 +143,45 @@ body {
 }
 
 /* ------------------- Navbar CSS ------------------- */
+
 .divContainer {
   padding-left: 4vw;
   padding-right: 4vw;
+  display: flex;
+  justify-content: space-between;
 }
 
-.carouselArea {
+.allCategoriesArea {
+  position: sticky;
+  top: 3vh;
   border: 1px solid;
-  display: flex;
-  justify-content: center;
+  width: 16vw;
+  height: 80vh;
   margin-bottom: 3vh;
 }
 
-.carouselPicture {
-  max-width: 100%;
-  height: 70vh;
-  max-height: 100%;
+.allCategoriesTitle {
+    display: flex;
+    justify-content: center;
+  font-size: 4.3vmin;
+  font-weight: bold;
+  text-shadow: 1px 0 #ffee00;
+  border-bottom: 1px solid black;
 }
 
 .advertismentArea1 {
-  border: 1px solid;
-  display: flex;
-  justify-content: center;
+  width: 75%;
+  border: 1px solid red;
+  flex-direction: column;
   margin-bottom: 3vh;
+  padding: 1vw;
 }
 
 .advertisment1 {
-  width: 100vw;
-  height: 15vh;
-}
-
-.productsArea {
-  border: 1px solid;
-  border-radius: 2vw;
-  align-items: center;
-  flex-direction: column;
-  margin-bottom: 3vh;
-}
-
-.productsAreaTitleArea {
-  /* border: 1px solid; */
-}
-
-.productsAreaTitle {
-  font-family: "Caveat", cursive;
-  font-size: 7vh;
-  margin-left: 2vw;
-}
-
-.topSalesDrinksGroup,
-.topSalesSnacksGroup,
-.topSalesNoodlesGroup {
-  display: flex;
-  justify-content: center;
-  height: 50vh;
-}
-
-.topSalesProducts1,
-.topSalesProducts2,
-.topSalesProducts3 {
-  /* border: 1px solid red; */
-  width: 100%;
-  margin-right: 2vw;
-  display: flex;
-  flex-direction: column;
-}
-
-.topSalesProducts4 {
-  /* border: 1px solid red; */
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.productsImage {
   border: 1px solid lightblue;
-  max-width: 100%;
-  max-height: 70%;
-  display: flex;
-  align-self: center;
-}
-
-.productsName {
-  border: 1px solid yellow;
-  max-width: 100%;
-  max-height: 20%;
-  font-size: 1.7vmax;
-  display: flex;
-  justify-content: center;
-}
-
-.productsPrice {
-  border: 1px solid lightpink;
-  max-width: 100%;
-  max-height: 10%;
-  font-size: 1.2vmax;
-  display: flex;
-  justify-content: center;
+  width: 100%;
+  height: 25vh;
+  margin-bottom: 2vh;
 }
 
 .bottomArea {
@@ -252,18 +194,4 @@ body {
   height: 20vh;
   left: 0;
   bottom: 0;
-}
-
-@media only screen and (max-width: 992px) {
-  .dropdown-menu {
-    position: absolute;
-    left: 0 !important;
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  .dropdown-menu {
-    position: absolute;
-    left: 0 !important;
-  }
 }
