@@ -26,6 +26,7 @@ import { indexRoute } from "./routers/indexRoute";
 declare module "express-session" {
   interface Session {
     user: User | false;
+    grant: { response: { access_token: string | null } };
   }
 }
 
