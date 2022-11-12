@@ -7,6 +7,8 @@ import fetch from "cross-fetch";
 export const loginRoutes = express.Router(); //export to app.ts
 
 loginRoutes.post("/login", postLoginRoutes);
+loginRoutes.get("/login/google", loginGoogle);
+loginRoutes.get("/login", getLoginRoutes);
 
 async function postLoginRoutes(req: express.Request, res: express.Response, next: express.NextFunction) {
   const { email, password } = req.body;
@@ -30,8 +32,6 @@ async function postLoginRoutes(req: express.Request, res: express.Response, next
 }
 
 ////////////  from WSP011 Local Login and Bcrypt.js  Local Route part   ////////////////////////////////
-
-loginRoutes.get("/login/google", loginGoogle);
 
 async function loginGoogle(req: express.Request, res: express.Response) {
   const accessToken = req.session?.["grant"].response.access_token;
@@ -58,4 +58,8 @@ async function loginGoogle(req: express.Request, res: express.Response) {
     // res.status(200).json({ message: "logged in with google" });
     res.redirect("/");
   }
+}
+
+function getLoginRoutes(req: express.Request, res: express.Response) {
+  res.json(req.session.user);
 }

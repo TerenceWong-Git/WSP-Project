@@ -1,6 +1,7 @@
 window.onload = () => {
   logout();
   loadProducts();
+  userName();
 };
 
 function logout() {
@@ -37,7 +38,7 @@ async function loadProducts() {
       <div class="productsPrice">$${product.product_price}</div>
     </div>
     `;
-    drinkCount++;
+      drinkCount++;
     }
 
     if (product.product_category === "snacks") {
@@ -48,7 +49,7 @@ async function loadProducts() {
       <div class="productsPrice">$${product.product_price}</div>
     </div>
     `;
-    snackCount++;
+      snackCount++;
     }
 
     if (product.product_category === "noodles") {
@@ -59,10 +60,18 @@ async function loadProducts() {
       <div class="productsPrice">$${product.product_price}</div>
     </div>
     `;
-    noodleCount++;
+      noodleCount++;
     }
   }
   document.querySelector(".topSalesDrinksGroup").innerHTML = drinkStr;
   document.querySelector(".topSalesSnacksGroup").innerHTML = snackStr;
   document.querySelector(".topSalesNoodlesGroup").innerHTML = noodleStr;
+}
+
+async function userName() {
+  const userInfo = await fetch("/login");
+  const userInfoObj = await userInfo.json();
+  const username = userInfoObj.username;
+  const usernameDiv = document.querySelector(".username");
+  usernameDiv.innerText = username;
 }
