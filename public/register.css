@@ -139,7 +139,7 @@ body {
 }
 
 #loginbutton {
-  display: static;
+  display: flex;
 }
 
 .user-dropdown {

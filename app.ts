@@ -20,7 +20,8 @@ import { loginRoutes } from "./routers/loginRoute";
 import { User } from "./models";
 import { userLogin } from "./middleware";
 import { logoutRoutes } from "./routers/logoutRoute";
-import { registerRoutes } from "./routers/registerRoute";
+// import {registerRoutes} from "./routers/registerRoute" ;
+import { register } from "./routers/registerRoute";
 import { indexRoute } from "./routers/indexRoute";
 import { allCategoryRoute } from "./routers/allCategoryRoute";
 
@@ -69,25 +70,14 @@ app.use(grantExpress as express.RequestHandler);
 
 // app.use("/forum", forumRoutes);
 // app.use(datingRoutes);
-app.use(loginRoutes); // request received from login.js
+app.use("/login", loginRoutes); // request received from login.js
 app.use(logoutRoutes); // request received from login.js
 app.use(indexRoute); // request received from index.js
 app.use(allCategoryRoute); // request received from allCategory.js
 
 
-/////////////////  for testing database connection  //////////////////////
-/* async function testConnection() {
-  await client.connect()
-const usertable_result= await client.query(`SELECT *
-FROM users;`)
-console.log(usertable_result.rows)s
-await client.end();
-}
-testConnection() */
-// db function
-////////////////////database connection testing ends /////////////////////
-
-app.use(registerRoutes);
+// app.use(registerRoutes);
+app.post("/userData", register);
 
 //////////////////////  registration route handler END ////////////////////////////////////////////////////////////////////////
 

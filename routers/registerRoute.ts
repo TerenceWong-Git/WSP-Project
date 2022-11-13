@@ -5,11 +5,11 @@ import { client } from "../app";
 
 
 
-export const registerRoutes = express.Router();
+// export const registerRoutes = express.Router();
 
-registerRoutes.post("/userData", register);
+// registerRoutes.post("/userData", register);
 
-async function register(req: express.Request, res: express.Response){
+ export async function register(req: express.Request, res: express.Response){
     const username = req.body.username;
     const email = req.body.email;
     const password = req.body.password;
