@@ -6,9 +6,9 @@ import fetch from "cross-fetch";
 
 export const loginRoutes = express.Router(); //export to app.ts
 
-loginRoutes.post("/login", postLoginRoutes);
-loginRoutes.get("/login/google", loginGoogle);
-loginRoutes.get("/login", getLoginRoutes);
+loginRoutes.post("/", postLoginRoutes);
+loginRoutes.get("/google", loginGoogle);
+loginRoutes.get("/", getLoginRoutes);
 
 async function postLoginRoutes(req: express.Request, res: express.Response, next: express.NextFunction) {
   const { email, password } = req.body;
@@ -51,6 +51,7 @@ async function loginGoogle(req: express.Request, res: express.Response) {
 
   if (!user) {
     // Create the user when the user does not exist
+    // res.redirect("/register.html");
     res.redirect("/register.html");
     return;
   } else {

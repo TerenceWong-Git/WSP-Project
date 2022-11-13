@@ -134,13 +134,13 @@ body {
 
 #userbutton {
     display: none;
-}
-
-#loginbutton {
+  }
+  
+  #loginbutton {
     display: static;
-}
-
-.user-dropdown {
+  }
+  
+  .user-dropdown {
     display: flex;
     align-items: center;
 }

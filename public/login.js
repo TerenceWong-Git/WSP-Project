@@ -2,7 +2,7 @@ console.log("hi");
 window.onload = () => {
   login();
   // logout();
-  googleLogin();
+  // googleLogin();
 };
 
 function login() {

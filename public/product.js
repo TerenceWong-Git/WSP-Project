@@ -1,8 +1,8 @@
 window.onload = () => {
   logout();
+  loadProducts();
   userName();
-  quantity();
-  submitComment();
+  submitComment()
 };
 
 function logout() {
