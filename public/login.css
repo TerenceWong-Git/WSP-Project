@@ -122,9 +122,9 @@ body {
     align-items: center;
   }
 
-  #userbutton {
+  /* #userbutton {
     display: none;
-  }
+  } */
   
   #loginbutton {
     display: static;

@@ -1,7 +1,7 @@
 console.log("hi");
 window.onload = () => {
   login();
-  logout();
+  // logout();
   googleLogin();
 };
 
@@ -35,17 +35,17 @@ function login() {
   });
 }
 
-function logout() {
-  const logoutButton = document.querySelector(".logoutbutton");
-  logoutButton.addEventListener("click", async (e) => {
-    e.preventDefault();
-    const resp = await fetch("/logout", { method: "GET" });
-    if (resp.status === 200) {
-      alert("You signed out!!");
-      window.location = "/";
-    }
-  });
-}
+// function logout() {
+//   const logoutButton = document.querySelector(".logoutbutton");
+//   logoutButton.addEventListener("click", async (e) => {
+//     e.preventDefault();
+//     const resp = await fetch("/logout", { method: "GET" });
+//     if (resp.status === 200) {
+//       alert("You signed out!!");
+//       window.location = "/";
+//     }
+//   });
+// }
 function googleLogin() {
   const googleLoginButton = document.querySelector(".google-login");
   googleLoginButton.addEventListener("click", async (e) => {

@@ -20,7 +20,8 @@ import { loginRoutes } from "./routers/loginRoute";
 import { User } from "./models";
 import { userLogin } from "./middleware";
 import { logoutRoutes } from "./routers/logoutRoute";
-import {registerRoutes} from "./routers/registerRoute" ;
+// import {registerRoutes} from "./routers/registerRoute" ;
+import { register } from "./routers/registerRoute";
 import { indexRoute } from "./routers/indexRoute";
 
 declare module "express-session" {
@@ -71,19 +72,10 @@ app.use(loginRoutes); // request received from login.js
 app.use(logoutRoutes); // request received from login.js
 app.use(indexRoute); // request received from index.js
 
-/////////////////  for testing database connection  //////////////////////
-/* async function testConnection() {
-  await client.connect()
-const usertable_result= await client.query(`SELECT *
-FROM users;`)
-console.log(usertable_result.rows)s
-await client.end();
-}
-testConnection() */
-// db function
-////////////////////database connection testing ends /////////////////////
 
-app.use(registerRoutes);
+
+// app.use(registerRoutes);
+app.post("/userData",register )
 
 //////////////////////  registration route handler END ////////////////////////////////////////////////////////////////////////
 
