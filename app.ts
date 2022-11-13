@@ -22,6 +22,7 @@ import { userLogin } from "./middleware";
 import { logoutRoutes } from "./routers/logoutRoute";
 import { registerRoutes } from "./routers/registerRoute";
 import { indexRoute } from "./routers/indexRoute";
+import { allCategoryRoute } from "./routers/allCategoryRoute";
 
 declare module "express-session" {
   interface Session {
@@ -36,6 +37,7 @@ const server = new http.Server(app);
 const PORT = 8080;
 
 import grant from "grant";
+
 
 const grantExpress = grant.express({
   defaults: {
@@ -70,6 +72,8 @@ app.use(grantExpress as express.RequestHandler);
 app.use(loginRoutes); // request received from login.js
 app.use(logoutRoutes); // request received from login.js
 app.use(indexRoute); // request received from index.js
+app.use(allCategoryRoute); // request received from allCategory.js
+
 
 /////////////////  for testing database connection  //////////////////////
 /* async function testConnection() {
