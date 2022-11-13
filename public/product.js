@@ -1,7 +1,7 @@
 window.onload = () => {
   logout();
-  loadProducts();
   userName();
+  loadProducts();
 };
 
 function logout() {
