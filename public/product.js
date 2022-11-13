@@ -2,7 +2,8 @@ window.onload = () => {
   logout();
   loadProducts();
   userName();
-  submitComment()
+  submitComment();
+ 
 };
 
 function logout() {
@@ -19,10 +20,10 @@ function logout() {
 
 
 ///////////////////////  quantity control  /////////////////////////////////////////////////
-function quantity(){
+
 let number=parseInt(document.querySelector("#number").innerHTML);
 document.querySelector("#minusButton").addEventListener("click", (e)=>{
-  // console.log(e.currentTarget);
+  console.log(e.currentTarget);
 if (number>0){
   number=number-1;
   console.log(number);
@@ -31,22 +32,25 @@ return document.querySelector("#number").innerHTML=number.toString();
 })
 
 
+
 document.querySelector("#plusButton").addEventListener("click", (e)=>{
-  // console.log(e.currentTarget);
+  console.log(e.currentTarget);
   number=number+1;
-  // console.log(number);
+  console.log(number);
 return document.querySelector("#number").innerHTML=number.toString();
 }
 )
-}
+
+
 //////////////////////// Buy now  ///////////////////////////////////////////////////////
 document.querySelector(".buyNow").addEventListener("click", ()=>
-// {console.log("buy")})
+{console.log("buy")})
 
 
 //////////////////////  Add to car  ////////////////////////////////////
 document.querySelector(".addToCar").addEventListener("click", ()=>
 {console.log("add to car")})
+
 
 
 
