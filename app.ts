@@ -27,6 +27,7 @@ import { indexRoute } from "./routers/indexRoute";
 declare module "express-session" {
   interface Session {
     user: User | false;
+    // grant: { response: { access_token: string | null } };
   }
 }
 
@@ -51,8 +52,6 @@ const grantExpress = grant.express({
   },
 });
 
-app.use(grantExpress as express.RequestHandler);
-
 app.use(
   expressSession({
     secret: Math.random().toString(32).slice(2),
@@ -65,6 +64,7 @@ app.use(express.json());
 app.use(express.urlencoded());
 
 //////////////////////////////////   END OF CONFIGURATION PART ////////////////////////////////////////////////
+app.use(grantExpress as express.RequestHandler);
 
 // app.use("/forum", forumRoutes);
 // app.use(datingRoutes);

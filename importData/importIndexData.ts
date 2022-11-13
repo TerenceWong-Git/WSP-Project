@@ -11,8 +11,6 @@ async function importData() {
     password: process.env.DB_PASS,
   });
   await client.connect();
-  await client.query("drop table products if exists");
-  await client.query("create table products");
 
   // DELETE FROM tables
   await client.query("DELETE FROM products");
@@ -42,7 +40,7 @@ async function importData() {
       product.product_price,
     ]);
   }
-  
+
   await client.end();
 }
 

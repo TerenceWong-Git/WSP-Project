@@ -142,6 +142,11 @@ body {
   display: static;
 }
 
+.user-dropdown {
+  display: flex;
+  align-items: center;
+}
+
 /* ------------------- Navbar CSS ------------------- */
 
 .divContainer {
