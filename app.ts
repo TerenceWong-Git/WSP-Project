@@ -68,14 +68,12 @@ app.use(grantExpress as express.RequestHandler);
 
 // app.use("/forum", forumRoutes);
 // app.use(datingRoutes);
-app.use(loginRoutes); // request received from login.js
+app.use("/login", loginRoutes); // request received from login.js
 app.use(logoutRoutes); // request received from login.js
 app.use(indexRoute); // request received from index.js
 
-
-
 // app.use(registerRoutes);
-app.post("/userData",register )
+app.post("/userData", register);
 
 //////////////////////  registration route handler END ////////////////////////////////////////////////////////////////////////
 
