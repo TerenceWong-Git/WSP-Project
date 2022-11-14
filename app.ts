@@ -23,7 +23,6 @@ import { logoutRoutes } from "./routers/logoutRoute";
 // import {registerRoutes} from "./routers/registerRoute" ;
 import { register } from "./routers/registerRoute";
 import { indexRoute } from "./routers/indexRoute";
-import { allCategoryRoute } from "./routers/allCategoryRoute";
 
 declare module "express-session" {
   interface Session {
@@ -73,13 +72,17 @@ app.use(grantExpress as express.RequestHandler);
 app.use("/login", loginRoutes); // request received from login.js
 app.use(logoutRoutes); // request received from login.js
 app.use(indexRoute); // request received from index.js
-app.use(allCategoryRoute); // request received from allCategory.js
+// app.use(allCategoryRoute); // request received from allCategory.js
 
 
 // app.use(registerRoutes);
 app.post("/userData", register);
 
 //////////////////////  registration route handler END ////////////////////////////////////////////////////////////////////////
+// app.get ("/id", displayProduct)
+
+
+
 
 app.use(express.static("public"));
 app.use("/user", userLogin, express.static("user"));
