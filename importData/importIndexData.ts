@@ -13,6 +13,10 @@ async function importData() {
   await client.connect();
 
   // DELETE FROM tables
+  await client.query("DELETE FROM category");
+  await client.query("insert into category (name) values ('Drinks')");
+  await client.query("insert into category (name) values ('Snacks')");
+  await client.query("insert into category (name) values ('Cup Noodles')");
   await client.query("DELETE FROM products");
 
   // // Insert dummy data
