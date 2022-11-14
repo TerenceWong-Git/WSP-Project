@@ -30,34 +30,34 @@ async function loadProducts() {
   let noodleCount = 1;
 
   for (const product of products) {
-    if (product.product_category === "drinks") {
+    if (product.category_id ===1) {
       drinkStr += `
     <div class="topSalesProducts${drinkCount}">
       <img class="productsImage" src="./${product.image}" alt="..."/>
-      <div class="productsName">${product.product_name}</div>
-      <div class="productsPrice">$${product.product_price}</div>
+      <div class="productsName">${product.name}</div>
+      <div class="productsPrice">$${product.price}</div>
     </div>
     `;
       drinkCount++;
     }
 
-    if (product.product_category === "snacks") {
+    if (product.product_category === 2) {
       snackStr += `
     <div class="topSalesProducts${snackCount}">
       <img class="productsImage" src="./${product.image}" alt="..."/>
-      <div class="productsName">${product.product_name}</div>
-      <div class="productsPrice">$${product.product_price}</div>
+      <div class="productsName">${product.name}</div>
+      <div class="productsPrice">$${product.price}</div>
     </div>
     `;
       snackCount++;
     }
 
-    if (product.product_category === "noodles") {
+    if (product.product_category === 3) {
       noodleStr += `
     <div class="topSalesProducts${noodleCount}">
       <img class="productsImage" src="./${product.image}" alt="..."/>
-      <div class="productsName">${product.product_name}</div>
-      <div class="productsPrice">$${product.product_price}</div>
+      <div class="productsName">${product.name}</div>
+      <div class="productsPrice">$${product.price}</div>
     </div>
     `;
       noodleCount++;
