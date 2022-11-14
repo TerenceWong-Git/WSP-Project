@@ -1,6 +1,9 @@
+// import { json } from "stream/consumers";
+
+// import { URLSearchParams } from "url";
+
 window.onload = () => {
   logout();
-  // loadProducts();
   userName();
   submitComment();
   getImage();
@@ -20,9 +23,31 @@ function logout() {
 
 ///////////////////////  show certain product on the display box  /////////////////////////
 
+
 async function getImage() {
-  const resp = await fetch("/id", {
-    method: "GET",
+
+  let url=window.location.search;
+  console.log(url);
+  let queries= new URLSearchParams(url);
+  
+  let idOfProduct=queries.get("id");
+  let categoryOfProduct=queries.get("category");
+  
+  console.log(idOfProduct,"is product id");
+  console.log(categoryOfProduct, "is product category");
+  
+  // const formBody={};
+  let formBody={id:idOfProduct,
+                category:categoryOfProduct}
+  // formBody["category"]=categoryOfProduct;
+  console.log(formBody)
+
+  const resp = await fetch("/id1", {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(formBody)
   });
 
   const data = await resp.json();
@@ -72,14 +97,45 @@ document.querySelector("#plusButton").addEventListener("click", (e) => {
 });
 
 //////////////////////// Buy now  ///////////////////////////////////////////////////////
-document.querySelector(".buyNow").addEventListener("click", () => {
-  console.log("buy");
-});
+document.querySelector(".buyNow").addEventListener("click", async()=>{
+{console.log("buy")}
+const resp= await fetch ("/buyNow", {
+  method: "GET"
+})
+
+const data=await resp.json();
+
+if (resp.status!==201){alert(data.message);
+window.location="/login.html"};
+if (resp.status===201){
+  alert(data.message);
+  window.location="/payment.html"
+}
+
+})
+
 
 //////////////////////  Add to car  ////////////////////////////////////
-document.querySelector(".addToCar").addEventListener("click", () => {
-  console.log("add to car");
-});
+document.querySelector(".addToCar").addEventListener("click", async()=>
+// {console.log("add to car")
+{
+const resp= await fetch ("/addToCar", {
+  method: "GET"
+})
+
+const data=await resp.json();
+
+if (resp.status!==201){alert(data.message);
+window.location="/login.html"};
+if (resp.status===201){
+  alert(data.message);
+}
+})
+
+
+
+
+
 
 ///////////////////// subtmit comment  ////////////////////
 function submitComment() {
