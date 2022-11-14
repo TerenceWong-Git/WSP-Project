@@ -166,15 +166,33 @@ body {
   bottom: 0;
 }
 
+
 .button-category {
   border: 2px solid #6759ff;
   border-radius: 5px;
   background-color: white;
   color: #6759ff;
   cursor: pointer;
+  max-width: 25vmin;
+  font-size: 1.5vw;
   margin-bottom: 2vh;
-  margin-right: 2vw;
+  margin-right: 1vw;
 }
+
+.secondButton-category {
+  border: 2px solid #6759ff;
+  border-radius: 5px;
+  background-color: white;
+  color: #6759ff;
+  cursor: pointer;
+  max-width: 25vmin;
+  font-size: 1.5vw;
+  
+  margin-bottom: 2vh;
+  margin-right: 1vw;
+}
+
+
 .active {
   background-color: #6759ff;
   color: #ffffff;

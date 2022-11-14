@@ -17,34 +17,38 @@ async function importData() {
   await client.query("insert into category (name) values ('Drinks')");
   await client.query("insert into category (name) values ('Snacks')");
   await client.query("insert into category (name) values ('Cup Noodles')");
+  await client.query("DELETE FROM brands");
+  await client.query("insert into brands (name) values ('a')");
+  await client.query("insert into brands (name) values ('bc')");
+  await client.query("insert into brands (name) values ('c')");
   await client.query("DELETE FROM products");
 
   // // Insert dummy data
   const products = [
-    { product_category: "drinks", image: "/productImages/drinks/COKE.jpg", product_name: "Coke", product_price: "28", stock: true, salesQuantity: 11, brand: "a" },
-    { product_category: "drinks", image: "/productImages/drinks/COKE_PLUS.jpg", product_name: "Coke Zero", product_price: "37", stock: true, salesQuantity: 22, brand: "a" },
-    { product_category: "drinks", image: "/productImages/drinks/OOHA_LYCHEE_LACTIC.jpg", product_name: "Vita Tea", product_price: "42", stock: true, salesQuantity: 16, brand: "a" },
-    { product_category: "drinks", image: "/productImages/drinks/OOHA_PEACH_OOLONG_TEA.jpg", product_name: "Vita Soy", product_price: "66", stock: true, salesQuantity: 23, brand: "a" },
+    { product_category: 1, image: "/productImages/drinks/COKE.jpg", product_name: "Coke", product_price: "28", stock: false, salesQuantity: 11, brand: 1 },
+    { product_category: 1, image: "/productImages/drinks/COKE_PLUS.jpg", product_name: "Coke Zero", product_price: "37", stock: false, salesQuantity: 22, brand: 1 },
+    { product_category: 1, image: "/productImages/drinks/OOHA_LYCHEE_LACTIC.jpg", product_name: "Vita Tea", product_price: "42", stock: false, salesQuantity: 16, brand: 1 },
+    { product_category: 1, image: "/productImages/drinks/OOHA_PEACH_OOLONG_TEA.jpg", product_name: "Vita Soy", product_price: "66", stock: true, salesQuantity: 23, brand: 1 },
 
-    { product_category: "snacks", image: "/productImages/snacks/calbeeHotAndSpicy.jpg", product_name: "Calbee", product_price: "13", stock: true, salesQuantity: 45, brand: "bc" },
-    { product_category: "snacks", image: "/productImages/snacks/edoCracker.jpg", product_name: "Edo Cracker", product_price: "11", stock: true, salesQuantity: 77, brand: "bc" },
-    { product_category: "snacks", image: "/productImages/snacks/pockyDefault.jpg", product_name: "Pocky", product_price: "11", stock: true, salesQuantity: 121, brand: "bc" },
-    { product_category: "snacks", image: "/productImages/snacks/lotteLittleBear.jpg", product_name: "Lotte Little Bear", product_price: "12", stock: true, salesQuantity: 54, brand: "bc" },
+    { product_category: 2, image: "/productImages/snacks/calbeeHotAndSpicy.jpg", product_name: "Calbee", product_price: "13", stock: false, salesQuantity: 45, brand: 2 },
+    { product_category: 2, image: "/productImages/snacks/edoCracker.jpg", product_name: "Edo Cracker", product_price: "11", stock: false, salesQuantity: 77, brand: 2 },
+    { product_category: 2, image: "/productImages/snacks/pockyDefault.jpg", product_name: "Pocky", product_price: "11", stock: false, salesQuantity: 121, brand: 2 },
+    { product_category: 2, image: "/productImages/snacks/lotteLittleBear.jpg", product_name: "Lotte Little Bear", product_price: "12", stock: true, salesQuantity: 54, brand: 2 },
 
-    { product_category: "noodles", image: "/productImages/cupNoodles/ichiranTonkotsu.jpg", product_name: "Ichiran Tonkotsu", product_price: "66", stock: true, salesQuantity: 69, brand: "c" },
-    { product_category: "noodles", image: "/productImages/cupNoodles/NISSIN_NOODLE_SEAFOOD.jpg", product_name: "NISSIN SEAFOOD", product_price: "66", stock: true, salesQuantity: 27, brand: "c" },
-    { product_category: "noodles", image: "/productImages/cupNoodles/nissinYubaUdon.jpg", product_name: "Nissin Yuba Udon", product_price: "66", stock: true, salesQuantity: 58, brand: "c" },
-    { product_category: "noodles", image: "/productImages/cupNoodles/NONG_SHIM_SHIN_RAMEN.jpg", product_name: "NONG SHIM SHIN RAMEN", product_price: "66", stock: true, salesQuantity: 29, brand: "c" },
+    { product_category: 3, image: "/productImages/cupNoodles/ichiranTonkotsu.jpg", product_name: "Ichiran Tonkotsu", product_price: "66", stock: false, salesQuantity: 69, brand: 3 },
+    { product_category: 3, image: "/productImages/cupNoodles/NISSIN_NOODLE_SEAFOOD.jpg", product_name: "NISSIN SEAFOOD", product_price: "66", stock: false, salesQuantity: 27, brand: 3 },
+    { product_category: 3, image: "/productImages/cupNoodles/nissinYubaUdon.jpg", product_name: "Nissin Yuba Udon", product_price: "66", stock: false, salesQuantity: 58, brand: 3 },
+    { product_category: 3, image: "/productImages/cupNoodles/NONG_SHIM_SHIN_RAMEN.jpg", product_name: "NONG SHIM SHIN RAMEN", product_price: "66", stock: true, salesQuantity: 29, brand: 3 },
   ];
   for (const product of products) {
-    await client.query("INSERT INTO products (product_category, image, product_name, product_price, stock, salesQuantity, brand) VALUES ($1, $2, $3, $4, $5, $6, $7)", [
+    await client.query("INSERT INTO products (category_id, image, name, price, stock, sales_quantity, brands_id ) VALUES ($1, $2, $3, $4, $5, $6, $7)", [
       product.product_category,
       product.image,
       product.product_name,
       product.product_price,
       product.stock,
       product.salesQuantity,
-      product.brand
+      product.brand,
     ]);
   }
 
