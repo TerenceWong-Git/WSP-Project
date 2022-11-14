@@ -31,7 +31,7 @@ CREATE TABLE products (
   image VARCHAR(255),
   description VARCHAR(255),
   price decimal,
-  stock integer,
+  stock boolean,
   updated_at date,
   sales_quantity integer,
   origin_id integer,
