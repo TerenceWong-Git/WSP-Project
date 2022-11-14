@@ -31,9 +31,11 @@ async function loadAllCategory() {
   console.log(products);
 
   for (const product of products) {
+    console.log(product.category_id);
+    const productId = product.category_id;
     // Create Product Card
     const productCard = document.createElement("div");
-    productCard.classList.add("productCard", product.category_id);
+    productCard.classList.add("productCard", `category-${productId}`);
 
     // Create Image div
     const imageArea = document.createElement("div");
@@ -51,7 +53,7 @@ async function loadAllCategory() {
     // Create Product name div
     const productName = document.createElement("div");
     productName.classList.add("productName");
-    productName.innerText = product.name;
+    productName.innerText = product.name.toUpperCase();
     productInfoArea.appendChild(productName);
 
     // Create Product price div
@@ -99,20 +101,36 @@ async function filterProduct(e, category) {
   });
 }
 
+// async function checkStock (e) {
+//   const resp = await fetch("/allCategory");
+//   const products = await resp.json();
+
+//   let showCards = document.querySelectorAll(".productCard");
+//   for (const product of products) {
+//     showCards.forEach(element) => {
+//       if (product.stock) {
+//         element.classList.remove("hide");
+//       }
+//     } else {
+
+//     }
+
+//   }
+
 document.querySelector("#all").addEventListener("click", (e) => {
   filterProduct(e, "all");
 });
 
 document.querySelector("#drinks").addEventListener("click", (e) => {
-  filterProduct(e, "1");
+  filterProduct(e, "category-1");
 });
 
 document.querySelector("#snacks").addEventListener("click", (e) => {
-  filterProduct(e, "2");
+  filterProduct(e, "category-2");
 });
 
 document.querySelector("#noodles").addEventListener("click", (e) => {
-  filterProduct(e, "3");
+  filterProduct(e, "category-3");
 });
 
 document.querySelector("#stock").addEventListener("click", (e) => {
