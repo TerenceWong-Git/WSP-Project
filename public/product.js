@@ -1,6 +1,7 @@
+// const { json } = require("stream/consumers");
+
 window.onload = () => {
   logout();
-  // loadProducts();
   userName();
   submitComment();
   getImage();
@@ -78,13 +79,41 @@ return document.querySelector("#number").innerHTML=number.toString();
 
 
 //////////////////////// Buy now  ///////////////////////////////////////////////////////
-document.querySelector(".buyNow").addEventListener("click", ()=>
-{console.log("buy")})
+document.querySelector(".buyNow").addEventListener("click", async()=>{
+{console.log("buy")}
+const resp= await fetch ("/buyNow", {
+  method: "GET"
+})
+
+const data=await resp.json();
+
+if (resp.status!==201){alert(data.message);
+window.location="/login.html"};
+if (resp.status===201){
+  alert(data.message);
+  window.location="/payment.html"
+}
+
+})
 
 
 //////////////////////  Add to car  ////////////////////////////////////
-document.querySelector(".addToCar").addEventListener("click", ()=>
-{console.log("add to car")})
+document.querySelector(".addToCar").addEventListener("click", async()=>
+// {console.log("add to car")
+{
+const resp= await fetch ("/addToCar", {
+  method: "GET"
+})
+
+const data=await resp.json();
+
+if (resp.status!==201){alert(data.message);
+window.location="/login.html"};
+if (resp.status===201){
+  alert(data.message);
+}
+})
+
 
 
 

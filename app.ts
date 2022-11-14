@@ -23,6 +23,11 @@ import { logoutRoutes } from "./routers/logoutRoute";
 // import {registerRoutes} from "./routers/registerRoute" ;
 import { register } from "./routers/registerRoute";
 import { indexRoute } from "./routers/indexRoute";
+import {displayProduct} from "./routers/displayProduct";
+import {buyNow} from "./routers/buyNow";
+import {addToCar} from "./routers/addToCar";
+
+
 
 declare module "express-session" {
   interface Session {
@@ -79,7 +84,10 @@ app.use(indexRoute); // request received from index.js
 app.post("/userData", register);
 
 //////////////////////  registration route handler END ////////////////////////////////////////////////////////////////////////
-// app.get ("/id", displayProduct)
+app.get ("/id", displayProduct)
+
+app.get("/buyNow", buyNow)
+app.get("/addToCar",addToCar)
 
 
 
