@@ -44,10 +44,6 @@ const PORT = 8080;
 
 import grant from "grant";
 import { allCategoryRoute } from "./routers/allCategoryRoute";
-<<<<<<< HEAD
-
-=======
->>>>>>> c4a07dfa2c84d3923d95ba97fc07c8908ddfe4ef
 
 const grantExpress = grant.express({
   defaults: {
@@ -83,10 +79,6 @@ app.use("/login", loginRoutes); // request received from login.js
 app.use(logoutRoutes); // request received from login.js
 app.use(indexRoute); // request received from index.js
 app.use(allCategoryRoute); // request received from allCategory.js
-<<<<<<< HEAD
-
-=======
->>>>>>> c4a07dfa2c84d3923d95ba97fc07c8908ddfe4ef
 
 // app.use(registerRoutes);
 app.post("/userData", register);
