@@ -10,36 +10,30 @@ DROP TABLE IF EXISTS brands;
 DROP TABLE IF EXISTS users;
 CREATE TABLE users (
   id SERIAL PRIMARY KEY NOT NULL,
-  username VARCHAR(255) ,
-  password VARCHAR(255) ,
-  email VARCHAR(255) ,
-  mobile INT ,
-  birthday DATE ,
+  username VARCHAR(255),
+  password VARCHAR(255),
+  email VARCHAR(255),
+  mobile INT,
+  birthday DATE,
   subscription BOOLEAN
 );
 DROP TABLE IF EXISTS brands;
 CREATE TABLE brands (
   id SERIAL PRIMARY KEY NOT NULL,
-  name VARCHAR(255) ,
+  name VARCHAR(255),
   decription VARCHAR(255)
 );
-CREATE TABLE origin (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR(255) 
-);
-CREATE TABLE category (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR(255) 
-);
+CREATE TABLE origin (id SERIAL PRIMARY KEY, name VARCHAR(255));
+CREATE TABLE category (id SERIAL PRIMARY KEY, name VARCHAR(255));
 CREATE TABLE products (
   id SERIAL PRIMARY KEY NOT NULL,
   name VARCHAR(255),
-  image VARCHAR(255) ,
-  description VARCHAR(255) ,
-  price decimal ,
-  stock integer ,
-  updated_at date ,
-  sales_quantity integer ,
+  image VARCHAR(255),
+  description VARCHAR(255),
+  price decimal,
+  stock integer,
+  updated_at date,
+  sales_quantity integer,
   origin_id integer,
   brands_id integer,
   category_id integer,
@@ -49,9 +43,9 @@ CREATE TABLE products (
 );
 CREATE TABLE shopping_cart (
   id SERIAL PRIMARY KEY NOT NULL,
-  total_price decimal ,
-  create_date date ,
-  quantity int ,
+  total_price decimal,
+  create_date date,
+  quantity int,
   users_id integer,
   products_id int,
   FOREIGN KEY (users_id) REFERENCES users(id),
@@ -59,9 +53,9 @@ CREATE TABLE shopping_cart (
 );
 CREATE TABLE purchase_record (
   id SERIAL PRIMARY KEY NOT NULL,
-  total_price decimal ,
-  create_date date ,
-  delivery_status VARCHAR(255) ,
+  total_price decimal,
+  create_date date,
+  delivery_status VARCHAR(255),
   comment VARCHAR(255),
   products_id int,
   users_id integer,
@@ -84,153 +78,151 @@ CREATE TABLE products_rates_map (
   FOREIGN KEY (rates_id) REFERENCES rates(id)
 )
 /* ............. build users table ................................. */
-SELECT *
-FROM users;
-INSERT INTO users (
-    username,
-    email,
-    password,
-    subscription,
-    birthday,
-    mobile
-  )
-VALUES (
-    'kennethccw',
-    'kennethccw1998@gmail.com',
-    '1234',
-    true,
-    '1998-10-17',
-    92153298
-  ),
-  (
-    'abc',
-    'abc@gmail.com',
-    '2345',
-    true,
-    '2000-10-18',
-    12345678
-  ),
-  (
-    'bcd',
-    'bcd@gmail.com',
-    '3456',
-    true,
-    '2000-11-18',
-    87654321
-  );
-/* ...............build brands table............................... */
-SELECT *
-FROM brands;
-INSERT INTO brands (name, decription)
-VALUES ('ichiran', 'since 1990'),
-  ('NISSIN', 'since 1800'),
-  ('NONG-SHIM_SHIN', 'since 1700')
-  /* ................. build orderPerTime table .................................... */
-SELECT *
-FROM purchase_record;
-INSERT INTO  purchase_record(
-    total_price,
-    create_date,
-    delivery_status,
-    comment,
-    users_id
-  )
-VALUES (
-    '123.3',
-    '2020-01-01',
-    1,
-    'very good',
-    1
-  ),
-  (
-    '200',
-    '2021-02-01',
-    0,
-    'ok',
-    2
-  ),
-  (
-    '350',
-    '2022-03-01',
-    0,
-    'nice',
-    3
-  )
-  /* .................build products table .................... */
-SELECT *
-FROM products;
-INSERT INTO products (
-    name,
-    image,
-    description,
-    price,
-    stock,
-    updated_at,
-    sales_quantity,
-    origin_id,
-    brands_id,
-    category_id
-  )
-VALUES (
-    'ichiranTonkotsu noodles',
-    'ichiranTonkotsu.jpg',
-    'a nice noodles',
-    20.1,
-    300,
-    '2022-11-01',
-    300000,
-    1,
-    1,
-    1
-  ),
-  (
-    'NISSIN_NOODLE_SEAFOOD noodles',
-    'NISSIN_NOODLE_SEAFOOD.jpg',
-    'a BAD noodles',
-    203.1,
-    300,
-    '2022-10-01',
-    60000,
-    2,
-    2,
-    1
-  ),
-  (
-    'NONG_SHIM_SHIN_RAMEN',
-    'NONG_SHIM_SHIN_RAMEN.jpg',
-    'a PERFECT noodles',
-    50.1,
-    300,
-    '2022-09-01',
-    300000000,
-    3,
-    3,
-    1
-  )
-  /* .......... build origin table...... */
-SELECT *
-FROM origin;
-INSERT INTO origin (name)
-VALUES ('japan'),
-  ('china'),
-  ('usa')
-  /* ........... build category table .... */
-SELECT *
-FROM category;
-INSERT INTO category (name)
-VALUES ('cupNoodles'),
-  ('drinks'),
-  ('snacks')
-  /* .......... build rates table .....*/
-SELECT *
-FROM rates;
-INSERT INTO rates (score)
-VALUES (1),
-  (2),
-  (3),
-  (4),
-  (5)
-
-
-/* UPDATE students SET level = level+5 WHERE date_of_birth < '1990-01-01'; */
-/* DELETE FROM students WHERE level < 15; */
+-- SELECT *
+-- FROM users;
+-- INSERT INTO users (
+--     username,
+--     email,
+--     password,
+--     subscription,
+--     birthday,
+--     mobile
+--   )
+-- VALUES (
+--     'kennethccw',
+--     'kennethccw1998@gmail.com',
+--     '1234',
+--     true,
+--     '1998-10-17',
+--     92153298
+--   ),
+--   (
+--     'abc',
+--     'abc@gmail.com',
+--     '2345',
+--     true,
+--     '2000-10-18',
+--     12345678
+--   ),
+--   (
+--     'bcd',
+--     'bcd@gmail.com',
+--     '3456',
+--     true,
+--     '2000-11-18',
+--     87654321
+--   );
+-- /* ...............build brands table............................... */
+-- SELECT *
+-- FROM brands;
+-- INSERT INTO brands (name, decription)
+-- VALUES ('ichiran', 'since 1990'),
+--   ('NISSIN', 'since 1800'),
+--   ('NONG-SHIM_SHIN', 'since 1700')
+--   /* ................. build orderPerTime table .................................... */
+-- SELECT *
+-- FROM purchase_record;
+-- INSERT INTO  purchase_record(
+--     total_price,
+--     create_date,
+--     delivery_status,
+--     comment,
+--     users_id
+--   )
+-- VALUES (
+--     '123.3',
+--     '2020-01-01',
+--     1,
+--     'very good',
+--     1
+--   ),
+--   (
+--     '200',
+--     '2021-02-01',
+--     0,
+--     'ok',
+--     2
+--   ),
+--   (
+--     '350',
+--     '2022-03-01',
+--     0,
+--     'nice',
+--     3
+--   )
+--   /* .................build products table .................... */
+-- SELECT *
+-- FROM products;
+-- INSERT INTO products (
+--     name,
+--     image,
+--     description,
+--     price,
+--     stock,
+--     updated_at,
+--     sales_quantity,
+--     origin_id,
+--     brands_id,
+--     category_id
+--   )
+-- VALUES (
+--     'ichiranTonkotsu noodles',
+--     'ichiranTonkotsu.jpg',
+--     'a nice noodles',
+--     20.1,
+--     300,
+--     '2022-11-01',
+--     300000,
+--     1,
+--     1,
+--     1
+--   ),
+--   (
+--     'NISSIN_NOODLE_SEAFOOD noodles',
+--     'NISSIN_NOODLE_SEAFOOD.jpg',
+--     'a BAD noodles',
+--     203.1,
+--     300,
+--     '2022-10-01',
+--     60000,
+--     2,
+--     2,
+--     1
+--   ),
+--   (
+--     'NONG_SHIM_SHIN_RAMEN',
+--     'NONG_SHIM_SHIN_RAMEN.jpg',
+--     'a PERFECT noodles',
+--     50.1,
+--     300,
+--     '2022-09-01',
+--     300000000,
+--     3,
+--     3,
+--     1
+--   )
+--   /* .......... build origin table...... */
+-- SELECT *
+-- FROM origin;
+-- INSERT INTO origin (name)
+-- VALUES ('japan'),
+--   ('china'),
+--   ('usa')
+--   /* ........... build category table .... */
+-- SELECT *
+-- FROM category;
+-- INSERT INTO category (name)
+-- VALUES ('cupNoodles'),
+--   ('drinks'),
+--   ('snacks')
+--   /* .......... build rates table .....*/
+-- SELECT *
+-- FROM rates;
+-- INSERT INTO rates (score)
+-- VALUES (1),
+--   (2),
+--   (3),
+--   (4),
+--   (5)
+-- /* UPDATE students SET level = level+5 WHERE date_of_birth < '1990-01-01'; */
+-- /* DELETE FROM students WHERE level < 15; */

@@ -169,9 +169,11 @@ body {
 .button-category {
   border: 2px solid #6759ff;
   border-radius: 5px;
-  background-color: transparent;
+  background-color: white;
   color: #6759ff;
   cursor: pointer;
+  margin-bottom: 2vh;
+  margin-right: 2vw;
 }
 .active {
   background-color: #6759ff;
@@ -179,9 +181,9 @@ body {
 }
 #products {
   display: grid;
-  grid-template-columns: auto auto auto;
-  grid-column-gap: 1.5em;
-  padding: 2em 0;
+  grid-template-columns: auto auto auto auto;
+  grid-column-gap: 5vw;
+  padding: 3vh 0;
 }
 .card {
   background-color: #ffffff;
@@ -193,6 +195,8 @@ body {
 }
 .imageArea {
   text-align: center;
+  border: 1px solid;
+  border-radius: 20px;
 }
 img {
   max-width: 100%;
@@ -200,7 +204,8 @@ img {
   height: 15em;
 }
 .productInfoArea {
-  padding-top: 1em;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
   color: #110f29;
 }
 .productInfoArea .productName {

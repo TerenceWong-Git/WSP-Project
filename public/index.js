@@ -30,7 +30,7 @@ async function loadProducts() {
   let noodleCount = 1;
 
   for (const product of products) {
-    if (product.category_id ===1) {
+    if (product.category_id === 1) {
       drinkStr += `
     <div class="topSalesProducts${drinkCount}">
       <img class="productsImage" src="${product.image}" alt="..."/>

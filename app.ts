@@ -27,12 +27,12 @@ import {displayProduct} from "./routers/displayProduct";
 import {buyNow} from "./routers/buyNow";
 import {addToCar} from "./routers/addToCar";
 import{Productrecords} from "./models";
-import {productSession} from "./routers/productSession";
+// import {productSession} from "./routers/productSession";
 
 declare module "express-session" {
   interface Session {
     user: User | false;
-    productRecords: Productrecords|false; 
+    productRecords: Productrecords | false;
     // grant: { response: { access_token: string | null } };
   }
 }
@@ -87,8 +87,8 @@ app.post("/userData", register);
 app.post ("/id1",displayProduct);
 app.post("/productsesseion",productSession);
 
-app.get("/buyNow", buyNow)
-app.get("/addToCar",addToCar)
+app.get("/buyNow", buyNow);
+app.get("/addToCar", addToCar);
 
 app.use(express.static("public"));
 app.use("/user", userLogin, express.static("user"));

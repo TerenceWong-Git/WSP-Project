@@ -2,7 +2,6 @@
 window.onload = () => {
   logout();
   loadAllCategory();
-  filterProduct("all");
   userName();
 };
 
@@ -30,11 +29,17 @@ async function loadAllCategory() {
   const resp = await fetch("/allCategory");
   const products = await resp.json();
   console.log(products);
+  const categoryMap = {
+    1: "drinks",
+    2: "snacks",
+    3: "noodles",
+  };
 
   for (const product of products) {
+    const categoryId = product.category_id;
     // Create Product Card
     const productCard = document.createElement("div");
-    productCard.classList.add("productCard", product.product_category, "hide");
+    productCard.classList.add("productCard", `category-${categoryId}`);
 
     // Create Image div
     const imageArea = document.createElement("div");
@@ -46,18 +51,18 @@ async function loadAllCategory() {
     productCard.appendChild(imageArea);
 
     // Create Product info. div
-    let productInfoArea = document.createElement("div");
+    const productInfoArea = document.createElement("div");
     productInfoArea.classList.add("productInfoArea");
 
     // Create Product name div
-    let productName = document.createElement("div");
+    const productName = document.createElement("div");
     productName.classList.add("productName");
-    productName.innerText = product.product_name.toUpperCase();
+    productName.innerText = product.name.toUpperCase();
     productInfoArea.appendChild(productName);
 
     // Create Product price div
-    let productPrice = document.createElement("div");
-    productPrice.innerText = "$" + product.product_price;
+    const productPrice = document.createElement("div");
+    productPrice.innerText = "$" + product.price;
     productInfoArea.appendChild(productPrice);
     productCard.appendChild(productInfoArea);
 
@@ -65,20 +70,37 @@ async function loadAllCategory() {
   }
 }
 
+document.querySelector("#all").addEventListener("click", (e) => {
+  filterProduct(e, "all");
+});
+
+document.querySelector("#drinks").addEventListener("click", (e) => {
+  filterProduct(e, "category-1");
+});
+
+document.querySelector("#snacks").addEventListener("click", (e) => {
+  filterProduct(e, "category-2");
+});
+
+document.querySelector("#noodles").addEventListener("click", (e) => {
+  filterProduct(e, "category-3");
+});
+
 // Put category value into button
-function filterProduct(category) {
+function filterProduct(e, category) {
+  // Change color when button is hitted
+  console.log(category, e.target.classList.add("active"));
+
+  // Clear other button color
   let categoryButton = document.querySelectorAll(".button-category");
-  categoryButton.forEach((button) => {
-    //check if value equals innerText
-    if (category.toUpperCase() == button.innerText.toUpperCase()) {
-      button.classList.add("active");
-    } else {
-      button.classList.remove("active");
+  categoryButton.forEach((element) => {
+    if (element !== e.target) {
+      element.classList.remove("active");
     }
   });
+  let showCards = document.querySelectorAll(".productCard");
 
   // Show products by hidden control
-  let showCards = document.querySelectorAll(".productCard");
   showCards.forEach((element) => {
     if (category === "all") {
       element.classList.remove("hide");
