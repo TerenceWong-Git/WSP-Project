@@ -81,7 +81,7 @@ CREATE TABLE products_rates_map (
   products_id integer,
   rates_id integer,
   FOREIGN KEY (products_id) REFERENCES products(id),
-  FOREIGN KEY (rates_id) REFERENCES rates(id),
+  FOREIGN KEY (rates_id) REFERENCES rates(id)
 )
 /* ............. build users table ................................. */
 SELECT *
@@ -127,8 +127,8 @@ VALUES ('ichiran', 'since 1990'),
   ('NONG-SHIM_SHIN', 'since 1700')
   /* ................. build orderPerTime table .................................... */
 SELECT *
-FROM orderPerTime;
-INSERT INTO orderPerTime (
+FROM purchase_record;
+INSERT INTO  purchase_record(
     total_price,
     create_date,
     delivery_status,
