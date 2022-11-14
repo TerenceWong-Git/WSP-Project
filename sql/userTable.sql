@@ -68,7 +68,7 @@ CREATE TABLE purchase_record (
   FOREIGN KEY (products_id) REFERENCES products(id),
   FOREIGN KEY (users_id) REFERENCES users(id)
 );
-CREATE TABLE rates (id SERIAL PRIMARY KEY, score int NOT NULL);
+CREATE TABLE rates (id SERIAL PRIMARY KEY NOT NULL, score int);
 CREATE TABLE purchase_record_products_map (
   id SERIAL PRIMARY KEY NOT NULL,
   purchase_record_id integer,
@@ -230,3 +230,7 @@ VALUES (1),
   (3),
   (4),
   (5)
+
+
+/* UPDATE students SET level = level+5 WHERE date_of_birth < '1990-01-01'; */
+/* DELETE FROM students WHERE level < 15; */
