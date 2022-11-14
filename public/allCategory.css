@@ -152,41 +152,6 @@ body {
 .divContainer {
   padding-left: 4vw;
   padding-right: 4vw;
-  display: flex;
-  justify-content: space-between;
-}
-
-.allCategoriesArea {
-  position: sticky;
-  top: 3vh;
-  border: 1px solid;
-  width: 16vw;
-  height: 80vh;
-  margin-bottom: 3vh;
-}
-
-.allCategoriesTitle {
-    display: flex;
-    justify-content: center;
-  font-size: 4.3vmin;
-  font-weight: bold;
-  text-shadow: 1px 0 #ffee00;
-  border-bottom: 1px solid black;
-}
-
-.advertismentArea1 {
-  width: 75%;
-  border: 1px solid red;
-  flex-direction: column;
-  margin-bottom: 3vh;
-  padding: 1vw;
-}
-
-.advertisment1 {
-  border: 1px solid lightblue;
-  width: 100%;
-  height: 25vh;
-  margin-bottom: 2vh;
 }
 
 .bottomArea {
@@ -199,4 +164,77 @@ body {
   height: 20vh;
   left: 0;
   bottom: 0;
+}
+
+.button-value {
+  border: 2px solid #6759ff;
+  border-radius: 5px;
+  background-color: transparent;
+  color: #6759ff;
+  cursor: pointer;
+}
+.active {
+  background-color: #6759ff;
+  color: #ffffff;
+}
+#products {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-column-gap: 1.5em;
+  padding: 2em 0;
+}
+.card {
+  background-color: #ffffff;
+  max-width: 18em;
+  margin-top: 1em;
+  padding: 1em;
+  border-radius: 5px;
+  box-shadow: 1em 2em 2.5em rgba(1, 2, 68, 0.08);
+}
+.image-container {
+  text-align: center;
+}
+img {
+  max-width: 100%;
+  object-fit: contain;
+  height: 15em;
+}
+.container {
+  padding-top: 1em;
+  color: #110f29;
+}
+.container h5 {
+  font-weight: 500;
+}
+.hide {
+  display: none;
+}
+@media screen and (max-width: 720px) {
+  img {
+    max-width: 100%;
+    object-fit: contain;
+    height: 10em;
+  }
+  .card {
+    max-width: 10em;
+    margin-top: 1em;
+  }
+  #products {
+    grid-template-columns: auto auto;
+    grid-column-gap: 1em;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .dropdown-menu {
+    position: absolute;
+    left: 0 !important;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .dropdown-menu {
+    position: absolute;
+    left: 0 !important;
+  }
 }
