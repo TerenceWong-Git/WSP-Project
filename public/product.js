@@ -28,20 +28,20 @@ function logout() {
 async function getImage() {
 
   let url=window.location.search;
-  console.log(url);
+  // console.log(url);
   let queries= new URLSearchParams(url);
   
   let idOfProduct=queries.get("id");
   let categoryOfProduct=queries.get("category");
   
-  console.log(idOfProduct,"is product id");
-  console.log(categoryOfProduct, "is product category");
+  // console.log(idOfProduct,"is product id");
+  // console.log(categoryOfProduct, "is product category");
   
   // const formBody={};
   let formBody={id:idOfProduct,
                 category:categoryOfProduct}
   // formBody["category"]=categoryOfProduct;
-  console.log(formBody)
+  // console.log(formBody)
 
   const resp = await fetch("/id1", {
     method: "POST",
@@ -52,7 +52,7 @@ async function getImage() {
   });
 
   const data = await resp.json();
-  console.log(data);
+  // console.log(data); 
 
   let productName = data[0].name;
   let imageLocation = data[0].image;
@@ -62,7 +62,7 @@ async function getImage() {
   let salesQuantity = data[0].sales_quantity;
   let d = data[0].description;
 
-  console.log(imageLocation);
+  // console.log(imageLocation);
   let img1 = `<img src="${imageLocation}" alt="${imageName}" id="displayImage">`;
   // console.log(img1);
   let price1 = `${pricePerUnit}`;
@@ -83,14 +83,14 @@ async function getImage() {
 async function productSession() {
 
   let url=window.location.search;
-  console.log(url);
-  let queries= new URLSearchParams(url);}
+  // console.log(url, "haha");
+  let queries= new URLSearchParams(url);
   let idOfProduct=queries.get("id");
-  console.log(idOfProduct);
+  console.log(idOfProduct, "bitch");
 
   // const formBody={};
-  let formBody={id:idOfProduct,
-    category:categoryOfProduct}
+  let formBody={id:idOfProduct
+    }
 // formBody["category"]=categoryOfProduct;
 console.log(formBody)
 
@@ -102,6 +102,14 @@ headers: {
 body: JSON.stringify(formBody)
 });
 
+const data = await resp.json();
+console.log(data);
+
+if (resp.status!==201){console.log(data.message)}
+else{console.log(data.message)}
+
+
+}
 
 
 

@@ -55,6 +55,7 @@ CREATE TABLE purchase_record (
   id SERIAL PRIMARY KEY NOT NULL,
   total_price decimal,
   create_date date,
+  quantity int,
   delivery_status VARCHAR(255),
   comment VARCHAR(255),
   products_id int,

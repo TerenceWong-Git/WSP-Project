@@ -38,10 +38,5 @@ export interface Products {
 
 export interface Productrecords{
   id: number;
-  name: string;
-  image:string;
-  price: number;
-  stock: number;
-  sales_quantity: number;
-  category_id:number;
+
 }
