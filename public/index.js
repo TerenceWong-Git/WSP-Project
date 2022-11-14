@@ -41,7 +41,7 @@ async function loadProducts() {
       drinkCount++;
     }
 
-    if (product.product_category === 2) {
+    if (product.category_id === 2) {
       snackStr += `
     <div class="topSalesProducts${snackCount}">
       <img class="productsImage" src="./${product.image}" alt="..."/>
@@ -52,7 +52,7 @@ async function loadProducts() {
       snackCount++;
     }
 
-    if (product.product_category === 3) {
+    if (product.category_id === 3) {
       noodleStr += `
     <div class="topSalesProducts${noodleCount}">
       <img class="productsImage" src="./${product.image}" alt="..."/>
