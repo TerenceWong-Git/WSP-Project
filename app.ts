@@ -27,7 +27,7 @@ import {displayProduct} from "./routers/displayProduct";
 import {buyNow} from "./routers/buyNow";
 import {addToCar} from "./routers/addToCar";
 import{Productrecords} from "./models";
-
+import {productSession} from "./routers/productSession";
 
 declare module "express-session" {
   interface Session {
@@ -84,7 +84,8 @@ app.use(allCategoryRoute); // request received from allCategory.js
 app.post("/userData", register);
 
 //////////////////////  registration route handler END ////////////////////////////////////////////////////////////////////////
-app.post ("/id1",displayProduct)
+app.post ("/id1",displayProduct);
+app.post("/productsesseion",productSession);
 
 app.get("/buyNow", buyNow)
 app.get("/addToCar",addToCar)
