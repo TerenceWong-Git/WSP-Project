@@ -17,6 +17,10 @@ async function importData() {
   await client.query("insert into category (name) values ('Drinks')");
   await client.query("insert into category (name) values ('Snacks')");
   await client.query("insert into category (name) values ('Cup Noodles')");
+  await client.query("DELETE FROM brands");
+  await client.query("insert into brands (name) values ('a')");
+  await client.query("insert into brands (name) values ('bc')");
+  await client.query("insert into brands (name) values ('c')");
   await client.query("DELETE FROM products");
 
   // // Insert dummy data
@@ -37,7 +41,7 @@ async function importData() {
     { product_category: 3, image: "/productImages/cupNoodles/NONG_SHIM_SHIN_RAMEN.jpg", product_name: "NONG SHIM SHIN RAMEN", product_price: "66", stock: true, salesQuantity: 29, brand: "c" },
   ];
   for (const product of products) {
-    await client.query("INSERT INTO products (category_id, image, name, price, stock, sales_quantity, brand) VALUES ($1, $2, $3, $4, $5, $6, $7)", [
+    await client.query("INSERT INTO products (category_id, image, name, price, stock, sales_quantity, brands_id ) VALUES ($1, $2, $3, $4, $5, $6, $7)", [
       product.product_category,
       product.image,
       product.product_name,
