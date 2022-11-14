@@ -37,7 +37,7 @@ async function importData() {
     { product_category: 3, image: "/productImages/cupNoodles/NONG_SHIM_SHIN_RAMEN.jpg", product_name: "NONG SHIM SHIN RAMEN", product_price: "66", stock: true, salesQuantity: 29, brand: "c" },
   ];
   for (const product of products) {
-    await client.query("INSERT INTO products (category_id, image, name, price, stock, salesQuantity, brand) VALUES ($1, $2, $3, $4, $5, $6, $7)", [
+    await client.query("INSERT INTO products (category_id, image, name, price, stock, sales_quantity, brand) VALUES ($1, $2, $3, $4, $5, $6, $7)", [
       product.product_category,
       product.image,
       product.product_name,
