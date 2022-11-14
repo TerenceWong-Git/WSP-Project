@@ -29,12 +29,17 @@ async function loadAllCategory() {
   const resp = await fetch("/allCategory");
   const products = await resp.json();
   console.log(products);
+  const categoryMap = {
+    1: "drinks",
+    2: "snacks",
+    3: "noodles",
+  };
 
   for (const product of products) {
-    console.log(product.product_category);
+    const categoryId = product.category_id;
     // Create Product Card
     const productCard = document.createElement("div");
-    productCard.classList.add("productCard", product.product_category);
+    productCard.classList.add("productCard", `category-${categoryId}`);
 
     // Create Image div
     const imageArea = document.createElement("div");
@@ -52,12 +57,12 @@ async function loadAllCategory() {
     // Create Product name div
     const productName = document.createElement("div");
     productName.classList.add("productName");
-    productName.innerText = product.product_name.toUpperCase();
+    productName.innerText = product.name.toUpperCase();
     productInfoArea.appendChild(productName);
 
     // Create Product price div
     const productPrice = document.createElement("div");
-    productPrice.innerText = "$" + product.product_price;
+    productPrice.innerText = "$" + product.price;
     productInfoArea.appendChild(productPrice);
     productCard.appendChild(productInfoArea);
 
@@ -70,15 +75,15 @@ document.querySelector("#all").addEventListener("click", (e) => {
 });
 
 document.querySelector("#drinks").addEventListener("click", (e) => {
-  filterProduct(e, "drinks");
+  filterProduct(e, "category-1");
 });
 
 document.querySelector("#snacks").addEventListener("click", (e) => {
-  filterProduct(e, "snacks");
+  filterProduct(e, "category-2");
 });
 
 document.querySelector("#noodles").addEventListener("click", (e) => {
-  filterProduct(e, "noodles");
+  filterProduct(e, "category-3");
 });
 
 // Put category value into button
@@ -107,6 +112,4 @@ function filterProduct(e, category) {
       }
     }
   });
-
-  
 }
