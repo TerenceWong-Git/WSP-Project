@@ -29,17 +29,12 @@ async function loadAllCategory() {
   const resp = await fetch("/allCategory");
   const products = await resp.json();
   console.log(products);
-  const categoryMap = {
-    1: "drinks",
-    2: "snacks",
-    3: "noodles",
-  };
 
   for (const product of products) {
-    const categoryId = product.category_id;
+    console.log(product.product_category);
     // Create Product Card
     const productCard = document.createElement("div");
-    productCard.classList.add("productCard", `category-${categoryId}`);
+    productCard.classList.add("productCard", product.product_category);
 
     // Create Image div
     const imageArea = document.createElement("div");
@@ -57,12 +52,12 @@ async function loadAllCategory() {
     // Create Product name div
     const productName = document.createElement("div");
     productName.classList.add("productName");
-    productName.innerText = product.name.toUpperCase();
+    productName.innerText = product.product_name.toUpperCase();
     productInfoArea.appendChild(productName);
 
     // Create Product price div
     const productPrice = document.createElement("div");
-    productPrice.innerText = "$" + product.price;
+    productPrice.innerText = "$" + product.product_price;
     productInfoArea.appendChild(productPrice);
     productCard.appendChild(productInfoArea);
 
@@ -71,79 +66,22 @@ async function loadAllCategory() {
 }
 
 // Put category value into button
-async function filterProduct(e, category) {
-  let categoryButton = document.querySelectorAll(".button-category");
-  let showCards = document.querySelectorAll(".productCard");
-
-  // Change color when button is hitted
-  console.log(category, e.target.classList.add("active"));
-
-  // Clear other button color
-  categoryButton.forEach((element) => {
-    if (element !== e.target) {
-      element.classList.remove("active");
-    }
-  });
-
-  // Show products by hidden control
-  const resp = await fetch("/allCategory");
-  const products = await resp.json();
-
-  for (const product of products) {
-    if (product.stock) {
-      showCards.forEach((element) => {
-        console.log(element);
-        if (category === "all") {
-          element.classList.remove("hide");
-        } else {
-          if (element.classList.contains(category)) {
-            element.classList.remove("hide");
-          } else {
-            element.classList.add("hide");
-          }
-        }
-      });
-    }
-  }
-}
-
-document.querySelector("#all").addEventListener("click", (e) => {
-  filterProduct(e, "all");
-});
-
-document.querySelector("#drinks").addEventListener("click", (e) => {
-  filterProduct(e, "category-1");
-});
-
-document.querySelector("#snacks").addEventListener("click", (e) => {
-  filterProduct(e, "category-2");
-});
-
-document.querySelector("#noodles").addEventListener("click", (e) => {
-  filterProduct(e, "category-3");
-});
-
-<<<<<<< HEAD
-document.querySelector("#stock").addEventListener("click", (e) => {
-  filterProduct(e, "stock");
-});
-=======
-// Put category value into button
 function filterProduct(e, category) {
+  let categoryButton = document.querySelectorAll(".button-category");
+  let showCards = document.querySelectorAll(".productCard");
+
   // Change color when button is hitted
   console.log(category, e.target.classList.add("active"));
 
   // Clear other button color
-  let categoryButton = document.querySelectorAll(".button-category");
   categoryButton.forEach((element) => {
     if (element !== e.target) {
       element.classList.remove("active");
     }
   });
-  let showCards = document.querySelectorAll(".productCard");
 
-  // Show products by hidden control
   showCards.forEach((element) => {
+    console.log(element);
     if (category === "all") {
       element.classList.remove("hide");
     } else {
@@ -155,4 +93,40 @@ function filterProduct(e, category) {
     }
   });
 }
->>>>>>> 033cbc2645da43f542cb5fae0b6f069cbb84180d
+
+// async function checkStock (e) {
+//   const resp = await fetch("/allCategory");
+//   const products = await resp.json();
+
+//   let showCards = document.querySelectorAll(".productCard");
+//   for (const product of products) {
+//     showCards.forEach(element) => {
+//       if (product.stock) {
+//         element.classList.remove("hide");
+//       }
+//     } else {
+
+//     }
+    
+//   }
+
+
+document.querySelector("#all").addEventListener("click", (e) => {
+  filterProduct(e, "all");
+});
+
+document.querySelector("#drinks").addEventListener("click", (e) => {
+  filterProduct(e, "drinks");
+});
+
+document.querySelector("#snacks").addEventListener("click", (e) => {
+  filterProduct(e, "snacks");
+});
+
+document.querySelector("#noodles").addEventListener("click", (e) => {
+  filterProduct(e, "noodles");
+});
+
+document.querySelector("#stock").addEventListener("click", (e) => {
+  checkStock(e);
+});
