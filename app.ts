@@ -23,7 +23,7 @@ import { logoutRoutes } from "./routers/logoutRoute";
 // import {registerRoutes} from "./routers/registerRoute" ;
 import { register } from "./routers/registerRoute";
 import { indexRoute } from "./routers/indexRoute";
-
+import {displayProduct} from "./routers/displayProduct";
 declare module "express-session" {
   interface Session {
     user: User | false;
@@ -76,6 +76,10 @@ app.use(indexRoute); // request received from index.js
 app.post("/userData", register);
 
 //////////////////////  registration route handler END ////////////////////////////////////////////////////////////////////////
+app.get ("/id", displayProduct)
+
+
+
 
 app.use(express.static("public"));
 app.use("/user", userLogin, express.static("user"));

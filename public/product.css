@@ -134,13 +134,13 @@ body {
 
 #userbutton {
     display: none;
-  }
-  
-  #loginbutton {
+}
+
+#loginbutton {
     display: static;
-  }
-  
-  .user-dropdown {
+}
+
+.user-dropdown {
     display: flex;
     align-items: center;
 }
@@ -214,7 +214,7 @@ body {
     margin: 10px;
     border-radius: 10px;
     font-size: 30px;
-    ;
+    overflow: auto;
 }
 
 #productPrice {
@@ -249,6 +249,7 @@ body {
     flex: 1;
     margin: 5px;
     font-size: 30px;
+    font-weight: bold;
 }
 
 #pricePerGoods {
@@ -258,6 +259,7 @@ body {
     flex: 1;
     margin: 5px;
     font-size: 30px;
+    font-weight: bold;
 }
 
 #status {
@@ -269,34 +271,75 @@ body {
     /* background-color: green; */
     padding: 5px;
     flex-wrap: wrap;
-    flex: 1;
     align-items: center;
+    flex: 1;
+}
+
+#showStock {
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid black;
+    flex: 1;
+    /* background-color: greenyellow; */
+    height: 100%;
+    align-items: center;
+    border-radius: 15px;
+    margin: 5px;
+
 }
 
 #stock {
+    /* border: 1px solid black; */
+    flex: 1;
     display: flex;
-    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+    font-size: 25px;
+}
+
+#stockNumber {
+    /* border: 1px solid black; */
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+    font-size: 25px;
+}
+
+#showSales {
+    display: flex;
+    justify-content: space-around;
     border: 1px solid black;
     flex: 1;
-    justify-content: center;
+    /* background-color: yellow; */
     height: 100%;
     align-items: center;
+    border-radius: 15px;
     margin: 5px;
-    border-radius: 10px;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 #sales {
-    display: flex;
-    box-sizing: border-box;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     flex: 1;
+    display: flex;
     justify-content: center;
-    height: 100%;
     align-items: center;
-    margin: 5px;
-    border-radius: 10px;
-    font-size: 30px;
+    height: 80%;
+    font-size: 25px;
+}
+
+#salesNumber {
+    /* border: 1px solid black; */
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+    font-size: 25px;
+    overflow: auto;
 }
 
 #productQuantity {
@@ -351,9 +394,24 @@ body {
     margin-right: 2px;
 }
 
+.bi{color: black !important;
+    box-sizing: border-box;
+    /* border: 1px solid black; */
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+    border-radius: 10px;
+    margin-right: 2px;}
+
+.bi:hover{color: white !important;}
+
 #minusButton:hover {
     background-color: black;
 }
+
+
 
 #minusButton:active {
     background-color: #f0f0f0;
@@ -369,6 +427,8 @@ body {
     align-items: center;
     border-radius: 10px;
     margin-right: 2px;
+    background-color: white;
+    
 }
 
 #number {
@@ -412,7 +472,7 @@ body {
     height: 100%;
     align-items: center;
     border-radius: 10px;
-
+    background-color: white;
 }
 
 #decision {
@@ -449,6 +509,7 @@ body {
     height: 100%;
     font-size: 30px;
     color: black;
+    background-color: white;
 }
 
 .buyNow:hover {
@@ -481,6 +542,7 @@ body {
     width: 100%;
     height: 100%;
     font-size: 30px;
+    background-color: white;
 }
 
 .addToCar:hover {
@@ -516,7 +578,7 @@ body {
     /* background-color: red; */
     margin-top: 30px;
     font-size: 30px;
-
+    overflow: auto;
 
 }
 
@@ -558,10 +620,11 @@ body {
     height: 50px;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 #SeeMore {
-    font-size: 2vh;
+    font-size: 20px;
     flex: 1;
     display: flex;
     justify-content: center;
@@ -571,9 +634,14 @@ body {
 #rightArrowIcon {
     display: flex;
     flex: 1;
+    justify-content: start;
+    /* background-color: red; */
 
 }
 
+.bi-arrow-right{color: black !important;
+font-size: 30px;
+font-weight: bold;}
 
 #CommentPart {
     display: flex;
@@ -582,6 +650,7 @@ body {
     /* border: 1px solid black; */
     padding: 5px;
     height: 80%;
+    flex-wrap: wrap;
 }
 
 #commentBox2 {
@@ -601,14 +670,17 @@ body {
 #button {
     /* border: 1px solid black; */
     flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
 #commentButton {
-    width: 100%;
-    height: 100%;
-    font-size: 2vh;
-    border-radius: 30px;
+    width: 100px;
+    height: 50px;
+    font-size: 25px;
+    border-radius: 15px;
 }
 
 #commentButton:hover {
@@ -624,7 +696,7 @@ body {
 #container5 {
     border: 1px solid black;
     padding: 10px;
-    background-color: #ffc107;
+    /* background-color: #ffd762; */
     height: 400px;
     overflow-y: auto;
 }
@@ -633,9 +705,10 @@ body {
     /* background-color: green; */
     border: 1px solid black;
     margin: 5px;
-    height: 150px;
+    height: 200px;
     overflow-y: auto;
     border-radius: 5px;
+    background-color: #ffd762;
 }
 
 #container6 {

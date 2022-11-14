@@ -83,17 +83,29 @@
     <div id="container1">Category</div>
 
     <div id="container2">
-        <div id="productImage"><img src="../public/productImages/drinks/COKE_PLUS.jpg" id="displayImage"></div>
+        <div id="productImage">
+
+            <!-- <img src="./productImages/cupNoodles/ichiranTonkotsu.jpg" id="4"> -->
+        </div>
         <div id="productContent">
-            <div id="productName">Product Name</div>
+            <div id="productName"> </div>
             <div id="productPrice">
                 <div id="price">
                     <div id="moneySign">HKD</div>
-                    <div id="pricePerGoods">12</div>
+                    <div id="pricePerGoods">
+                    </div>
                 </div>
                 <div id="status">
-                    <div id="stock">stock</div>
-                    <div id="sales">sales</div>
+                    <div id="showStock">
+                        <div id="stock">stock</div>
+                        <div id="stockNumber"></div>
+                    </div>
+                    <div id="showSales">
+                        <div id="sales">sales</div>
+                        <div id="salesNumber"></div>
+                    </div>
+            
+                    
                 </div>
             </div>
             <div id="productQuantity">
@@ -124,22 +136,23 @@
             <div id="commentSide">
                 <div id="seeCommentPart">
                     <div id="SeeMore">See more comments</div>
-                    <div id="rightArrowIcon"><i class="bi bi-arrow-right"></i></div>
+                    <div id="rightArrowIcon"><button id="arrow"><i class="bi bi-arrow-right"></i></button></div>
                 </div>
                 <form id="contact-form3">
                     <div id="inputScore">
-                        <label for="option">Please, Rate Us!   </labelfor>
-                        <select id="option">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
+                        <label for="option">Please, Rate Us! </label>
+                            <select id="option">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
                     </div>
                     <div id="CommentPart">
-                        <div id="commentBox2"><textarea name="comment" cols="20" rows="9"
-                                placeholder="leave your comment here" id="textarea"></textarea></div>
+                        <div id="commentBox2">
+                            <textarea name="comment" cols="20" rows="9" placeholder="leave your comment here" id="textarea"></textarea>
+                        </div>
                         <div id="button"><button id="commentButton">submit</button></div>
                     </div>
                 </form>
