@@ -1,60 +1,81 @@
+DROP TABLE IF EXISTS products_rates_map;
+DROP TABLE IF EXISTS purchase_record_products_map;
+DROP TABLE IF EXISTS shopping_cart;
+DROP TABLE IF EXISTS purchase_record;
+DROP TABLE IF EXISTS rates;
+DROP TABLE IF EXISTS products;
+DROP TABLE IF EXISTS category;
+DROP TABLE IF EXISTS origin;
+DROP TABLE IF EXISTS brands;
 DROP TABLE IF EXISTS users;
 CREATE TABLE users (
-  id SERIAL PRIMARY KEY,
-  username VARCHAR(255) NOT NULL,
-  password VARCHAR(255) NOT NULL,
-  email VARCHAR(255) NOT NULL,
-  mobile INT NOT NULL,
-  birthday DATE NOT NULL,
+  id SERIAL PRIMARY KEY NOT NULL,
+  username VARCHAR(255) ,
+  password VARCHAR(255) ,
+  email VARCHAR(255) ,
+  mobile INT ,
+  birthday DATE ,
   subscription BOOLEAN
 );
 DROP TABLE IF EXISTS brands;
 CREATE TABLE brands (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR(255) NOT NULL,
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(255) ,
   decription VARCHAR(255)
-) DROP TABLE IF EXISTS orderPerTime;
-CREATE TABLE orderPerTime (
+);
+CREATE TABLE origin (
   id SERIAL PRIMARY KEY,
-  total_price decimal NOT NULL,
-  create_date date NOT NULL,
-  delivery_status int NOT NULL,
-  users_id integer,
-  comment VARCHAR(255),
-  FOREIGN KEY (users_id) REFERENCES users(id)
-) DROP TABLE IF EXISTS products;
+  name VARCHAR(255) 
+);
+CREATE TABLE category (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) 
+);
 CREATE TABLE products (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR(255) NOT NULL,
-  image VARCHAR(255) NOT NULL,
-  description VARCHAR(255) NOT NULL,
-  price decimal NOT NULL,
-  stock integer NOT NULL,
-  updated_at date NOT NULL,
-  sales_quantity integer NOT NULL,
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(255),
+  image VARCHAR(255) ,
+  description VARCHAR(255) ,
+  price decimal ,
+  stock integer ,
+  updated_at date ,
+  sales_quantity integer ,
   origin_id integer,
   brands_id integer,
   category_id integer,
   FOREIGN KEY (origin_id) REFERENCES origin(id),
   FOREIGN KEY (brands_id) REFERENCES brands(id),
   FOREIGN KEY (category_id) REFERENCES category(id)
-) DROP TABLE IF EXISTS origin;
-CREATE TABLE origin (
+);
+CREATE TABLE shopping_cart (
+  id SERIAL PRIMARY KEY NOT NULL,
+  total_price decimal ,
+  create_date date ,
+  quantity int ,
+  users_id integer,
+  products_id int,
+  FOREIGN KEY (users_id) REFERENCES users(id),
+  FOREIGN KEY (products_id) REFERENCES products(id)
+);
+CREATE TABLE purchase_record (
+  id SERIAL PRIMARY KEY NOT NULL,
+  total_price decimal ,
+  create_date date ,
+  delivery_status VARCHAR(255) ,
+  comment VARCHAR(255),
+  products_id int,
+  users_id integer,
+  FOREIGN KEY (products_id) REFERENCES products(id),
+  FOREIGN KEY (users_id) REFERENCES users(id)
+);
+CREATE TABLE rates (id SERIAL PRIMARY KEY, score int NOT NULL);
+CREATE TABLE purchase_record_products_map (
   id SERIAL PRIMARY KEY,
-  name VARCHAR(255) NOT NULL
-) DROP TABLE IF EXISTS category;
-CREATE TABLE category (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR(255) NOT NULL
-) DROP TABLE IF EXISTS rates;
-CREATE TABLE rates (id SERIAL PRIMARY KEY, score int NOT NULL) DROP TABLE IF EXISTS orderPerTime_products_map;
-CREATE TABLE orderPerTime_products_map (
-  id SERIAL PRIMARY KEY,
-  orderPerTime_id integer,
+  purchase_record_id integer,
   product_id INTEGER,
-  FOREIGN KEY (orderPerTime_id) REFERENCES orderPerTime(id),
-  FOREIGN KEY (product_id) REFERENCES product(id)
-) DROP TABLE IF EXISTS products_rates_map;
+  FOREIGN KEY (purchase_record_id) REFERENCES purchase_record(id),
+  FOREIGN KEY (product_id) REFERENCES products(id)
+);
 CREATE TABLE products_rates_map (
   id SERIAL PRIMARY KEY,
   products_id integer,
@@ -81,7 +102,7 @@ VALUES (
     '1998-10-17',
     92153298
   ),
-(
+  (
     'abc',
     'abc@gmail.com',
     '2345',
@@ -89,7 +110,7 @@ VALUES (
     '2000-10-18',
     12345678
   ),
-(
+  (
     'bcd',
     'bcd@gmail.com',
     '3456',
@@ -102,8 +123,8 @@ SELECT *
 FROM brands;
 INSERT INTO brands (name, decription)
 VALUES ('ichiran', 'since 1990'),
-('NISSIN', 'since 1800'),
-('NONG-SHIM_SHIN', 'since 1700')
+  ('NISSIN', 'since 1800'),
+  ('NONG-SHIM_SHIN', 'since 1700')
   /* ................. build orderPerTime table .................................... */
 SELECT *
 FROM orderPerTime;
@@ -162,7 +183,7 @@ VALUES (
     1,
     1
   ),
-(
+  (
     'NISSIN_NOODLE_SEAFOOD noodles',
     'NISSIN_NOODLE_SEAFOOD.jpg',
     'a BAD noodles',
@@ -174,7 +195,7 @@ VALUES (
     2,
     1
   ),
-(
+  (
     'NONG_SHIM_SHIN_RAMEN',
     'NONG_SHIM_SHIN_RAMEN.jpg',
     'a PERFECT noodles',
@@ -209,10 +230,3 @@ VALUES (1),
   (3),
   (4),
   (5)
-
-
-
-
-
-
-
