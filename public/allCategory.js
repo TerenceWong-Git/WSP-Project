@@ -32,63 +32,60 @@ async function loadAllCategory() {
   console.log(products);
 
   for (const product of products) {
-    //Create Card
-    const card = document.createElement("div");
-    //Card should have category and should stay hidden initially
-    card.classList.add("card", product.product_category, "hide");
-    //image div
-    const imgContainer = document.createElement("div");
-    imgContainer.classList.add("image-container");
-    //img tag
-    const image = document.createElement("img");
-    image.setAttribute("src", product.image);
-    imgContainer.appendChild(image);
-    card.appendChild(imgContainer);
-    //container
-    let container = document.createElement("div");
-    container.classList.add("container");
-    //product name
-    let name = document.createElement("h5");
-    name.classList.add("product-name");
-    name.innerText = product.product_name.toUpperCase();
-    container.appendChild(name);
-    // //price
-    // let price = document.createElement("h6");
-    // price.innerText = "$" + i.price;
-    // container.appendChild(price);
-    card.appendChild(container);
-  
-    document.getElementById("products").appendChild(card);
+    // Create Product Card
+    const productCard = document.createElement("div");
+    productCard.classList.add("productCard", product.product_category, "hide");
+
+    // Create Image div
+    const imageArea = document.createElement("div");
+    imageArea.classList.add("imageArea");
+
+    const productImage = document.createElement("img");
+    productImage.setAttribute("src", product.image);
+    imageArea.appendChild(productImage);
+    productCard.appendChild(imageArea);
+
+    // Create Product info. div
+    let productInfoArea = document.createElement("div");
+    productInfoArea.classList.add("productInfoArea");
+
+    // Create Product name div
+    let productName = document.createElement("div");
+    productName.classList.add("productName");
+    productName.innerText = product.product_name.toUpperCase();
+    productInfoArea.appendChild(productName);
+
+    // Create Product price div
+    let productPrice = document.createElement("div");
+    productPrice.innerText = "$" + product.product_price;
+    productInfoArea.appendChild(productPrice);
+    productCard.appendChild(productInfoArea);
+
+    document.getElementById("products").appendChild(productCard);
   }
 }
 
-//parameter passed from button (Parameter same as category)
-function filterProduct(value) {
-  //Button class code
-  let buttons = document.querySelectorAll(".button-value");
-  buttons.forEach((button) => {
+// Put category value into button
+function filterProduct(category) {
+  let categoryButton = document.querySelectorAll(".button-category");
+  categoryButton.forEach((button) => {
     //check if value equals innerText
-    if (value.toUpperCase() == button.innerText.toUpperCase()) {
+    if (category.toUpperCase() == button.innerText.toUpperCase()) {
       button.classList.add("active");
     } else {
       button.classList.remove("active");
     }
   });
 
-  //select all cards
-  let elements = document.querySelectorAll(".card");
-  //loop through all cards
-  elements.forEach((element) => {
-    //display all cards on 'all' button click
-    if (value == "all") {
+  // Show products by hidden control
+  let showCards = document.querySelectorAll(".productCard");
+  showCards.forEach((element) => {
+    if (category === "all") {
       element.classList.remove("hide");
     } else {
-      //Check if element contains category class
-      if (element.classList.contains(value)) {
-        //display element based on category
+      if (element.classList.contains(category)) {
         element.classList.remove("hide");
       } else {
-        //hide other elements
         element.classList.add("hide");
       }
     }
