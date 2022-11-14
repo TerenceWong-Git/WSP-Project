@@ -104,21 +104,21 @@
                         <div id="sales">sales</div>
                         <div id="salesNumber"></div>
                     </div>
-            
-                    
+
+
                 </div>
             </div>
             <div id="productQuantity">
                 <div id="quantityBox">Quantity</div>
                 <div id="quantityNumber">
-                    <div id="minus"><button id="minusButton"><i class="bi bi-dash-lg"></i></button></div>
+                    <div id="minus"><button id="minusButton" min="1"><i class="bi bi-dash-lg"></i></button></div>
                     <div id="number">1</div>
-                    <div id="plus"><button id="plusButton"><i class="bi bi-plus-lg"></i></button></div>
+                    <div id="plus"><button id="plusButton" max="10"><i class="bi bi-plus-lg"></i></button></div>
                 </div>
             </div>
             <div id="decision">
                 <div id="buyNow"><button class="buyNow">Buy now</button></div>
-                <div id="addToCar"><button class="addToCar">Add to Car</button></div>
+                <div id="addToCar"><button class="addToCar">Add to Shopping Cart</button></div>
             </div>
         </div>
     </div>
@@ -141,17 +141,18 @@
                 <form id="contact-form3">
                     <div id="inputScore">
                         <label for="option">Please, Rate Us! </label>
-                            <select id="option">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
+                        <select id="option">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
                     </div>
                     <div id="CommentPart">
                         <div id="commentBox2">
-                            <textarea name="comment" cols="20" rows="9" placeholder="leave your comment here" id="textarea"></textarea>
+                            <textarea name="comment" cols="20" rows="9" placeholder="leave your comment here"
+                                id="textarea"></textarea>
                         </div>
                         <div id="button"><button id="commentButton">submit</button></div>
                     </div>
