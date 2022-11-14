@@ -2,7 +2,6 @@
 window.onload = () => {
   logout();
   loadAllCategory();
-  filterProduct("all");
   userName();
 };
 
@@ -32,9 +31,10 @@ async function loadAllCategory() {
   console.log(products);
 
   for (const product of products) {
+    console.log(product.product_category);
     // Create Product Card
     const productCard = document.createElement("div");
-    productCard.classList.add("productCard", product.product_category, "hide");
+    productCard.classList.add("productCard", product.product_category);
 
     // Create Image div
     const imageArea = document.createElement("div");
@@ -46,17 +46,17 @@ async function loadAllCategory() {
     productCard.appendChild(imageArea);
 
     // Create Product info. div
-    let productInfoArea = document.createElement("div");
+    const productInfoArea = document.createElement("div");
     productInfoArea.classList.add("productInfoArea");
 
     // Create Product name div
-    let productName = document.createElement("div");
+    const productName = document.createElement("div");
     productName.classList.add("productName");
     productName.innerText = product.product_name.toUpperCase();
     productInfoArea.appendChild(productName);
 
     // Create Product price div
-    let productPrice = document.createElement("div");
+    const productPrice = document.createElement("div");
     productPrice.innerText = "$" + product.product_price;
     productInfoArea.appendChild(productPrice);
     productCard.appendChild(productInfoArea);
@@ -65,20 +65,37 @@ async function loadAllCategory() {
   }
 }
 
+document.querySelector("#all").addEventListener("click", (e) => {
+  filterProduct(e, "all");
+});
+
+document.querySelector("#drinks").addEventListener("click", (e) => {
+  filterProduct(e, "drinks");
+});
+
+document.querySelector("#snacks").addEventListener("click", (e) => {
+  filterProduct(e, "snacks");
+});
+
+document.querySelector("#noodles").addEventListener("click", (e) => {
+  filterProduct(e, "noodles");
+});
+
 // Put category value into button
-function filterProduct(category) {
+function filterProduct(e, category) {
+  // Change color when button is hitted
+  console.log(category, e.target.classList.add("active"));
+
+  // Clear other button color
   let categoryButton = document.querySelectorAll(".button-category");
-  categoryButton.forEach((button) => {
-    //check if value equals innerText
-    if (category.toUpperCase() == button.innerText.toUpperCase()) {
-      button.classList.add("active");
-    } else {
-      button.classList.remove("active");
+  categoryButton.forEach((element) => {
+    if (element !== e.target) {
+      element.classList.remove("active");
     }
   });
+  let showCards = document.querySelectorAll(".productCard");
 
   // Show products by hidden control
-  let showCards = document.querySelectorAll(".productCard");
   showCards.forEach((element) => {
     if (category === "all") {
       element.classList.remove("hide");
@@ -90,4 +107,6 @@ function filterProduct(category) {
       }
     }
   });
+
+  
 }

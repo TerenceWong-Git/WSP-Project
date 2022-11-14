@@ -52,7 +52,7 @@ async function loadProducts() {
       snackCount++;
     }
 
-    if (product.product_category === "noodles") {
+    if (product.product_category === "cupNoodles") {
       noodleStr += `
     <div class="topSalesProducts${noodleCount}">
       <img class="productsImage" src="./${product.image}" alt="..."/>
