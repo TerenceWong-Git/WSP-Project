@@ -23,16 +23,15 @@ import { logoutRoutes } from "./routers/logoutRoute";
 // import {registerRoutes} from "./routers/registerRoute" ;
 import { register } from "./routers/registerRoute";
 import { indexRoute } from "./routers/indexRoute";
-import {displayProduct} from "./routers/displayProduct";
-import {buyNow} from "./routers/buyNow";
-import {addToCar} from "./routers/addToCar";
-import{Productrecords} from "./models";
-
+import { displayProduct } from "./routers/displayProduct";
+import { buyNow } from "./routers/buyNow";
+import { addToCar } from "./routers/addToCar";
+import { Productrecords } from "./models";
 
 declare module "express-session" {
   interface Session {
     user: User | false;
-    productRecords: Productrecords|false; 
+    productRecords: Productrecords | false;
     // grant: { response: { access_token: string | null } };
   }
 }
@@ -84,10 +83,10 @@ app.use(allCategoryRoute); // request received from allCategory.js
 app.post("/userData", register);
 
 //////////////////////  registration route handler END ////////////////////////////////////////////////////////////////////////
-app.post ("/id1",displayProduct)
+app.post("/id1", displayProduct);
 
-app.get("/buyNow", buyNow)
-app.get("/addToCar",addToCar)
+app.get("/buyNow", buyNow);
+app.get("/addToCar", addToCar);
 
 app.use(express.static("public"));
 app.use("/user", userLogin, express.static("user"));
