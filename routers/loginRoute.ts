@@ -21,6 +21,7 @@ async function postLoginRoutes(req: express.Request, res: express.Response, next
         req.session.user = { id: user.id, username: user.username, email: user.email };
         res.status(200).json({ message: "ok" });
         console.log(req.session.user);
+        // console.log(req.session);
         return;
       }
     }
