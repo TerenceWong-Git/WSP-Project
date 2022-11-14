@@ -31,7 +31,6 @@ async function loadAllCategory() {
   console.log(products);
 
   for (const product of products) {
-    console.log(product.product_category);
     // Create Product Card
     const productCard = document.createElement("div");
     productCard.classList.add("productCard", product.product_category);
@@ -52,7 +51,7 @@ async function loadAllCategory() {
     // Create Product name div
     const productName = document.createElement("div");
     productName.classList.add("productName");
-    productName.innerText = product.product_name.toUpperCase();
+    productName.innerText = product.product_name;
     productInfoArea.appendChild(productName);
 
     // Create Product price div
@@ -66,12 +65,13 @@ async function loadAllCategory() {
 }
 
 // Put category value into button
-function filterProduct(e, category) {
+async function filterProduct(e, category) {
   let categoryButton = document.querySelectorAll(".button-category");
+  let secondButton = document.querySelectorAll(".secondButton-category");
   let showCards = document.querySelectorAll(".productCard");
 
   // Change color when button is hitted
-  console.log(category, e.target.classList.add("active"));
+  category, e.target.classList.add("active");
 
   // Clear other button color
   categoryButton.forEach((element) => {
@@ -80,9 +80,29 @@ function filterProduct(e, category) {
     }
   });
 
+  secondButton.forEach((element) => {
+    if (element !== e.target) {
+      element.classList.remove("active");
+    }
+  });
+
+  const resp = await fetch("/allCategory");
+  const products = await resp.json();
+  
+  for (const product of products) {
+    secondButton.forEach((element) => {
+      if (product.stock) {
+        console.log("hi");
+        element.classList.remove("hide");
+      } else {
+        element.classList.add("hide");
+      }
+    });
+    
+  }
+
   showCards.forEach((element) => {
-    console.log(element);
-    if (category === "all") {
+    if (category === "all" || category === "stock") {
       element.classList.remove("hide");
     } else {
       if (element.classList.contains(category)) {
@@ -93,23 +113,6 @@ function filterProduct(e, category) {
     }
   });
 }
-
-// async function checkStock (e) {
-//   const resp = await fetch("/allCategory");
-//   const products = await resp.json();
-
-//   let showCards = document.querySelectorAll(".productCard");
-//   for (const product of products) {
-//     showCards.forEach(element) => {
-//       if (product.stock) {
-//         element.classList.remove("hide");
-//       }
-//     } else {
-
-//     }
-    
-//   }
-
 
 document.querySelector("#all").addEventListener("click", (e) => {
   filterProduct(e, "all");
@@ -128,5 +131,5 @@ document.querySelector("#noodles").addEventListener("click", (e) => {
 });
 
 document.querySelector("#stock").addEventListener("click", (e) => {
-  checkStock(e);
+  filterProduct(e, "stock");
 });
