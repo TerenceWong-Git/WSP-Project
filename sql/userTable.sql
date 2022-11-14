@@ -70,14 +70,14 @@ CREATE TABLE purchase_record (
 );
 CREATE TABLE rates (id SERIAL PRIMARY KEY, score int NOT NULL);
 CREATE TABLE purchase_record_products_map (
-  id SERIAL PRIMARY KEY,
+  id SERIAL PRIMARY KEY NOT NULL,
   purchase_record_id integer,
   product_id INTEGER,
   FOREIGN KEY (purchase_record_id) REFERENCES purchase_record(id),
   FOREIGN KEY (product_id) REFERENCES products(id)
 );
 CREATE TABLE products_rates_map (
-  id SERIAL PRIMARY KEY,
+  id SERIAL PRIMARY KEY NOT NULL,
   products_id integer,
   rates_id integer,
   FOREIGN KEY (products_id) REFERENCES products(id),
