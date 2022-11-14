@@ -7,6 +7,7 @@ window.onload = () => {
   userName();
   submitComment();
   getImage();
+  productSession();
 };
 
 function logout() {
@@ -62,7 +63,8 @@ async function getImage() {
   let d = data[0].description;
 
   console.log(imageLocation);
-  let img1 = `<img src="./productImages/cupNoodles/${imageLocation}" alt="${imageName}" id="displayImage">`;
+  let img1 = `<img src="${imageLocation}" alt="${imageName}" id="displayImage">`;
+  // console.log(img1);
   let price1 = `${pricePerUnit}`;
   let pname = `${productName}`;
   let stNumber = `${stockNumber}`;
@@ -76,6 +78,45 @@ async function getImage() {
   document.querySelector("#salesNumber").innerHTML = salesQ;
   document.querySelector("#details").innerHTML = descrip;
 }
+///////////////////// help save the req.session of the single product on the product page  ////////////////////////////////////////////////////
+
+async function productSession() {
+
+  let url=window.location.search;
+  console.log(url);
+  let queries= new URLSearchParams(url);}
+  let idOfProduct=queries.get("id");
+  console.log(idOfProduct);
+
+  // const formBody={};
+  let formBody={id:idOfProduct,
+    category:categoryOfProduct}
+// formBody["category"]=categoryOfProduct;
+console.log(formBody)
+
+const resp = await fetch("/productsesseion", {
+method: "POST",
+headers: {
+'Content-Type': 'application/json',
+},
+body: JSON.stringify(formBody)
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ///////////////////////  quantity control  /////////////////////////////////////////////////
 
