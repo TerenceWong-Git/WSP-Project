@@ -1,4 +1,6 @@
-// const { json } = require("stream/consumers");
+// import { json } from "stream/consumers";
+
+// import { URLSearchParams } from "url";
 
 window.onload = () => {
   logout();
@@ -21,9 +23,31 @@ function logout() {
 
 ///////////////////////  show certain product on the display box  /////////////////////////
 
+
 async function getImage() {
-  const resp = await fetch("/id", {
-    method: "GET",
+
+  let url=window.location.search;
+  console.log(url);
+  let queries= new URLSearchParams(url);
+  
+  let idOfProduct=queries.get("id");
+  let categoryOfProduct=queries.get("category");
+  
+  console.log(idOfProduct,"is product id");
+  console.log(categoryOfProduct, "is product category");
+  
+  // const formBody={};
+  let formBody={id:idOfProduct,
+                category:categoryOfProduct}
+  // formBody["category"]=categoryOfProduct;
+  console.log(formBody)
+
+  const resp = await fetch("/id1", {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(formBody)
   });
 
   const data = await resp.json();

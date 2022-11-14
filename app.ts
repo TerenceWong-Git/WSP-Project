@@ -26,12 +26,13 @@ import { indexRoute } from "./routers/indexRoute";
 import {displayProduct} from "./routers/displayProduct";
 import {buyNow} from "./routers/buyNow";
 import {addToCar} from "./routers/addToCar";
-
+import{Productrecords} from "./models";
 
 
 declare module "express-session" {
   interface Session {
     user: User | false;
+    productRecords: Productrecords|false; 
     // grant: { response: { access_token: string | null } };
   }
 }
@@ -84,7 +85,7 @@ app.use(indexRoute); // request received from index.js
 app.post("/userData", register);
 
 //////////////////////  registration route handler END ////////////////////////////////////////////////////////////////////////
-app.get ("/id", displayProduct)
+app.post ("/id1",displayProduct)
 
 app.get("/buyNow", buyNow)
 app.get("/addToCar",addToCar)

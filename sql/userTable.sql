@@ -53,7 +53,7 @@ CREATE TABLE orderPerTime_products_map (
   orderPerTime_id integer,
   product_id INTEGER,
   FOREIGN KEY (orderPerTime_id) REFERENCES orderPerTime(id),
-  FOREIGN KEY (product_id) REFERENCES product(id),
+  FOREIGN KEY (product_id) REFERENCES product(id)
 ) DROP TABLE IF EXISTS products_rates_map;
 CREATE TABLE products_rates_map (
   id SERIAL PRIMARY KEY,
@@ -164,7 +164,7 @@ VALUES (
   ),
 (
     'NISSIN_NOODLE_SEAFOOD noodles',
-    'NISSHIN_NOODLE_SEAFOOD.jpg',
+    'NISSIN_NOODLE_SEAFOOD.jpg',
     'a BAD noodles',
     203.1,
     300,
@@ -209,3 +209,10 @@ VALUES (1),
   (3),
   (4),
   (5)
+
+
+
+
+
+
+
