@@ -33,7 +33,7 @@ async function loadAllCategory() {
   for (const product of products) {
     // Create Product Card
     const productCard = document.createElement("div");
-    productCard.classList.add("productCard", product.product_category);
+    productCard.classList.add("productCard", product.category_id);
 
     // Create Image div
     const imageArea = document.createElement("div");
@@ -51,12 +51,12 @@ async function loadAllCategory() {
     // Create Product name div
     const productName = document.createElement("div");
     productName.classList.add("productName");
-    productName.innerText = product.product_name;
+    productName.innerText = product.name;
     productInfoArea.appendChild(productName);
 
     // Create Product price div
     const productPrice = document.createElement("div");
-    productPrice.innerText = "$" + product.product_price;
+    productPrice.innerText = "$" + product.price;
     productInfoArea.appendChild(productPrice);
     productCard.appendChild(productInfoArea);
 
@@ -79,30 +79,15 @@ async function filterProduct(e, category) {
       element.classList.remove("active");
     }
   });
-
   secondButton.forEach((element) => {
     if (element !== e.target) {
       element.classList.remove("active");
     }
   });
 
-  const resp = await fetch("/allCategory");
-  const products = await resp.json();
-  
-  for (const product of products) {
-    secondButton.forEach((element) => {
-      if (product.stock) {
-        console.log("hi");
-        element.classList.remove("hide");
-      } else {
-        element.classList.add("hide");
-      }
-    });
-    
-  }
-
+  // Show product by hidden control
   showCards.forEach((element) => {
-    if (category === "all" || category === "stock") {
+    if (category === "all") {
       element.classList.remove("hide");
     } else {
       if (element.classList.contains(category)) {
@@ -119,15 +104,15 @@ document.querySelector("#all").addEventListener("click", (e) => {
 });
 
 document.querySelector("#drinks").addEventListener("click", (e) => {
-  filterProduct(e, "drinks");
+  filterProduct(e, "1");
 });
 
 document.querySelector("#snacks").addEventListener("click", (e) => {
-  filterProduct(e, "snacks");
+  filterProduct(e, "2");
 });
 
 document.querySelector("#noodles").addEventListener("click", (e) => {
-  filterProduct(e, "noodles");
+  filterProduct(e, "3");
 });
 
 document.querySelector("#stock").addEventListener("click", (e) => {

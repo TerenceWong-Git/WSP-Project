@@ -14,9 +14,9 @@ async function importData() {
 
   // DELETE FROM tables
   await client.query("DELETE FROM category");
-  await client.query("insert into category (name) values ('Drinks')");
-  await client.query("insert into category (name) values ('Snacks')");
-  await client.query("insert into category (name) values ('Cup Noodles')");
+  await client.query("insert into category (name) values ('drinks')");
+  await client.query("insert into category (name) values ('snacks')");
+  await client.query("insert into category (name) values ('noodles')");
   await client.query("DELETE FROM brands");
   await client.query("insert into brands (name) values ('a')");
   await client.query("insert into brands (name) values ('bc')");
