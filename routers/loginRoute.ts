@@ -4,7 +4,6 @@ import { checkPassword } from "../bcrypt";
 import type { Login } from "../models";
 import fetch from "cross-fetch";
 
-
 export const loginRoutes = express.Router(); //export to app.ts
 // loginRoutes.use("/:textname",(req, res) => {
 // let textname = req.params.textname
@@ -16,7 +15,6 @@ loginRoutes.post("/", postLoginRoutes);
 loginRoutes.get("/google", loginGoogle);
 loginRoutes.get("/", getLoginRoutes);
 
-
 async function postLoginRoutes(req: express.Request, res: express.Response, next: express.NextFunction) {
   const { email, password, url } = req.body;
   const users = await client.query<Login>(/* sql */ `SELECT id, username, email, password from users`);
@@ -26,8 +24,8 @@ async function postLoginRoutes(req: express.Request, res: express.Response, next
       let result = await checkPassword(password, user.password);
       if (result) {
         req.session.user = { id: user.id, username: user.username, email: user.email, password: user.password };
-        res.status(200).json({message:"good good good, loginRoute.ts"});
-        console.log({url});
+        res.status(200).json({ message: "good good good, loginRoute.ts" });
+        console.log({ url });
         console.log(req.session.user, "refers to loginRoutes.ts");
         console.log(req.session, "refers to loginRoutes.ts");
         console.log(req.session.productRecords, "loginRoute.ts");
