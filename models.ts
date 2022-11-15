@@ -8,13 +8,15 @@ export interface Post {
   user_id: number;
 }
 
-export interface User {               // export to loginRoute.ts
+export interface User {
+  // export to loginRoute.ts
   id: number;
   username: string;
   email: string;
+  password: string;
 }
 
-export interface Comment {            
+export interface Comment {
   id: number;
   content: string;
   created_at: Date;
@@ -23,9 +25,9 @@ export interface Comment {
   post_id: number;
 }
 
-export interface Login {    
+export interface Login {
   id: number;
-  username:string;           // export to loginRoute.ts
+  username: string; // export to loginRoute.ts
   email: string;
   password: string;
 }
@@ -36,7 +38,6 @@ export interface Products {
   image: string;
 }
 
-export interface Productrecords{
+export interface Productrecords {
   id: number;
-
 }

@@ -18,12 +18,13 @@ async function postLoginRoutes(req: express.Request, res: express.Response, next
     if (email === user.email) {
       let result = await checkPassword(password, user.password);
       if (result) {
-        req.session.user = { id: user.id, username: user.username, email: user.email };
+        req.session.user = { id: user.id, username: user.username, email: user.email, password: user.password };
         res.status(200).json(url);
-        console.log({url});
+        console.log({ url });
         console.log(req.session.user, "refers to loginRoutes.ts");
         console.log(req.session, "refers to loginRoutes.ts");
-        console.log(req.session.productRecords, "loginRoute.ts")
+        console.log(req.session.productRecords, "loginRoute.ts");
+        // console.log(req.session);
         return;
       }
     }
@@ -58,7 +59,7 @@ async function loginGoogle(req: express.Request, res: express.Response) {
     res.redirect("/register.html");
     return;
   } else {
-    req.session.user = { id: users[0].id, username: users[0].username, email: users[0].email };
+    req.session.user = { id: users[0].id, username: users[0].username, email: users[0].email, password: users[0].email };
     // res.status(200).json({ message: "logged in with google" });
     res.redirect("/");
   }
