@@ -1,20 +1,9 @@
 window.onload = () => {
-  logout();
   loadProducts();
   userName();
+  logout();
+  profile();
 };
-
-function logout() {
-  const logoutButton = document.querySelector(".logoutbutton");
-  logoutButton.addEventListener("click", async (e) => {
-    e.preventDefault();
-    const resp = await fetch("/logout", { method: "GET" });
-    if (resp.status === 200) {
-      alert("You signed out!!");
-      window.location = "/";
-    }
-  });
-}
 
 async function loadProducts() {
   const resp = await fetch("/index");
@@ -37,8 +26,8 @@ async function loadProducts() {
       <a href="/product/${product.id}"><img class="productsImage" src="${product.image}" alt="..."/></a>
       <div class="productsName">${product.name}</div>
       <div class="productsPrice">$${product.price}</div>
-    </div>
-    `;
+      </div>
+      `;
       drinkCount++;
     }
 
@@ -48,8 +37,8 @@ async function loadProducts() {
       <a href="/product/${product.id}"><img class="productsImage" src="${product.image}" alt="..."/></a>
       <div class="productsName">${product.name}</div>
       <div class="productsPrice">$${product.price}</div>
-    </div>
-    `;
+      </div>
+      `;
       snackCount++;
     }
 
@@ -59,8 +48,8 @@ async function loadProducts() {
       <a href="/product/${product.id}"><img class="productsImage" src="${product.image}" alt="..."/></a>
       <div class="productsName">${product.name}</div>
       <div class="productsPrice">$${product.price}</div>
-    </div>
-    `;
+      </div>
+      `;
       noodleCount++;
     }
   }
@@ -75,4 +64,28 @@ async function userName() {
   const username = userInfoObj.username;
   const usernameDiv = document.querySelector(".username");
   usernameDiv.innerText = username;
+}
+
+function logout() {
+  const logoutButton = document.querySelector(".logoutbutton");
+  logoutButton.addEventListener("click", async (e) => {
+    e.preventDefault();
+    const resp = await fetch("/logout", { method: "GET" });
+    if (resp.status === 200) {
+      alert("You signed out!!");
+      window.location = "/";
+    }
+  });
+}
+function profile() {
+  const profileButton = document.querySelector(".profilebutton");
+  profileButton.addEventListener("click", async (e) => {
+    e.preventDefault();
+    console.log("hihi");
+    const resp = await fetch("/profile", { method: "GET" });
+    if (resp.status === 200) {
+      alert("hi");
+      window.location = "/profile.html";
+    }
+  });
 }
