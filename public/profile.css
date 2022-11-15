@@ -169,7 +169,6 @@ body {
   margin:0;
   /* margin-left: 70px; */
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -325,4 +324,26 @@ body {
 
 header {
   margin: auto 60px
+}
+
+
+.input-container {
+  width: 500px;
+}
+
+.input-content {
+  border-bottom: solid #000000 2px;
+  width: 340px; 
+  text-align: center;
+}
+
+.listnode-container {
+  display: flex;
+  flex-direction: column;
+}
+.content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 10px;
 }
