@@ -1,148 +1,405 @@
 /* ------------------- Navbar CSS ------------------- */
 :root {
-    --bs-btn-hover-bg: #00000045 !important;
-  }
-  
-  body {
-    margin: 0;
-    top: 10px;
-  }
-  
-  .bi,
-  .nav-link,
-  .bi-person-circle,
-  .show,
-  .dropdown-toggle {
-    color: white !important;
-  }
-  
-  .dropdownButton {
-    color: rgb(252, 186, 3) !important;
-  }
-  
-  .navbar {
-    --bs-navbar-padding-y: 0 !important;
-    --bs-navbar-color: rgb(255 255 255 / 100%) !important;
-    --bs-navbar-hover-color: rgb(255 255 255 / 50%) !important;
-    margin-bottom: 2vh;
-    background: linear-gradient(
-      to right,
+  --bs-btn-hover-bg: #00000045 !important;
+}
+
+body {
+  margin: 0;
+  top: 10px;
+}
+
+.bi,
+.nav-link,
+.bi-person-circle,
+.show,
+.dropdown-toggle {
+  color: white !important;
+}
+
+.dropdownButton {
+  color: rgb(252, 186, 3) !important;
+}
+
+.navbar {
+  --bs-navbar-padding-y: 0 !important;
+  --bs-navbar-color: rgb(255 255 255 / 100%) !important;
+  --bs-navbar-hover-color: rgb(255 255 255 / 50%) !important;
+  margin-bottom: 2vh;
+  background: linear-gradient(to right,
       rgba(0, 57, 131, 1),
-      rgba(0, 135, 112, 1)
-    ) !important;
+      rgba(0, 135, 112, 1)) !important;
+}
+
+.navbar-nav {
+  --bs-nav-link-padding-y: 0 !important;
+}
+
+.navSpace {
+  margin-left: 7px;
+}
+
+.teckyLogo {
+  margin: 7px 7px;
+  /* margin-left: 1vw; */
+  height: 50px;
+  /* color: rgb(255 255 255 / 100%) !important; */
+}
+
+.allProductLink {
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+
+.btn {
+  color: white !important;
+  border: 2px solid #ffffff !important;
+}
+
+.btn-outline-success {
+  --bs-btn-hover-bg: #50bb89 !important;
+  --bs-btn-active-bg: #50bb89 !important;
+}
+
+.nav-item .dropdown {
+  position: relative;
+  margin-left: 20px !important;
+}
+
+.d-flex {
+  margin-right: 10px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  right: 0px;
+  left: auto !important;
+  --bs-dropdown-link-hover-color: #ffc107 !important;
+  --bs-dropdown-link-hover-bg: #ffffff00 !important;
+  --bs-dropdown-link-active-color: #ffc107 !important;
+  --bs-dropdown-link-active-bg: #ffffff00 !important;
+}
+
+.nav-item {
+  list-style-type: none;
+}
+
+.bi-box-arrow-in-right {
+  font-size: 30px;
+  margin-right: 10px;
+}
+
+.bi-person-circle {
+  font-size: 30px;
+  margin-right: 10px;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 12px;
+}
+
+.cart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 12px;
+}
+
+.logout-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 12px;
+}
+
+.dropdown-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.user-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#userbutton {
+  display: none;
+}
+
+#loginbutton {
+  display: flex;
+}
+
+.user-dropdown {
+  display: flex;
+  align-items: center;
+}
+
+/* ....................... NAV bar end .................................................... */
+
+
+
+#container1 {
+  border: 1px solid black;
+  /* background-color: yellow; */
+  padding: 20px;
+  height: 140px;
+  font-size: 30px;
+  /* position: absolute; */
+}
+
+#shoppingCart {
+  font-weight: 1000;
+}
+
+#container2 {
+  /* border: 1px solid black; */
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: yellow;
+  padding: 20px;
+  overflow-y: auto;
+  height: 70vh;
+}
+
+#container2_1 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  border-radius: 20px;
+  border: 1px solid black;
+  background-color: #50bb89;
+  padding: 5px;
+  height: 700px;
+  margin: 20px;
+  overflow-y: auto;
+}
+
+#leftBox {
+  display: flex;
+  border: 1px solid black;
+  margin: 5px;
+  width: 2000px;
+}
+
+#checkBox {
+  flex: 1;
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#smallcheckbox {
+  width: 150px;
+  height: 150px;
+  box-shadow: 5px 5px 5px black;
+
+}
+
+#productImage {
+  flex: 8;
+  /* border: 1px solid black; */
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#image1 {
+  height: 650px;
+
+}
+
+#rightBox {
+  display: flex;
+  border: 1px solid black;
+  margin: 5px;
+  width: 2000px;
+  flex-direction: column;
+  padding: 5px;
+}
+
+#upper {
+  height: 100%;
+  border: 1px solid black;
+  margin: 2.5px;
+  padding: 15px;
+  font-size: 50px;
+}
+
+#lower {
+  height: 100%;
+  border: 1px solid black;
+  margin: 2.5px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#left {
+  flex: 1;
+  background-color: red;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
+}
+
+#currencySign {
+  border: 1px solid black;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+  font-size: 80px;
+  padding: 10px;
+}
+
+#unitPrice {
+  border: 1px solid black;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+  font-size: 80px;
+  padding: 10px;
+}
+
+#right {
+  flex: 1;
+  background-color: blue;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
+}
+
+#minus,
+#unit,
+#plus {
+  flex: 1;
+  background-color: #ffc107;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+
+}
+
+#minusButton,
+#plusButton {
+  height: 90%;
+  width: 90%;
+  padding: 10px;
+}
+
+.bye {
+  height: 100%;
+  width: 100%;
+  color: black !important;
+  font-size: 90px;
+}
+
+#unit {
+  font-size: 90px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ................................................. */
+@media screen and (max-width:480px) {
+  #image1 {
+    height: 280px;
   }
-  
-  .navbar-nav {
-    --bs-nav-link-padding-y: 0 !important;
+
+  #smallcheckbox {
+    width: 28px;
+    height: 28px;
+    box-shadow: 5px 5px 5px black;
   }
-  
-  .navSpace {
-    margin-left: 7px;
+
+  #upper {
+    height: 100%;
+    border: 1px solid black;
+    margin: 2.5px;
+    padding: 15px;
+    font-size: 15px;
   }
-  
-  .teckyLogo {
-    margin: 7px 7px;
-    /* margin-left: 1vw; */
-    height: 50px;
-    /* color: rgb(255 255 255 / 100%) !important; */
+
+  #container2 {
+    /* border: 1px solid black; */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: yellow;
+    padding: 20px;
+    overflow-y: auto;
+    height: 60vh;
   }
-  
-  .allProductLink {
-    color: #ffffff !important;
-    text-decoration: none !important;
+
+  #container2_1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border-radius: 20px;
+    border: 1px solid black;
+    background-color: #50bb89;
+    padding: 5px;
+    height: 400px;
+    margin: 20px;
+    overflow-y: auto;
   }
-  
-  .btn {
-    color: white !important;
-    border: 2px solid #ffffff !important;
-  }
-  
-  .btn-outline-success {
-    --bs-btn-hover-bg: #50bb89 !important;
-    --bs-btn-active-bg: #50bb89 !important;
-  }
-  
-  .nav-item .dropdown {
-    position: relative;
-    margin-left: 20px !important;
-  }
-  
-  .d-flex {
-    margin-right: 10px;
-  }
-  
-  .dropdown-menu {
-    position: absolute;
-    right: 0px;
-    left: auto !important;
-    --bs-dropdown-link-hover-color: #ffc107 !important;
-    --bs-dropdown-link-hover-bg: #ffffff00 !important;
-    --bs-dropdown-link-active-color: #ffc107 !important;
-    --bs-dropdown-link-active-bg: #ffffff00 !important;
-  }
-  
-  .nav-item {
-    list-style-type: none;
-  }
-  
-  .bi-box-arrow-in-right {
-    font-size: 30px;
-    margin-right: 10px;
-  }
-  
-  .bi-person-circle {
-    font-size: 30px;
-    margin-right: 10px;
-  }
-  
-  .login-container {
+  #currencySign {
+    border: 1px solid black;
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-decoration: none;
+    height: 90%;
+    font-size: 20px;
+    padding: 10px;
   }
   
-  .profile-container {
+  #unitPrice {
+    border: 1px solid black;
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 12px;
+    height: 90%;
+    font-size: 20px;
+    padding: 10px;
+  }
+  .bye {
+    height: 100%;
+    width: 100%;
+    color: black !important;
+    font-size: 20px;
   }
   
-  .cart-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 12px;
-  }
-  
-  .logout-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 12px;
-  }
-  
-  .dropdown-container {
-    display: flex;
-    justify-content: flex-start;
-  }
-  
-  .user-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  #userbutton {
-    display: none;
-  }
-  
-  #loginbutton {
-    display: flex;
-  }
-  
-  .user-dropdown {
-    display: flex;
-    align-items: center;
-  }
+  #unit {
+    font-size: 20px;
+}
+}

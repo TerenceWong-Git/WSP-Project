@@ -1,8 +1,9 @@
 console.log("hi");
-window.onload = () => {
+window.onload = async () => {
   userName();
   logout();
-  profile();
+  await profile();
+  editProfile();
 };
 
 async function userName() {
@@ -31,6 +32,7 @@ async function profile() {
   const user = data[0];
   console.log(user);
   console.log(user.username, user.email, user.mobile, user.birthday, user.subscription);
+  const leftContainer = document.querySelector(".left-container");
   for (const key in user) {
     const containerForAll = document.querySelector(".profile-content-container");
     const listNodeContainer = document.querySelector(".listnode-container");
@@ -62,10 +64,73 @@ async function profile() {
     // listnodeContentContainer.className = "listnode-content-container";
     listnodeContentContainer.appendChild(listNodeContainer);
     listnodeContentContainer.appendChild(contentContainer);
-    containerForAll.appendChild(listnodeContentContainer);
+    leftContainer.appendChild(listnodeContentContainer);
+    containerForAll.appendChild(leftContainer);
   }
+  const submitButton = document.createElement("button");
+  submitButton.classList.add("left-container-button");
+  submitButton.setAttribute("type", "submit");
+  submitButton.innerText = "Submit";
+  leftContainer.appendChild(submitButton);
 }
 
 function editProfile() {
-  document.querySelector(".");
+  const leftContainerSubmitButton = document.querySelector(".left-container-button");
+  leftContainerSubmitButton.addEventListener("click", async (e) => {
+    e.preventDefault();
+    const usernameDiv = document.querySelector(".username-content");
+    const mobileDiv = document.querySelector(".mobile-content");
+    const birthdayDiv = document.querySelector(".birthday-content");
+    const subscriptionDiv = document.querySelector(".subscription-content");
+    let subscriptionBoolean;
+    if (subscriptionDiv.innerText !== "No") {
+      console.log("true 1");
+    } else if (subscriptionDiv.innerText !== "Yes") {
+      console.log("false 1");
+    }
+    if (subscriptionDiv.innerText === "Yes") {
+      console.log("true 2");
+    } else if (subscriptionDiv.innerText === "No") {
+      console.log("false 2");
+    }
+    // console.log("check birthday", birthdayDiv.innerHTML);
+    if (usernameDiv.innerText.length >= 20 || usernameDiv.innerText.includes(" ")) {
+      alert("Invalid Username!");
+      return;
+    }
+    if (isNaN(parseInt(mobileDiv.innerText)) || mobileDiv.innerText.length !== 8) {
+      alert("Invalid Mobile number!");
+      return;
+    }
+    if (!(new Date(birthdayDiv.innerText) instanceof Date)) {
+      alert("Invalid birthday number!");
+      return;
+    }
+    if (subscriptionDiv.innerText !== "Yes" && subscriptionDiv.innerText !== "No") {
+      alert('Type "Yes" / "No" on subscribing to our latest news.');
+      return;
+    }
+    if (subscriptionDiv.innerText === "Yes") {
+      subscriptionBoolean = true;
+      console.log("turned into true");
+    } else {
+      subscriptionBoolean = false;
+      console.log("turned into false");
+    }
+    console.log(subscriptionBoolean);
+    const formBody = { username: usernameDiv.textContent, mobile: parseInt(mobileDiv.innerText), birthday: birthdayDiv.textContent, subscription: subscriptionBoolean };
+    const resp = await fetch("/profile", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formBody),
+    });
+    if (resp.status === 200) {
+      window.location = "/profile.html";
+      // alert("edited profile");
+    } else {
+      window.location = "/";
+    }
+  });
 }

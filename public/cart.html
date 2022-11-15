@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" />
-  <link rel="stylesheet" href="/index.css" />
+  <link rel="stylesheet" href="/cart.css" />
   <link rel="stylesheet" href="/user/index.css">
   <title>Document</title>
 </head>
@@ -57,10 +57,11 @@
 
             <ul class="dropdown-menu">
               <li class="profile-container">
-                <i class="bi bi-file-earmark-person dropdownButton"></i><a class="dropdown-item" href="#">Profile</a>
+                <i class="bi bi-file-earmark-person dropdownButton"></i><a class="dropdown-item profilebutton"
+                  href="#">Profile</a>
               </li>
               <li class="cart-container">
-                <i class="bi bi-cart4 dropdownButton"></i><a class="dropdown-item" href="#">Shopping
+                <i class="bi bi-cart4 dropdownButton"></i><a class="dropdown-item" href="./cart.html">Shopping
                   Cart</a>
               </li>
               <li>
@@ -78,7 +79,106 @@
   </nav>
   <!-- END OF NAV BAR -->
 
-  <h1>shopping cart page</h1> 
+
+  <div id="container1">
+    <div id="shoppingCart">Shopping Cart</div>
+    <div id="totalQuantity"><span id="quantity">2</span> product(s) in total</div>
+  </div>
+
+  <div id="container2">
+    <div id="container2_1">
+      <div id="leftBox">
+        <div id="checkBox"><input type="checkbox" id="smallcheckbox" name="checkbox" value="checkbox"></div>
+        <div id="productImage"><img id="image1" src="./productImages/cupNoodles/ichiranTonkotsu.jpg"></div>
+      </div>
+
+      <div id="rightBox">
+        <div id="upper">product description</div>
+        <div id="lower">
+          <div id="left">
+            <div id="currencySign">HKD</div>
+            <div id="unitPrice">1000</div>
+          </div>
+          <div id="right">
+            <div id="minus"><button id="minusButton" min="1"><i class="bi bi-dash-lg bye"></i></button></div>
+            <div id ="unit">1</div>
+            <div id="plus"><button id="plusButton" max="10"><i class="bi bi-plus-lg bye"></i></button></div>
+          </div>
+        </div>
+      </div>  
+    </div>
+    
+    <div id="container2_1">
+      <div id="leftBox">
+        <div id="checkBox"><input type="checkbox" id="smallcheckbox" name="checkbox" value="checkbox"></div>
+        <div id="productImage"><img id="image1" src="./productImages/cupNoodles/ichiranTonkotsu.jpg"></div>
+      </div>
+
+      <div id="rightBox">
+        <div id="upper">product description</div>
+        <div id="lower">
+          <div id="left">
+            <div id="currencySign">HKD</div>
+            <div id="unitPrice">1000</div>
+          </div>
+          <div id="right">
+            <div id="minus"><button id="minusButton" min="1"><i class="bi bi-dash-lg bye"></i></button></div>
+            <div id ="unit">1</div>
+            <div id="plus"><button id="plusButton" max="10"><i class="bi bi-plus-lg bye"></i></button></div>
+          </div>
+        </div>
+      </div>  
+    </div>
+
+    <div id="container2_1">
+      <div id="leftBox">
+        <div id="checkBox"><input type="checkbox" id="smallcheckbox" name="checkbox" value="checkbox"></div>
+        <div id="productImage"><img id="image1" src="./productImages/cupNoodles/ichiranTonkotsu.jpg"></div>
+      </div>
+
+      <div id="rightBox">
+        <div id="upper">product description</div>
+        <div id="lower">
+          <div id="left">
+            <div id="currencySign">HKD</div>
+            <div id="unitPrice">1000</div>
+          </div>
+          <div id="right">
+            <div id="minus"><button id="minusButton" min="1"><i class="bi bi-dash-lg bye"></i></button></div>
+            <div id ="unit">1</div>
+            <div id="plus"><button id="plusButton" max="10"><i class="bi bi-plus-lg bye"></i></button></div>
+          </div>
+        </div>
+      </div>  
+    </div>
+
+    <div id="container2_1">
+      <div id="leftBox">
+        <div id="checkBox"><input type="checkbox" id="smallcheckbox" name="checkbox" value="checkbox"></div>
+        <div id="productImage"><img id="image1" src="./productImages/cupNoodles/ichiranTonkotsu.jpg"></div>
+      </div>
+
+      <div id="rightBox">
+        <div id="upper">product description</div>
+        <div id="lower">
+          <div id="left">
+            <div id="currencySign">HKD</div>
+            <div id="unitPrice">1000</div>
+          </div>
+          <div id="right">
+            <div id="minus"><button id="minusButton" min="1"><i class="bi bi-dash-lg bye"></i></button></div>
+            <div id ="unit">1</div>
+            <div id="plus"><button id="plusButton" max="10"><i class="bi bi-plus-lg bye"></i></button></div>
+          </div>
+        </div>
+      </div>  
+    </div>
+
+  </div>
+
+  <div id="container3">
+
+  </div>
 
   <!-- JavaScript Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
