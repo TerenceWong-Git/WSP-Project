@@ -23,7 +23,7 @@ import { logoutRoutes } from "./routers/logoutRoute";
 // import {registerRoutes} from "./routers/registerRoute" ;
 import { register } from "./routers/registerRoute";
 import { indexRoute } from "./routers/indexRoute";
-import { displayProduct } from "./routers/displayProduct";
+import { displayProduct } from "./routers/displayProduct";  
 import { buyNow } from "./routers/buyNow";
 import { addToCar } from "./routers/addToCar";
 import { Productrecords } from "./models";
@@ -43,8 +43,7 @@ const server = new http.Server(app);
 const PORT = 8080;
 
 import grant from "grant";
-import { allCategoryRoute } from "./routers/allCategoryRoute";
-import { profileRoutes } from "./routers/profileRoute";
+// import { allCategoryRoute } from "./routers/allCategoryRoute";
 
 const grantExpress = grant.express({
   defaults: {
@@ -79,14 +78,14 @@ app.use(grantExpress as express.RequestHandler);
 app.use("/login", loginRoutes); // request received from login.js
 app.use(logoutRoutes); // request received from login.js
 app.use(indexRoute); // request received from index.js
-app.use(allCategoryRoute); // request received from allCategory.js
-app.use("/profile", profileRoutes); // request received from allCategory.js
+// app.use(allCategoryRoute); // request received from allCategory.js
 
-// app.use(registerRoutes);
 app.post("/userData", register);
 
 //////////////////////  registration route handler END ////////////////////////////////////////////////////////////////////////
-app.post('/id1', displayProduct);
+app.post('/id1', displayProduct);  //ver.1
+// app.get("/product/:id",displayProduct )  //ver.2
+
 app.post("/productsesseion",productSession);
 
 app.get("/buyNow", buyNow);

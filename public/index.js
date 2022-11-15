@@ -1,9 +1,12 @@
+let paramsStringObj = {product:"name", origin:"hongkong",price:"25"};
 window.onload = () => {
   loadProducts();
   userName();
   logout();
-  profile();
-};
+  profile();}
+
+  
+
 
 async function loadProducts() {
   const resp = await fetch("/index");
@@ -18,23 +21,50 @@ async function loadProducts() {
   let snackCount = 1;
   let noodleCount = 1;
 
+  
+  
+
   for (const product of products) {
+
     console.log(product.category_id);
     if (product.category_id === 1) {
+
+      const url='http://localhost:8080/product.html?';
+      const obj={
+        id:`${product.id}`,
+      }
+
+      const searchParams= new URLSearchParams(obj);
+      // console.log(searchParams);
+      const queryString=searchParams.toString();
+      // console.log(queryString)
+      let pathOfEachProduct=url+queryString;
+
       drinkStr += `
     <div class="topSalesProducts${drinkCount}">
-      <a href="/product/${product.id}"><img class="productsImage" src="${product.image}" alt="..."/></a>
+      <a href="${pathOfEachProduct}"><img class="productsImage" src="${product.image}" alt="..."/></a>
+      
       <div class="productsName">${product.name}</div>
+
       <div class="productsPrice">$${product.price}</div>
       </div>
       `;
+      
       drinkCount++;
     }
 
     if (product.category_id === 2) {
+      const url='http://localhost:8080/product.html?';
+      const obj={
+        id:`${product.id}`,
+      }
+      const searchParams= new URLSearchParams(obj);
+      const queryString=searchParams.toString();
+      let pathOfEachProduct=url+queryString;
+
       snackStr += `
     <div class="topSalesProducts${snackCount}">
-      <a href="/product/${product.id}"><img class="productsImage" src="${product.image}" alt="..."/></a>
+      <a href="${pathOfEachProduct}"><img class="productsImage" src="${product.image}" alt="..."/></a>
       <div class="productsName">${product.name}</div>
       <div class="productsPrice">$${product.price}</div>
       </div>
@@ -43,9 +73,17 @@ async function loadProducts() {
     }
 
     if (product.category_id === 3) {
+
+      const url='http://localhost:8080/product.html?';
+      const obj={
+        id:`${product.id}`,
+      }
+      const searchParams= new URLSearchParams(obj);
+      const queryString=searchParams.toString();
+      let pathOfEachProduct=url+queryString;
       noodleStr += `
     <div class="topSalesProducts${noodleCount}">
-      <a href="/product/${product.id}"><img class="productsImage" src="${product.image}" alt="..."/></a>
+      <a href="${pathOfEachProduct}"><img class="productsImage" src="${product.image}" alt="..."/></a>
       <div class="productsName">${product.name}</div>
       <div class="productsPrice">$${product.price}</div>
       </div>

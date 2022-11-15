@@ -22,28 +22,20 @@ function logout() {
   });
 }
 
-///////////////////////  show certain product on the display box  /////////////////////////
+///////////////////////  show certain product on the display box (ver.1)  /////////////////////////
 
 
 async function getImage() {
 
   let url = window.location.search;
-  // console.log(url);
   let queries = new URLSearchParams(url);
 
   let idOfProduct = queries.get("id");
-  // let categoryOfProduct=queries.get("category");
-
-  // console.log(idOfProduct,"is product id");
-  // console.log(categoryOfProduct, "is product category");
-
+// console.log(idOfProduct)
   let formBody = {
     id: idOfProduct,
-    // category:categoryOfProduct
   }
-  // formBody["category"]=categoryOfProduct;
-  // console.log(formBody)
-
+ 
   const resp = await fetch('/id1', {
     method: "POST",
     headers: {
@@ -54,7 +46,6 @@ async function getImage() {
   });
 
   const data = await resp.json();
-  // console.log(data); 
 
   let id = data[0].id;
   let productName = data[0].name;
@@ -65,9 +56,7 @@ async function getImage() {
   let salesQuantity = data[0].sales_quantity;
   let d = data[0].description;
 
-  // console.log(imageLocation);
   let img1 = `<img src="${imageLocation}" alt="${imageName}" id="${id}">`;
-  // console.log(img1);
   let price1 = `${pricePerUnit}`;
   let pname = `${productName}`;
   let stNumber = `${stockNumber}`;
@@ -81,6 +70,46 @@ async function getImage() {
   document.querySelector("#salesNumber").innerHTML = salesQ;
   document.querySelector("#details").innerHTML = descrip;
 }
+
+///////////////////// show certain product on the display box (ver.2)  /////////////////////
+
+// async function getImage() {
+//   const resp = await fetch('/product/:id', {
+//     method: "GET",
+
+
+//   });
+
+//   const data = await resp.json();
+//   console.log(data[0])
+
+//   let id = data[0].id;
+//   let productName = data[0].name;
+//   let imageLocation = data[0].image;
+//   let imageName = data[0].name;
+//   let pricePerUnit = data[0].price;
+//   let stockNumber = data[0].stock;
+//   let salesQuantity = data[0].sales_quantity;
+//   let d = data[0].description;
+
+//   let img1 = `<img src="${imageLocation}" alt="${imageName}" id="${id}">`;
+//   let price1 = `${pricePerUnit}`;
+//   let pname = `${productName}`;
+//   let stNumber = `${stockNumber}`;
+//   let salesQ = `${salesQuantity}`;
+//   let descrip = `${d}`;
+
+//   document.querySelector("#productName").innerHTML = pname;
+//   document.querySelector("#productImage").innerHTML = img1;
+//   document.querySelector("#pricePerGoods").innerHTML = price1;
+//   document.querySelector("#stockNumber").innerHTML = stNumber;
+//   document.querySelector("#salesNumber").innerHTML = salesQ;
+//   document.querySelector("#details").innerHTML = descrip;
+// }
+
+
+
+
 ///////////////////// help save the req.session of the single product on the product page  ////////////////////////////////////////////////////
 
 async function productSession() {
@@ -112,15 +141,7 @@ async function productSession() {
   if (resp.status !== 201) { console.log("session is not stored successfully") }
   else {
     console.log("session is not stored successfully")
-    // alert(data.id + " from product.js")
-    // const respo = await fetch("/login", {
-    //   method: "POST",
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: console.log(JSON.stringify({url}))
-
-    // })
+   
   }
 
 
