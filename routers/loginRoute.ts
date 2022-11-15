@@ -6,11 +6,11 @@ import fetch from "cross-fetch";
 
 
 export const loginRoutes = express.Router(); //export to app.ts
-loginRoutes.use("/:textname",(req, res) => {
-let textname = req.params.textname
-console.log(textname)
-  res.redirect(`/${textname}.html`)
-});
+// loginRoutes.use("/:textname",(req, res) => {
+// let textname = req.params.textname
+// console.log(textname)
+//   res.redirect(`/${textname}.html`)
+// });
 
 loginRoutes.post("/", postLoginRoutes);
 loginRoutes.get("/google", loginGoogle);
