@@ -36,8 +36,6 @@ async function loadAllCategory() {
   console.log(products);
 
   for (const product of products) {
-    console.log(product);
-
     const url = "http://localhost:8080/product.html?";
     const obj = {
       id: `${product.id}`,
@@ -45,12 +43,16 @@ async function loadAllCategory() {
     const searchParams = new URLSearchParams(obj);
     const queryString = searchParams.toString();
     let pathOfEachProduct = url + queryString;
-    
 
     // Create Product Card
     const productCard = document.createElement("div");
     const productId = product.category_id;
-    productCard.classList.add("productCard", `category-${productId}`);
+    const productStock = product.stock;
+    productCard.classList.add(
+      "productCard",
+      `category-${productId}`,
+      productStock
+    );
 
     // Create Image div
     const imageArea = document.createElement("div");
@@ -87,7 +89,7 @@ async function loadAllCategory() {
 }
 
 // Put category value into button
-async function filterProduct(e, category) {
+function filterProduct(e, category) {
   let categoryButton = document.querySelectorAll(".button-category");
   let secondButton = document.querySelectorAll(".secondButton-category");
   let showCards = document.querySelectorAll(".productCard");
@@ -121,21 +123,16 @@ async function filterProduct(e, category) {
   });
 }
 
-// async function checkStock (e) {
-//   const resp = await fetch("/allCategory");
-//   const products = await resp.json();
-
-//   let showCards = document.querySelectorAll(".productCard");
-//   for (const product of products) {
-//     showCards.forEach(element) => {
-//       if (product.stock) {
-//         element.classList.remove("hide");
-//       }
-//     } else {
-
-//     }
-
-//   }
+function checkStock(e) {
+  let showCards = document.querySelectorAll(".productCard");
+  showCards.forEach((element) => {
+    if (element.classList.contains("true")) {
+      element.classList.remove("hide");
+    } else {
+      element.classList.add("hide");
+    }
+  });
+}
 
 document.querySelector("#all").addEventListener("click", (e) => {
   filterProduct(e, "all");
@@ -154,5 +151,6 @@ document.querySelector("#noodles").addEventListener("click", (e) => {
 });
 
 document.querySelector("#stock").addEventListener("click", (e) => {
-  filterProduct(e, "stock");
+  filterProduct(e);
+  checkStock(e);
 });
