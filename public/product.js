@@ -1,6 +1,7 @@
 // import { json } from "stream/consumers";
 
 // import { URLSearchParams } from "url";
+import { userName } from "./fetchUser.js";
 
 window.onload = () => {
   logout();
@@ -24,28 +25,29 @@ function logout() {
 
 ///////////////////////  show certain product on the display box (ver.1)  /////////////////////////
 
-
 async function getImage() {
-
   let url = window.location.search;
   let queries = new URLSearchParams(url);
 
   let idOfProduct = queries.get("id");
-// console.log(idOfProduct)
+  // console.log(idOfProduct)
   let formBody = {
     id: idOfProduct,
-  }
- 
-  const resp = await fetch('/id1', {
+    // category:categoryOfProduct
+  };
+  // formBody["category"]=categoryOfProduct;
+  // console.log(formBody)
+
+  const resp = await fetch("/id1", {
     method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify(formBody)
-
+    body: JSON.stringify(formBody),
   });
 
   const data = await resp.json();
+  // console.log(data);
 
   let id = data[0].id;
   let productName = data[0].name;
@@ -77,7 +79,6 @@ async function getImage() {
 //   const resp = await fetch('/product/:id', {
 //     method: "GET",
 
-
 //   });
 
 //   const data = await resp.json();
@@ -107,13 +108,9 @@ async function getImage() {
 //   document.querySelector("#details").innerHTML = descrip;
 // }
 
-
-
-
 ///////////////////// help save the req.session of the single product on the product page  ////////////////////////////////////////////////////
 
 async function productSession() {
-
   let url = window.location.search;
   // console.log(url, "haha");
   let queries = new URLSearchParams(url);
@@ -122,45 +119,37 @@ async function productSession() {
 
   // const formBody={};
   let formBody = {
-    id: idOfProduct
-  }
+    id: idOfProduct,
+  };
   // formBody["category"]=categoryOfProduct;
-  console.log(formBody)
+  console.log(formBody);
 
   const resp = await fetch("/productsesseion", {
     method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify(formBody)
+    body: JSON.stringify(formBody),
   });
 
   const data = await resp.json();
-  console.log(data.id);  //workable
+  console.log(data.id); //workable
 
-  if (resp.status !== 201) { console.log("session is not stored successfully") }
-  else {
-    console.log("session is not stored successfully")
-   
+  if (resp.status !== 201) {
+    console.log("session is not stored successfully");
+  } else {
+    console.log("session is not stored successfully");
+    // alert(data.id + " from product.js")
+    // const respo = await fetch("/login", {
+    //   method: "POST",
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: console.log(JSON.stringify({url}))
+
+    // })
   }
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///////////////////////  quantity control  /////////////////////////////////////////////////
 
@@ -183,48 +172,44 @@ document.querySelector("#plusButton").addEventListener("click", (e) => {
 
 //////////////////////// Buy now  ///////////////////////////////////////////////////////
 document.querySelector(".buyNow").addEventListener("click", async () => {
-  { console.log("buy") }
+  {
+    console.log("buy");
+  }
   const resp = await fetch("/buyNow", {
-    method: "GET"
-  })
+    method: "GET",
+  });
 
   const data = await resp.json();
 
   if (resp.status !== 201) {
     alert(data.message);
-    window.location = "/login.html"
-  };
+    window.location = "/login.html";
+  }
   if (resp.status === 201) {
     alert(data.message);
-    window.location = "/payment.html"
+    window.location = "/payment.html";
   }
-
-})
-
+});
 
 //////////////////////  Add to car  ////////////////////////////////////
 document.querySelector(".addToCar").addEventListener("click", async () =>
-// {console.log("add to car")
-{
-  const resp = await fetch("/addToCar", {
-    method: "GET"
-  })
+  // {console.log("add to car")
+  {
+    const resp = await fetch("/addToCar", {
+      method: "GET",
+    });
 
-  const data = await resp.json();
+    const data = await resp.json();
 
-  if (resp.status !== 201) {
-    alert(data.message);
-    window.location = "/login.html"
-  };
-  if (resp.status === 201) {
-    alert(data.message);
+    if (resp.status !== 201) {
+      alert(data.message);
+      window.location = "/login.html";
+    }
+    if (resp.status === 201) {
+      alert(data.message);
+    }
   }
-})
-
-
-
-
-
+);
 
 ///////////////////// subtmit comment  ////////////////////
 function submitComment() {
@@ -249,10 +234,10 @@ function submitComment() {
 }
 
 /////////////////////////  show user name  //////////////////////
-async function userName() {
-  const userInfo = await fetch("/login");
-  const userInfoObj = await userInfo.json();
-  const username = userInfoObj.username;
-  const usernameDiv = document.querySelector(".username");
-  usernameDiv.innerText = username;
-}
+// async function userName() {
+//   const userInfo = await fetch("/login");
+//   const userInfoObj = await userInfo.json();
+//   const username = userInfoObj.username;
+//   const usernameDiv = document.querySelector(".username");
+//   usernameDiv.innerText = username;
+// }

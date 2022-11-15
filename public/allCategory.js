@@ -1,8 +1,12 @@
 //Initially display all products
+import { userName } from "./fetchUser.js";
+import func from "./func.js";
 window.onload = () => {
   logout();
   loadAllCategory();
   userName();
+  // import variable from func.js
+  console.log(func);
 };
 
 function logout() {
@@ -17,13 +21,13 @@ function logout() {
   });
 }
 
-async function userName() {
-  const userInfo = await fetch("/login");
-  const userInfoObj = await userInfo.json();
-  const username = userInfoObj.username;
-  const usernameDiv = document.querySelector(".username");
-  usernameDiv.innerText = username;
-}
+// async function userName() {
+//   const userInfo = await fetch("/login");
+//   const userInfoObj = await userInfo.json();
+//   const username = userInfoObj.username;
+//   const usernameDiv = document.querySelector(".username");
+//   usernameDiv.innerText = username;
+// }
 
 async function loadAllCategory() {
   const resp = await fetch("/allCategory");

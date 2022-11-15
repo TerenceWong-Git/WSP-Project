@@ -162,16 +162,24 @@ body {
   margin: auto 60px;
 }
 
-.sign-in-container {
+.profile-content-container {
   border: 1px solid #000000;
   width: 400px;
   height: 500px;
   margin:0;
   /* margin-left: 70px; */
   display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-around;
+}
+
+/* .listnode-content-container {
+  display: flex;
   align-items: center;
   justify-content: center;
-}
+} */
+
 .sign-up-container {
   border: 1px solid #000000;
   width: 400px;
@@ -216,7 +224,9 @@ body {
     text-decoration:line-through;
 }
 
-
+#passwordform {
+  margin-top: 30px;
+}
 
 .sign-in-email {
   margin-top: 10px;
@@ -346,4 +356,14 @@ header {
   flex-direction: column;
   align-items: center;
   margin-left: 10px;
+}
+
+.listnode-content-container {
+  display: flex;
+}
+
+.password-container {
+  /* margin-left: 70px; */
+  display: flex;
+  flex-direction: column;
 }

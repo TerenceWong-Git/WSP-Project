@@ -32,7 +32,7 @@ async function profile() {
   console.log(user);
   console.log(user.username, user.email, user.mobile, user.birthday, user.subscription);
   for (const key in user) {
-    const containerForAll = document.querySelector(".sign-in-container");
+    const containerForAll = document.querySelector(".profile-content-container");
     const listNodeContainer = document.querySelector(".listnode-container");
     const contentContainer = document.querySelector(".content-container");
     const listNode = document.createElement("div");
@@ -58,7 +58,14 @@ async function profile() {
     }
     listNodeContainer.appendChild(listNode);
     contentContainer.appendChild(content);
-    containerForAll.appendChild(listNodeContainer);
-    containerForAll.appendChild(contentContainer);
+    const listnodeContentContainer = document.querySelector(".listnode-content-container");
+    // listnodeContentContainer.className = "listnode-content-container";
+    listnodeContentContainer.appendChild(listNodeContainer);
+    listnodeContentContainer.appendChild(contentContainer);
+    containerForAll.appendChild(listnodeContentContainer);
   }
+}
+
+function editProfile() {
+  document.querySelector(".");
 }
