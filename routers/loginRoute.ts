@@ -59,7 +59,7 @@ async function loginGoogle(req: express.Request, res: express.Response) {
     res.redirect("/register.html");
     return;
   } else {
-    req.session.user = { id: users[0].id, username: users[0].username, email: users[0].email, password: users[0].email };
+    req.session.user = { id: users[0].id, username: users[0].username, email: users[0].email, password: users[0].password };
     // res.status(200).json({ message: "logged in with google" });
     res.redirect("/");
   }
