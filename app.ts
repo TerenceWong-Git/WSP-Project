@@ -28,6 +28,7 @@ import { buyNow } from "./routers/buyNow";
 import { addToCar } from "./routers/addToCar";
 import { Productrecords } from "./models";
 import {productSession} from "./routers/productSession";
+import { allCategoryRoute } from "./routers/allCategoryRoute";
 
 declare module "express-session" {
   interface Session {
@@ -43,7 +44,7 @@ const server = new http.Server(app);
 const PORT = 8080;
 
 import grant from "grant";
-// import { allCategoryRoute } from "./routers/allCategoryRoute";
+
 
 const grantExpress = grant.express({
   defaults: {
@@ -78,7 +79,7 @@ app.use(grantExpress as express.RequestHandler);
 app.use("/login", loginRoutes); // request received from login.js
 app.use(logoutRoutes); // request received from login.js
 app.use(indexRoute); // request received from index.js
-// app.use(allCategoryRoute); // request received from allCategory.js
+app.use(allCategoryRoute); // request received from allCategory.js
 
 app.post("/userData", register);
 

@@ -1,6 +1,7 @@
 //Initially display all products
 import { userName } from "./fetchUser.js";
 import func from "./func.js";
+
 window.onload = () => {
   logout();
   loadAllCategory();
@@ -35,20 +36,35 @@ async function loadAllCategory() {
   console.log(products);
 
   for (const product of products) {
-    console.log(product.category_id);
-    const productId = product.category_id;
+    console.log(product);
+
+    const url = "http://localhost:8080/product.html?";
+    const obj = {
+      id: `${product.id}`,
+    };
+    const searchParams = new URLSearchParams(obj);
+    const queryString = searchParams.toString();
+    let pathOfEachProduct = url + queryString;
+    
+
     // Create Product Card
     const productCard = document.createElement("div");
+    const productId = product.category_id;
     productCard.classList.add("productCard", `category-${productId}`);
 
     // Create Image div
     const imageArea = document.createElement("div");
     imageArea.classList.add("imageArea");
 
+    const productURL = document.createElement("a");
+    productURL.classList.add("imageArea");
+    productURL.setAttribute("href", pathOfEachProduct);
+    productCard.appendChild(productURL);
+
     const productImage = document.createElement("img");
     productImage.setAttribute("src", product.image);
-    imageArea.appendChild(productImage);
-    productCard.appendChild(imageArea);
+
+    productURL.appendChild(productImage);
 
     // Create Product info. div
     const productInfoArea = document.createElement("div");
