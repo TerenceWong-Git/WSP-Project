@@ -59,13 +59,18 @@ async function profile() {
     listNodeContainer.appendChild(listNode);
     contentContainer.appendChild(content);
     const listnodeContentContainer = document.querySelector(".listnode-content-container");
+    const leftContainer = document.querySelector(".left-container");
     // listnodeContentContainer.className = "listnode-content-container";
     listnodeContentContainer.appendChild(listNodeContainer);
     listnodeContentContainer.appendChild(contentContainer);
-    containerForAll.appendChild(listnodeContentContainer);
+    leftContainer.appendChild(listnodeContentContainer);
+    containerForAll.appendChild(leftContainer);
   }
 }
 
 function editProfile() {
-  document.querySelector(".");
+  const usernameDiv = document.querySelector(".username-content");
+  const mobileDiv = document.querySelector(".mobile-content");
+  const birthdayDiv = document.querySelector(".birthday-content");
+  const subscription = document.querySelector(".subscription-content");
 }
