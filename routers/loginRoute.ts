@@ -11,7 +11,7 @@ loginRoutes.get("/google", loginGoogle);
 loginRoutes.get("/", getLoginRoutes);
 
 async function postLoginRoutes(req: express.Request, res: express.Response, next: express.NextFunction) {
-  const { email, password } = req.body;
+  const { email, password, url } = req.body;
   const users = await client.query<Login>(/* sql */ `SELECT id, username, email, password from users`);
 
   for (const user of users.rows) {
@@ -19,9 +19,11 @@ async function postLoginRoutes(req: express.Request, res: express.Response, next
       let result = await checkPassword(password, user.password);
       if (result) {
         req.session.user = { id: user.id, username: user.username, email: user.email };
-        res.status(200).json({ message: "ok" });
-        console.log(req.session.user);
-        // console.log(req.session);
+        res.status(200).json(url);
+        console.log({url});
+        console.log(req.session.user, "refers to loginRoutes.ts");
+        console.log(req.session, "refers to loginRoutes.ts");
+        console.log(req.session.productRecords, "loginRoute.ts")
         return;
       }
     }

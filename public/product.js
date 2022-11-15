@@ -27,33 +27,36 @@ function logout() {
 
 async function getImage() {
 
-  let url=window.location.search;
+  let url = window.location.search;
   // console.log(url);
-  let queries= new URLSearchParams(url);
-  
-  let idOfProduct=queries.get("id");
-  let categoryOfProduct=queries.get("category");
-  
+  let queries = new URLSearchParams(url);
+
+  let idOfProduct = queries.get("id");
+  // let categoryOfProduct=queries.get("category");
+
   // console.log(idOfProduct,"is product id");
   // console.log(categoryOfProduct, "is product category");
-  
-  // const formBody={};
-  let formBody={id:idOfProduct,
-                category:categoryOfProduct}
+
+  let formBody = {
+    id: idOfProduct,
+    // category:categoryOfProduct
+  }
   // formBody["category"]=categoryOfProduct;
   // console.log(formBody)
 
-  const resp = await fetch("/id1", {
+  const resp = await fetch('/id1', {
     method: "POST",
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(formBody)
+
   });
 
   const data = await resp.json();
   // console.log(data); 
 
+  let id = data[0].id;
   let productName = data[0].name;
   let imageLocation = data[0].image;
   let imageName = data[0].name;
@@ -63,7 +66,7 @@ async function getImage() {
   let d = data[0].description;
 
   // console.log(imageLocation);
-  let img1 = `<img src="${imageLocation}" alt="${imageName}" id="displayImage">`;
+  let img1 = `<img src="${imageLocation}" alt="${imageName}" id="${id}">`;
   // console.log(img1);
   let price1 = `${pricePerUnit}`;
   let pname = `${productName}`;
@@ -82,31 +85,43 @@ async function getImage() {
 
 async function productSession() {
 
-  let url=window.location.search;
+  let url = window.location.search;
   // console.log(url, "haha");
-  let queries= new URLSearchParams(url);
-  let idOfProduct=queries.get("id");
-  console.log(idOfProduct, "bitch");
+  let queries = new URLSearchParams(url);
+  let idOfProduct = queries.get("id");
+  // console.log(idOfProduct, "bitch");
 
   // const formBody={};
-  let formBody={id:idOfProduct
-    }
-// formBody["category"]=categoryOfProduct;
-console.log(formBody)
+  let formBody = {
+    id: idOfProduct
+  }
+  // formBody["category"]=categoryOfProduct;
+  console.log(formBody)
 
-const resp = await fetch("/productsesseion", {
-method: "POST",
-headers: {
-'Content-Type': 'application/json',
-},
-body: JSON.stringify(formBody)
-});
+  const resp = await fetch("/productsesseion", {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(formBody)
+  });
 
-const data = await resp.json();
-console.log(data);
+  const data = await resp.json();
+  console.log(data.id);  //workable
 
-if (resp.status!==201){console.log(data.message)}
-else{console.log(data.message)}
+  if (resp.status !== 201) { console.log("session is not stored successfully") }
+  else {
+    console.log("session is not stored successfully")
+    // alert(data.id + " from product.js")
+    // const respo = await fetch("/login", {
+    //   method: "POST",
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: console.log(JSON.stringify({url}))
+
+    // })
+  }
 
 
 }
@@ -146,39 +161,43 @@ document.querySelector("#plusButton").addEventListener("click", (e) => {
 });
 
 //////////////////////// Buy now  ///////////////////////////////////////////////////////
-document.querySelector(".buyNow").addEventListener("click", async()=>{
-{console.log("buy")}
-const resp= await fetch ("/buyNow", {
-  method: "GET"
-})
+document.querySelector(".buyNow").addEventListener("click", async () => {
+  { console.log("buy") }
+  const resp = await fetch("/buyNow", {
+    method: "GET"
+  })
 
-const data=await resp.json();
+  const data = await resp.json();
 
-if (resp.status!==201){alert(data.message);
-window.location="/login.html"};
-if (resp.status===201){
-  alert(data.message);
-  window.location="/payment.html"
-}
+  if (resp.status !== 201) {
+    alert(data.message);
+    window.location = "/login.html"
+  };
+  if (resp.status === 201) {
+    alert(data.message);
+    window.location = "/payment.html"
+  }
 
 })
 
 
 //////////////////////  Add to car  ////////////////////////////////////
-document.querySelector(".addToCar").addEventListener("click", async()=>
+document.querySelector(".addToCar").addEventListener("click", async () =>
 // {console.log("add to car")
 {
-const resp= await fetch ("/addToCar", {
-  method: "GET"
-})
+  const resp = await fetch("/addToCar", {
+    method: "GET"
+  })
 
-const data=await resp.json();
+  const data = await resp.json();
 
-if (resp.status!==201){alert(data.message);
-window.location="/login.html"};
-if (resp.status===201){
-  alert(data.message);
-}
+  if (resp.status !== 201) {
+    alert(data.message);
+    window.location = "/login.html"
+  };
+  if (resp.status === 201) {
+    alert(data.message);
+  }
 })
 
 

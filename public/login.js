@@ -6,6 +6,11 @@ window.onload = () => {
 };
 
 function login() {
+
+  const oldURL=document.referrer;
+  console.log(oldURL, "<= this is the previous page URL");
+  // console.log(idOfProduct, "bitch");
+
   const signInForm = document.querySelector("#signinform");
   console.log(signInForm);
   signInForm.addEventListener("submit", async (e) => {
@@ -14,6 +19,7 @@ function login() {
     const formBody = {
       email: form.email.value,
       password: form.password.value,
+      url:oldURL,
     };
     console.log(formBody);
     const resp = await fetch("/login", {
@@ -24,10 +30,13 @@ function login() {
       },
       body: JSON.stringify(formBody),
     });
+    let data=resp.json();
     if (resp.status === 200) {
       // const newNavBar = document.querySelector(".dropdown-container");
       // newNavBar.removeAttribute("hidden");
-      window.location = "/";
+      
+      window.location=oldURL;
+      // window.location = "/";
     } else {
       const data = await resp.json();
       alert(data.message);
