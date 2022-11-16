@@ -1,5 +1,6 @@
-const button = document.querySelector("button");
+const button = document.querySelector(".payButton");
 button.addEventListener("click", () => {
+    console.log("Hi");
 //   fetch("create-checkout-session", {
 //     method: "POST",
 //     headers: {
@@ -22,5 +23,5 @@ button.addEventListener("click", () => {
 //     .catch((e) => {
 //       console.error(e.error);
 //     });
-console.log("Hi");
 });
+
