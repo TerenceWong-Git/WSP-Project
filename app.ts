@@ -29,6 +29,7 @@ import { addCartRoute } from "./routers/addToCar";
 import { Productrecords } from "./models";
 import {productSession} from "./routers/productSession";
 import { allCategoryRoute } from "./routers/allCategoryRoute";
+import { getDataToShoppingCart } from "./routers/getDataToShoppingCart";
 
 declare module "express-session" {
   interface Session {
@@ -92,6 +93,7 @@ app.post("/productsesseion", productSession);
 
 app.get("/buyNow", buyNow);
 app.use("/addToCar", addCartRoute);
+app.get("/getDataToShoppingCart", getDataToShoppingCart )
 
 ////////////////////// Payment //////////////////////////
 app.post("/create-checkout-session", register);

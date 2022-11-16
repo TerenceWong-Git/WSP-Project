@@ -10,33 +10,46 @@ addCartRoute.post("/add", addToCar);
 
 
 export async function addToCar(req: express.Request, res: express.Response) {
-    // console.log(req.session, "from addToCar.ts");
-    // let addtoCartValue = req.body.createdDate
-    // console.log(addtoCartValue);
-   
-    // console.log(createdDate, quantity)
-    // console.log("backend addtocart", req.body)
+ 
     if (req.session.user && req.session.productRecords) {
 
         const created_date = req.body.createdDate;
         const eachProductQuantity = req.body.quantity;
-        
-        console.log(created_date);
-        console.log(eachProductQuantity);
+
+
+        let decisions= await client.query(
+            `SELECT * FROM decision`
+        )
+            // console.log(decisions.rows[0])
+
+
+        for (let decision of decisions.rows){
+            if(decision.users_id==req.session.user.id && decision.product_id==req.session.productRecords.id){
+                await client.query(
+                    `UPDATE decision set quantity = quantity + ${eachProductQuantity} WHERE users_id=${req.session.user.id} AND product_id=${req.session.productRecords.id} `
+                )
+                res.status(201).json({ message: "added successfully!" });
+                return;
+            }
 
         
-    
+           
+        }
+        
         
         await client.query(
             `INSERT INTO decision (users_id, product_id, quantity, created_date) VALUES ($1, $2, $3, $4)`,
             [req.session.user.id, req.session.productRecords.id, eachProductQuantity, created_date]
         )
-
-
-
-
+            
         res.status(201).json({ message: "added successfully!" });
-        return;
+        return; 
+
+       
+
+
+
+        
     }
     else {
         res.status(202).json({ message: "please first login to your account!" })
