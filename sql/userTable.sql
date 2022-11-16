@@ -1,13 +1,13 @@
 DROP TABLE IF EXISTS products_rates_map;
-DROP TABLE IF EXISTS users_products_map;
+DROP TABLE IF EXISTS decision;
 DROP TABLE IF EXISTS purchase_record_products_map;
-DROP TABLE IF EXISTS shopping_cart;
 DROP TABLE IF EXISTS purchase_record;
 DROP TABLE IF EXISTS rates;
 DROP TABLE IF EXISTS products;
 DROP TABLE IF EXISTS category;
 DROP TABLE IF EXISTS origin;
 DROP TABLE IF EXISTS brands;
+DROP TABLE IF EXISTS comments;
 DROP TABLE IF EXISTS users;
 CREATE TABLE users (
   id SERIAL PRIMARY KEY NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE users (
   password VARCHAR(255),
   email VARCHAR(255),
   mobile INT,
-  birthday DATE,
+  birthday date,
   subscription BOOLEAN
 );
 DROP TABLE IF EXISTS brands;
@@ -42,26 +42,18 @@ CREATE TABLE products (
   FOREIGN KEY (brands_id) REFERENCES brands(id),
   FOREIGN KEY (category_id) REFERENCES category(id)
 );
-CREATE TABLE shopping_cart (
-  id SERIAL PRIMARY KEY NOT NULL,
-  total_price decimal,
-  create_date date,
-  quantity int,
-  users_id integer,
-  products_id int,
-  FOREIGN KEY (users_id) REFERENCES users(id),
-  FOREIGN KEY (products_id) REFERENCES products(id)
+CREATE TABLE comments (
+    id SERIAL PRIMARY KEY NOT NULL,
+    comments VARCHAR(255),
+  product_id integer,
+  FOREIGN KEY (product_id) REFERENCES products(id)
 );
 CREATE TABLE purchase_record (
   id SERIAL PRIMARY KEY NOT NULL,
   total_price decimal,
   create_date date,
-  quantity int,
   delivery_status VARCHAR(255),
-  comment VARCHAR(255),
-  products_id int,
   users_id integer,
-  FOREIGN KEY (products_id) REFERENCES products(id),
   FOREIGN KEY (users_id) REFERENCES users(id)
 );
 CREATE TABLE rates (id SERIAL PRIMARY KEY NOT NULL, score int);
@@ -72,8 +64,10 @@ CREATE TABLE purchase_record_products_map (
   FOREIGN KEY (purchase_record_id) REFERENCES purchase_record(id),
   FOREIGN KEY (product_id) REFERENCES products(id)
 );
-CREATE TABLE users_products_map (
+CREATE TABLE decision (
   id SERIAL PRIMARY KEY NOT NULL,
+  quantity integer,
+  created_date date,
   users_id integer,
   product_id integer,
   FOREIGN KEY (users_id) REFERENCES users(id),

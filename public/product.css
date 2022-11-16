@@ -189,7 +189,7 @@ body {
 }
 
 img.displaying{
-    width: 600px;
+    width: 450px;
 height: auto;}
 
 #productContent {
@@ -753,7 +753,7 @@ font-weight: bold;}
         max-height: auto;
     } */
 
-    .displaying{height: 120px;}
+    .displaying{width: 50px;}
 
     #productImage {
         box-sizing: border-box;
@@ -762,7 +762,7 @@ font-weight: bold;}
         align-items: center;
         max-width: 100%;
         height: 600px;
-        border: 1px solid black;
+        /* border: 1px solid black; */
         /* background-color: #ffc107; */
         margin: 10px;
         padding: 20px;
