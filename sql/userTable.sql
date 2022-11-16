@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS purchase_record_products_map;
 DROP TABLE IF EXISTS products_rates_map;
 DROP TABLE IF EXISTS decision;
 DROP TABLE IF EXISTS each_processing;
@@ -18,7 +19,6 @@ CREATE TABLE users (
   birthday date,
   subscription BOOLEAN
 );
-DROP TABLE IF EXISTS brands;
 CREATE TABLE brands (
   id SERIAL PRIMARY KEY NOT NULL,
   name VARCHAR(255),
@@ -43,8 +43,8 @@ CREATE TABLE products (
   FOREIGN KEY (category_id) REFERENCES category(id)
 );
 CREATE TABLE comments (
-    id SERIAL PRIMARY KEY NOT NULL,
-    comments VARCHAR(255),
+  id SERIAL PRIMARY KEY NOT NULL,
+  comments VARCHAR(255),
   product_id integer,
   FOREIGN KEY (product_id) REFERENCES products(id)
 );
@@ -52,8 +52,6 @@ CREATE TABLE purchase_record (
   id SERIAL PRIMARY KEY NOT NULL,
   create_date date,
   delivery_status VARCHAR(255)
-  
-  
 );
 CREATE TABLE rates (id SERIAL PRIMARY KEY NOT NULL, score int);
 CREATE TABLE each_processing (
@@ -80,7 +78,15 @@ CREATE TABLE products_rates_map (
   rates_id integer,
   FOREIGN KEY (products_id) REFERENCES products(id),
   FOREIGN KEY (rates_id) REFERENCES rates(id)
-)
+);
+CREATE TABLE purchase_record_products_map (
+  id SERIAL PRIMARY KEY NOT NULL,
+  quantity integer,
+  product_id integer,
+  users_id integer,
+  FOREIGN KEY (product_id) REFERENCES products(id),
+  FOREIGN KEY (users_id) REFERENCES users(id)
+);
 /* ............. build users table ................................. */
 -- SELECT *
 -- FROM users;
