@@ -154,27 +154,27 @@ document.querySelector(".buyNow").addEventListener("click", async () => {
 document.querySelector(".addToCar").addEventListener("click", async () =>
   // {console.log("add to car")
   {
-let year=new Date().getFullYear();
-let month=new Date().getMonth()+1;
-let date=new Date().getDate();
-let createdDate1=year+"-"+month+"-"+date
-console.log(new Date(createdDate1))
-console.log(typeof new Date(createdDate1))
+let created_date= new Date().toLocaleDateString();
+console.log(created_date);
 
 let quantity1= document.querySelector("#number").innerHTML.toString();
 console.log(quantity1)
 
 
-formBody={createdDate:createdDate1,
+let formBody={createdDate:created_date,
           quantity:quantity1 }
-    const resp = await fetch("/addToCar", {
+          // console.log(formBody)
+    const resp = await fetch("/addToCar/add", {
       method: "POST",
-      body: JSON.stringify(formBody)
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body:JSON.stringify(formBody)
     });
 
     const data = await resp.json();
-    console.log(data);
-
+    // console.log(data);
+if(data){
     if (resp.status !== 201) {
       alert(data.message);
       window.location = "/login.html";
@@ -186,7 +186,7 @@ formBody={createdDate:createdDate1,
 
 
     }
-  }
+  }}
 );
 
 ///////////////////// subtmit comment  ////////////////////
