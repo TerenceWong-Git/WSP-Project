@@ -1,11 +1,11 @@
 // import { json } from "stream/consumers";
 
 // import { URLSearchParams } from "url";
-import { userName } from "./fetchUser.js";
+// import { userName } from "./fetchUser.js";
 
 window.onload = () => {
   logout();
-  userName();
+  // userName();
   submitComment();
   getImage();
   productSession();
@@ -30,13 +30,13 @@ async function getImage() {
   let queries = new URLSearchParams(url);
 
   let idOfProduct = queries.get("id");
-  // console.log(idOfProduct)
+  console.log(idOfProduct)
   let formBody = {
     id: idOfProduct,
     // category:categoryOfProduct
   };
   // formBody["category"]=categoryOfProduct;
-  // console.log(formBody)
+  console.log(formBody)
 
   const resp = await fetch("/id1", {
     method: "POST",
@@ -58,7 +58,7 @@ async function getImage() {
   let salesQuantity = data[0].sales_quantity;
   let d = data[0].description;
 
-  let img1 = `<img src="${imageLocation}" alt="${imageName}" id="${id}">`;
+  let img1 = `<img src="${imageLocation}" alt="${imageName}" id="${id}" class="displaying">`;
   let price1 = `${pricePerUnit}`;
   let pname = `${productName}`;
   let stNumber = `${stockNumber}`;

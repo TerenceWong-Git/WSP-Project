@@ -6,6 +6,7 @@
 body {
   margin: 0;
   top: 10px;
+  
 }
 
 .bi,
@@ -147,7 +148,9 @@ body {
 
 /* ....................... NAV bar end .................................................... */
 
-
+body{ 
+  background-color: #e4effa;
+}
 
 #container1 {
   border: 1px solid black;
@@ -162,37 +165,37 @@ body {
   font-weight: 1000;
 }
 
-#container2 {
+.container2 {
   /* border: 1px solid black; */
   margin-top: 20px;
-  margin-bottom: 20px;
-  background-color: yellow;
+  /* margin-bottom: 20px; */
+  background-color: #003d81;
   padding: 20px;
   overflow-y: auto;
   height: 70vh;
 }
 
-#container2_1 {
+.container2_1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   border-radius: 20px;
-  border: 1px solid black;
-  background-color: #50bb89;
+  /* border: 1px solid black; */
+  background-color: rgb(255, 248, 176);
   padding: 5px;
   height: 700px;
   margin: 20px;
   overflow-y: auto;
 }
 
-#leftBox {
+.leftBox {
   display: flex;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   margin: 5px;
   width: 2000px;
 }
 
-#checkBox {
+.checkBox {
   flex: 1;
   /* border: 1px solid black; */
   display: flex;
@@ -200,14 +203,14 @@ body {
   align-items: center;
 }
 
-#smallcheckbox {
+.smallcheckbox {
   width: 150px;
   height: 150px;
   box-shadow: 5px 5px 5px black;
 
 }
 
-#productImage {
+.productImage {
   flex: 8;
   /* border: 1px solid black; */
   padding: 5px;
@@ -216,21 +219,21 @@ body {
   align-items: center;
 }
 
-#image1 {
+.image1 {
   height: 650px;
 
 }
 
-#rightBox {
+.rightBox {
   display: flex;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   margin: 5px;
   width: 2000px;
   flex-direction: column;
   padding: 5px;
 }
 
-#upper {
+.upper {
   height: 100%;
   border: 1px solid black;
   margin: 2.5px;
@@ -238,7 +241,7 @@ body {
   font-size: 50px;
 }
 
-#lower {
+.lower {
   height: 100%;
   border: 1px solid black;
   margin: 2.5px;
@@ -247,17 +250,17 @@ body {
   align-items: center;
 }
 
-#left {
+.left {
   flex: 1;
-  background-color: red;
+  /* background-color: red; */
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   height: 100%;
 }
 
-#currencySign {
-  border: 1px solid black;
+.currencySign {
+  /* border: 1px solid black; */
   flex: 1;
   display: flex;
   justify-content: center;
@@ -267,8 +270,8 @@ body {
   padding: 10px;
 }
 
-#unitPrice {
-  border: 1px solid black;
+.unitPrice {
+  /* border: 1px solid black; */
   flex: 1;
   display: flex;
   justify-content: center;
@@ -278,9 +281,9 @@ body {
   padding: 10px;
 }
 
-#right {
+.right {
   flex: 1;
-  background-color: blue;
+  /* background-color: blue; */
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -288,21 +291,21 @@ body {
   height: 100%;
 }
 
-#minus,
-#unit,
-#plus {
+.minus,
+.unit,
+.plus {
   flex: 1;
-  background-color: #ffc107;
+  /* background-color: #ffc107; */
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 
 }
 
-#minusButton,
-#plusButton {
+.minusButton,
+.plusButton {
   height: 90%;
   width: 90%;
   padding: 10px;
@@ -315,9 +318,110 @@ body {
   font-size: 90px;
 }
 
-#unit {
+.unit {
   font-size: 90px;
 }
+
+#container3{
+  background-color: palegoldenrod;
+  max-width: 100%;
+  height: 450px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#leftPart{display: flex;
+justify-content: space-around;
+align-items: center;
+flex: 1;
+/* background-color: red; */
+background-image: linear-gradient(to right, #0062ce, #007d72);
+/* border: 1px solid black; */
+height: 100%;}
+
+#rightPart{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex: 2;
+  background-image: linear-gradient(to right, #0062ce, #007d72);
+  /* border: 1px solid black; */
+  height: 100%;
+}
+
+#all, #delete, #confirmPart{
+  /* border: 1px solid black; */
+  height: 100%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  
+}
+
+
+
+#checkAll, #deleteSome {
+  height:  3vh;
+  width: 3vw;
+ 
+ 
+}
+#confirmation{
+  height: 90px;
+  width:200px;
+  padding: 5px;
+  font-size: 20px;
+  border-radius: 40px;
+}
+
+label{
+  font-size: 2vh;
+}
+
+
+#totalMark{
+  font-size: 70px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+#currencyS{
+  font-size: 70px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+#money{
+  font-size: 80px;
+  font-weight: bold;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+#bill{
+  /* border: 1px solid black; */
+  height: 100%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#billButton{
+  height: 90px;
+  width:200px;
+  padding: 5px;
+  font-size: 40px;
+  border-radius: 40px;
+}
+
 
 
 
@@ -331,17 +435,17 @@ body {
 
 /* ................................................. */
 @media screen and (max-width:480px) {
-  #image1 {
+  .image1 {
     height: 280px;
   }
 
-  #smallcheckbox {
+  .smallcheckbox {
     width: 28px;
     height: 28px;
     box-shadow: 5px 5px 5px black;
   }
 
-  #upper {
+  .upper {
     height: 100%;
     border: 1px solid black;
     margin: 2.5px;
@@ -349,30 +453,30 @@ body {
     font-size: 15px;
   }
 
-  #container2 {
+  .container2 {
     /* border: 1px solid black; */
     margin-top: 20px;
     margin-bottom: 20px;
-    background-color: yellow;
+    background-color: #003d81;
     padding: 20px;
     overflow-y: auto;
-    height: 60vh;
+    height: 40vh;
   }
 
-  #container2_1 {
+  .container2_1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     border-radius: 20px;
-    border: 1px solid black;
-    background-color: #50bb89;
+    /* border: 1px solid black; */
+    background-color: rgb(255, 248, 176);
     padding: 5px;
     height: 400px;
     margin: 20px;
     overflow-y: auto;
   }
-  #currencySign {
-    border: 1px solid black;
+  .currencySign {
+    /* border: 1px solid black; */
     flex: 1;
     display: flex;
     justify-content: center;
@@ -382,8 +486,8 @@ body {
     padding: 10px;
   }
   
-  #unitPrice {
-    border: 1px solid black;
+  .unitPrice {
+    /* border: 1px solid black; */
     flex: 1;
     display: flex;
     justify-content: center;
@@ -399,7 +503,73 @@ body {
     font-size: 20px;
   }
   
-  #unit {
+  .unit {
     font-size: 20px;
 }
+
+#container3{
+  background-color: palegoldenrod;
+  max-width: 100%;
+  height: 250px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#totalMark{
+  font-size: 30px;
+  flex: 1;
+}
+
+#currencyS{
+  font-size: 30px;
+  flex: 1;
+}
+
+#money{
+  font-size: 30px;
+  font-weight: bold;
+  flex: 1;
+}
+
+#bill{
+  /* border: 1px solid black; */
+  height: 100%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#billButton{
+  height: 60px;
+  width:150px;
+  padding: 5px;
+  font-size:20px;
+  border-radius: 40px;
+}
+
+
+#leftPart{display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex: 1;
+  /* background-color: red; */
+  background-image: linear-gradient(to right, #0062ce, #007d72);
+  /* border: 1px solid black; */
+  height: 100%;}
+
+
+  #rightPart{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex: 2;
+    background-image: linear-gradient(to right, #0062ce, #007d72);
+    /* border: 1px solid black; */
+    height: 100%;
+    padding: 10px;
+  }
+
 }

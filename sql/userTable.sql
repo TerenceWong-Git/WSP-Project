@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS products_rates_map;
+DROP TABLE IF EXISTS users_products_map;
 DROP TABLE IF EXISTS purchase_record_products_map;
 DROP TABLE IF EXISTS shopping_cart;
 DROP TABLE IF EXISTS purchase_record;
@@ -69,6 +70,13 @@ CREATE TABLE purchase_record_products_map (
   purchase_record_id integer,
   product_id INTEGER,
   FOREIGN KEY (purchase_record_id) REFERENCES purchase_record(id),
+  FOREIGN KEY (product_id) REFERENCES products(id)
+);
+CREATE TABLE users_products_map (
+  id SERIAL PRIMARY KEY NOT NULL,
+  users_id integer,
+  product_id integer,
+  FOREIGN KEY (users_id) REFERENCES users(id),
   FOREIGN KEY (product_id) REFERENCES products(id)
 );
 CREATE TABLE products_rates_map (

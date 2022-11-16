@@ -85,99 +85,68 @@
     <div id="totalQuantity"><span id="quantity">2</span> product(s) in total</div>
   </div>
 
-  <div id="container2">
-    <div id="container2_1">
-      <div id="leftBox">
-        <div id="checkBox"><input type="checkbox" id="smallcheckbox" name="checkbox" value="checkbox"></div>
-        <div id="productImage"><img id="image1" src="./productImages/cupNoodles/ichiranTonkotsu.jpg"></div>
+  <div class="container2">
+    <div class="container2_1">
+      <div class="leftBox">
+        <div class="checkBox"><input type="checkbox" class="smallcheckbox" name="checkbox" value="checkbox"></div>
+        <div class="productImage"><img class="image1" src="./productImages/cupNoodles/ichiranTonkotsu.jpg"></div>
       </div>
 
-      <div id="rightBox">
-        <div id="upper">product description</div>
-        <div id="lower">
-          <div id="left">
-            <div id="currencySign">HKD</div>
-            <div id="unitPrice">1000</div>
+      <div class="rightBox">
+        <div class="upper">product description</div>
+        <div class="lower">
+          <div class="left">
+            <div class="currencySign">HKD</div>
+            <div class="unitPrice">1000</div>
           </div>
-          <div id="right">
-            <div id="minus"><button id="minusButton" min="1"><i class="bi bi-dash-lg bye"></i></button></div>
-            <div id ="unit">1</div>
-            <div id="plus"><button id="plusButton" max="10"><i class="bi bi-plus-lg bye"></i></button></div>
-          </div>
-        </div>
-      </div>  
-    </div>
-    
-    <div id="container2_1">
-      <div id="leftBox">
-        <div id="checkBox"><input type="checkbox" id="smallcheckbox" name="checkbox" value="checkbox"></div>
-        <div id="productImage"><img id="image1" src="./productImages/cupNoodles/ichiranTonkotsu.jpg"></div>
-      </div>
-
-      <div id="rightBox">
-        <div id="upper">product description</div>
-        <div id="lower">
-          <div id="left">
-            <div id="currencySign">HKD</div>
-            <div id="unitPrice">1000</div>
-          </div>
-          <div id="right">
-            <div id="minus"><button id="minusButton" min="1"><i class="bi bi-dash-lg bye"></i></button></div>
-            <div id ="unit">1</div>
-            <div id="plus"><button id="plusButton" max="10"><i class="bi bi-plus-lg bye"></i></button></div>
+          <div class="right">
+            <div class="minus"><button class="minusButton" min="1"><i class="bi bi-dash-lg bye"></i></button></div>
+            <div class ="unit">1</div>
+            <div class="plus"><button class="plusButton" max="10"><i class="bi bi-plus-lg bye"></i></button></div>
           </div>
         </div>
       </div>  
     </div>
 
-    <div id="container2_1">
-      <div id="leftBox">
-        <div id="checkBox"><input type="checkbox" id="smallcheckbox" name="checkbox" value="checkbox"></div>
-        <div id="productImage"><img id="image1" src="./productImages/cupNoodles/ichiranTonkotsu.jpg"></div>
+    <!-- <div class="container2_1">
+      <div class="leftBox">
+        <div class="checkBox"><input type="checkbox" class="smallcheckbox" name="checkbox" value="checkbox"></div>
+        <div class="productImage"><img class="image1" src="./productImages/cupNoodles/ichiranTonkotsu.jpg"></div>
       </div>
 
-      <div id="rightBox">
-        <div id="upper">product description</div>
-        <div id="lower">
-          <div id="left">
-            <div id="currencySign">HKD</div>
-            <div id="unitPrice">1000</div>
+      <div class="rightBox">
+        <div class="upper">product description</div>
+        <div class="lower">
+          <div class="left">
+            <div class="currencySign">HKD</div>
+            <div class="unitPrice">1000</div>
           </div>
-          <div id="right">
-            <div id="minus"><button id="minusButton" min="1"><i class="bi bi-dash-lg bye"></i></button></div>
-            <div id ="unit">1</div>
-            <div id="plus"><button id="plusButton" max="10"><i class="bi bi-plus-lg bye"></i></button></div>
-          </div>
-        </div>
-      </div>  
-    </div>
-
-    <div id="container2_1">
-      <div id="leftBox">
-        <div id="checkBox"><input type="checkbox" id="smallcheckbox" name="checkbox" value="checkbox"></div>
-        <div id="productImage"><img id="image1" src="./productImages/cupNoodles/ichiranTonkotsu.jpg"></div>
-      </div>
-
-      <div id="rightBox">
-        <div id="upper">product description</div>
-        <div id="lower">
-          <div id="left">
-            <div id="currencySign">HKD</div>
-            <div id="unitPrice">1000</div>
-          </div>
-          <div id="right">
-            <div id="minus"><button id="minusButton" min="1"><i class="bi bi-dash-lg bye"></i></button></div>
-            <div id ="unit">1</div>
-            <div id="plus"><button id="plusButton" max="10"><i class="bi bi-plus-lg bye"></i></button></div>
+          <div class="right">
+            <div class="minus"><button class="minusButton" min="1"><i class="bi bi-dash-lg bye"></i></button></div>
+            <div class ="unit">1</div>
+            <div class="plus"><button class="plusButton" max="10"><i class="bi bi-plus-lg bye"></i></button></div>
           </div>
         </div>
-      </div>  
+      </div>   -->
     </div>
+     
+
+
 
   </div>
 
   <div id="container3">
-
+    <div id="leftPart">
+      <div id="all"><input type="checkbox" class="selectAll" name="checkbox" value="selectAll" id="checkAll"><label for="checkAll">Select All</label></div>
+      <div id="delete"><input type="checkbox" class="delete" name="checkbox" value="delete" id="deleteSome"><label for="deleteSome">delete</label></div>
+      <div id="confirmPart"><button id="confirmation">select all/delete </button></div>
+    </div>
+    <div id="rightPart">
+      <div id="totalMark">Total:</div>
+      <div id="currencyS">HKD</div>
+      <div id="money">12</div>
+      <div id="bill"><button id="billButton">Pay</button></div>
+    </div>
   </div>
 
   <!-- JavaScript Bundle with Popper -->
