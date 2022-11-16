@@ -4,6 +4,8 @@ window.onload = async () => {
   logout();
   await profile();
   editProfile();
+  changePassword();
+  switchPage();
 };
 
 async function userName() {
@@ -68,7 +70,7 @@ async function profile() {
     containerForAll.appendChild(leftContainer);
   }
   const submitButton = document.createElement("button");
-  submitButton.classList.add("left-container-button");
+  submitButton.classList.add("left-container-button", "add-color");
   submitButton.setAttribute("type", "submit");
   submitButton.innerText = "Submit";
   leftContainer.appendChild(submitButton);
@@ -128,9 +130,58 @@ function editProfile() {
     });
     if (resp.status === 200) {
       window.location = "/profile.html";
-      // alert("edited profile");
+      alert("edited profile");
     } else {
       window.location = "/";
     }
+  });
+}
+
+function changePassword() {
+  const passwordForm = document.querySelector("#passwordform");
+  passwordForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    if (form.password.value === form.confirmPassword.value) {
+      const formBody = { password: form.password.value };
+      const resp = await fetch("/profile/password", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formBody),
+      });
+      if (resp.status === 200) {
+        window.location = "/profile.html";
+        alert("edited password");
+      } else {
+        window.location = "/";
+      }
+    }
+  });
+}
+
+function switchPage() {
+  const switchPageButtons = document.querySelectorAll(".switcher");
+  switchPageButtons.forEach((element) => {
+    element.addEventListener("click", async (e) => {
+      const leftContainer = document.querySelector(".left-container");
+      const passwordContainer = document.querySelector("#passwordform");
+      const profileSwitcher = document.querySelector(".profile-switcher");
+      const passwordSwitcher = document.querySelector(".password-switcher");
+      if (element.innerText === "Edit Profile") {
+        leftContainer.removeAttribute("hidden", "");
+        passwordContainer.setAttribute("hidden", "");
+        passwordSwitcher.classList.remove("add-color");
+        profileSwitcher.classList.add("add-color");
+        console.log("hihihihi");
+      } else {
+        passwordContainer.removeAttribute("hidden", "");
+        leftContainer.setAttribute("hidden", "");
+        profileSwitcher.classList.remove("add-color");
+        passwordSwitcher.classList.add("add-color");
+        console.log("byebyebyebye");
+      }
+    });
   });
 }

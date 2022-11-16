@@ -82,16 +82,18 @@
   <!-- profile part -->
   <div class="login-page-container">
     <header>
-      <div class="top-header">Profile</div>
+      <div class="top-header ">Profile</div>
       <hr />
     </header>
 
-    <div class="sign-in-sign-up-container row">
-
-
+    <div class="all-container row">
+      <div class="switch-page-container col-md">
+        <div class="profile-switcher switcher add-color">Edit Profile</div>
+        <div class="password-switcher switcher">Change Password</div>
+      </div>
       <div class="profile-content-container col-md" id="editprofileform">
         <div class="left-container">
-          <div class="profile-header">Edit Profile: </div>
+          <!-- <div class="profile-header">Edit Profile: </div> -->
           <div class="listnode-content-container">
             <div class="listnode-container"> </div>
             <div class="content-container"></div>
@@ -124,13 +126,21 @@
           <label for="subscription">Subscription to Latest News:</label><input class="profile-subscription"
             name="subscription" type="checkbox">
         </div> -->
-        <form id="passwordform">
-          <div class="profile-header">Change Password: </div>
+        <form id="passwordform" hidden>
+          <!-- <div class="profile-header">Change Password: </div> -->
           <div class="password-container">
-            <input type="password" placeholder="New Password">
-            <input type="password" placeholder="Confirm New Password">
+            <div class="listnode-content-container-password">
+              <div class="listnode-container-password">
+                <div>New Password: </div>
+                <div>Confirming New Password: </div>
+              </div>
+              <div class="content-container-password">
+                <input class="password-input" type="password" placeholder="password" name="password">
+                <input class="password-input" type="password" placeholder="password" name="confirmPassword">
+              </div>
+            </div>
           </div>
-          <button type="submit">Submit</button>
+          <button type="submit" class="password-submit-button add-color">Submit</button>
         </form>
       </div>
 
