@@ -48,11 +48,13 @@ async function loadAllCategory() {
     const productCard = document.createElement("div");
     const productId = product.category_id;
     const productStock = product.stock;
+    const productSale = product.sales_quantity;
     productCard.classList.add(
       "productCard",
       `category-${productId}`,
       productStock
     );
+    productCard.setAttribute("id", productSale);
 
     // Create Image div
     const imageArea = document.createElement("div");
@@ -134,6 +136,17 @@ function checkStock(e) {
   });
 }
 
+function checkSale(e) {
+  let showCards = document.querySelectorAll(".productCard");
+  showCards.forEach((element) => {
+    if (element.id > 50) {
+      element.classList.remove("hide");
+    } else {
+      element.classList.add("hide");
+    }
+  });
+}
+
 document.querySelector("#all").addEventListener("click", (e) => {
   filterProduct(e, "all");
 });
@@ -153,4 +166,9 @@ document.querySelector("#noodles").addEventListener("click", (e) => {
 document.querySelector("#stock").addEventListener("click", (e) => {
   filterProduct(e);
   checkStock(e);
+});
+
+document.querySelector("#sale").addEventListener("click", (e) => {
+  filterProduct(e);
+  checkSale(e);
 });
