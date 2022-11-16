@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS products_rates_map;
 DROP TABLE IF EXISTS decision;
-DROP TABLE IF EXISTS purchase_record_products_map;
+DROP TABLE IF EXISTS each_processing;
 DROP TABLE IF EXISTS purchase_record;
 DROP TABLE IF EXISTS rates;
 DROP TABLE IF EXISTS products;
@@ -50,19 +50,20 @@ CREATE TABLE comments (
 );
 CREATE TABLE purchase_record (
   id SERIAL PRIMARY KEY NOT NULL,
-  total_price decimal,
   create_date date,
-  delivery_status VARCHAR(255),
-  users_id integer,
-  FOREIGN KEY (users_id) REFERENCES users(id)
+  delivery_status VARCHAR(255)
+  
+  
 );
 CREATE TABLE rates (id SERIAL PRIMARY KEY NOT NULL, score int);
-CREATE TABLE purchase_record_products_map (
+CREATE TABLE each_processing (
   id SERIAL PRIMARY KEY NOT NULL,
   purchase_record_id integer,
-  product_id INTEGER,
+  product_id integer,
+  users_id integer,
   FOREIGN KEY (purchase_record_id) REFERENCES purchase_record(id),
-  FOREIGN KEY (product_id) REFERENCES products(id)
+  FOREIGN KEY (product_id) REFERENCES products(id),
+  FOREIGN KEY (users_id) REFERENCES users(id)
 );
 CREATE TABLE decision (
   id SERIAL PRIMARY KEY NOT NULL,

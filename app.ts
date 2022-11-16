@@ -25,7 +25,7 @@ import { register } from "./routers/registerRoute";
 import { indexRoute } from "./routers/indexRoute";
 import { displayProduct } from "./routers/displayProduct";
 import { buyNow } from "./routers/buyNow";
-import { addToCar } from "./routers/addToCar";
+import { addCartRoute } from "./routers/addToCar";
 import { Productrecords } from "./models";
 import {productSession} from "./routers/productSession";
 import { allCategoryRoute } from "./routers/allCategoryRoute";
@@ -91,7 +91,7 @@ app.post("/id1", displayProduct); //ver.1
 app.post("/productsesseion", productSession);
 
 app.get("/buyNow", buyNow);
-app.post("/addToCar", addToCar);
+app.use("/addToCar", addCartRoute);
 
 ////////////////////// Payment //////////////////////////
 app.post("/create-checkout-session", register);

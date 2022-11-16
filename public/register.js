@@ -33,7 +33,7 @@ function register() {
     formBody["email"] = email;
     formBody["password"] = password;
     formBody["phone"] = phone;
-    formBody["date"] = new Date(date);
+    formBody["date"] = date;
     formBody["checkbox"] = checkbox;
     const resp = await fetch("/userData", {
       method: "POST",
