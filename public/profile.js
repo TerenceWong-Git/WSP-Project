@@ -45,10 +45,14 @@ async function profile() {
     const content = document.createElement("div");
     content.classList.add(`${key}-content`);
     if (key === "birthday") {
-      const birthday = user[key].split("T");
-      const newDate = birthday[0];
-      const lastDigit = parseInt(newDate[newDate.length - 1]) + 1;
-      content.innerText = newDate.slice(0, -1) + lastDigit;
+      const birthday = new Date(user[key]).toLocaleDateString();
+      const newBirthdayArr = birthday.split("/");
+      const newBirthday = newBirthdayArr[2] + "-" + newBirthdayArr[1] + "-" + newBirthdayArr[0];
+      content.innerText = newBirthday;
+      // const birthday = user[key].split("T");
+      // const newDate = birthday[0];
+      // const lastDigit = parseInt(newDate[newDate.length - 1]) + 1;
+      // content.innerText = newDate.slice(0, -1) + lastDigit;
       console.log("hihihi");
     } else {
       content.innerText = user[key];
@@ -90,6 +94,10 @@ function editProfile() {
     } else if (subscriptionDiv.innerText !== "Yes") {
       console.log("false 1");
     }
+
+    console.log(birthdayDiv.innerText);
+    console.log(new Date(birthdayDiv.innerText));
+    console.log(!isNaN(new Date(birthdayDiv.innerText).getTime()));
     if (subscriptionDiv.innerText === "Yes") {
       console.log("true 2");
     } else if (subscriptionDiv.innerText === "No") {
@@ -104,7 +112,7 @@ function editProfile() {
       alert("Invalid Mobile number!");
       return;
     }
-    if (!(new Date(birthdayDiv.innerText) instanceof Date)) {
+    if (isNaN(new Date(birthdayDiv.innerText).getTime()) || birthdayDiv.innerText.length < 8) {
       alert("Invalid birthday number!");
       return;
     }

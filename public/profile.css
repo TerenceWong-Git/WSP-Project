@@ -163,7 +163,7 @@ body {
 }
 
 .profile-content-container {
-  border: 1px solid #000000;
+  /* border: 1px solid #000000; */
   width: 400px;
   height: 500px;
   margin:0;
@@ -246,20 +246,24 @@ header {
 
 .input-content {
   border-bottom: solid #000000 2px;
-  width: 340px; 
-  text-align: center;
+  box-sizing: content-box;
+  width: 100%;
+  /* box-sizing: border-box;  */
+  /* text-align: center; */
 }
 
 .listnode-container, .listnode-container-password {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  margin-left: 20px;
 }
 .content-container, .content-container-password {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   margin-left: 10px;
+  margin-right: 20px;
 }
 .content-container-password{
   height: 200px;
@@ -306,23 +310,23 @@ header {
   align-items: center;
 }
 .profile-switcher, .password-switcher {
-  border: #000000 1px solid;
+  /* border: #000000 2px solid; */
   width: 1200px;
   height: 70px;
   cursor: pointer;
-  border-bottom: 0;
+  border-bottom: #000000 2px solid;
   text-align: center;
   padding-top: 7px;
 }
 .password-switcher {
-  border-left: 0;
+  border-left: #000000 2px solid;
 }
 #passwordform {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   margin-top: 24px;
-
+  /* border: #FFFFFF!important; */
 }
 
 .left-container-button {
@@ -340,4 +344,24 @@ header {
 
 .password-submit-button, .left-container-button {
   border-radius: 30px;
+  margin-bottom: 30px;
+}
+
+/* .listnode-password {
+  font-size: 1.4vw;
+  font-size: 10%;
+} */
+
+@media only screen and (max-width: 767px) {
+  .password-input {
+    width: 10vw;
+    /* left: 0!important; */
+  }
+}
+
+.login-page-container {
+  border: 0!important;
+}
+.all-container {
+  border: solid 2px #000000!important;
 }

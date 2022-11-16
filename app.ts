@@ -93,6 +93,10 @@ app.post("/productsesseion", productSession);
 app.get("/buyNow", buyNow);
 app.use("/addToCar", addCartRoute);
 
+////////////////////// Payment //////////////////////////
+app.post("/create-checkout-session", register);
+////////////////////// Payment //////////////////////////
+
 app.use(express.static("public"));
 app.use("/user", userLogin, express.static("user"));
 
