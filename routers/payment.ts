@@ -1,26 +1,17 @@
 import express from "express";
-import { client } from "../app";
+import {client} from "../app";
+import type { Request, Response } from "express";
+import { Products } from "../models";
 
-const stripe = require('stripe')('sk_test_51M4eCpDnRCuvfoYDLCll51v1b5nLCemhdwcEGcUVO2JyNv66zAqcYP6Yy7rXfivgpMbkDmxQpKNQkBGL1ppiMji500maCUrUT2');
+export const paymentRoute = express.Router();
 
-export async function payment(req:express.Request, res:express.Response){
+// Section 1 - Define endpoints (Method, Path = "/memos")
+paymentRoute.get("/create-checkout-session", getpaymentRoute);
 
-  let decisionUser = await client.query(`SELECT users_id from decision`);
-    const paymentUser = decisionUser.rows;
-  
-    let decisionProduct = await client.query(`SELECT product_id from decision`);
-    const paymentProduct = decisionProduct.rows;
-
-  try {
-    const session = await stripe.checkout.sessions.create({
-      payment_method_types: ["card"],
-      mode: "payment",
-      line_items: [{price: '{{PRICE_ID}}', quantity: 1}],
-      success_url: `${process.env.CLIENT_URL}/success.html`,
-      cancel_url: `${process.env.CLIENT_URL}/cancel.html`,
-    })
-    res.json({ url: session.url })
-  } catch (e) {
-    res.status(500).json({ error: e.message })
-  }
+// Section 2 - Define Route Handler
+async function getpaymentRoute(req: Request, res: Response) {
+  const queryResult = await client.query<Products>(
+    "SELECT quantity, total_price_per_product, product_id, name FROM decision INNER JOIN products ON product_id = products.id;"
+  );
+  res.json(queryResult.rows);
 }
