@@ -1,16 +1,14 @@
 window.onload = async () => {
   displayShoppingCart();
   getId();
-}
-
-
-
-
+  userName();
+  logout();
+  profile();
+};
 
 ///////////////////  to load the data of product to render the shopping cart page first //////////////////
 
 async function displayShoppingCart() {
-
   const resp = await fetch("/getDataToShoppingCart", {
     method: "GET",
   });
@@ -18,19 +16,14 @@ async function displayShoppingCart() {
   const data = await resp.json();
 
   if (resp.status !== 201) {
-    alert("something goes wrong on retrieving the product data!")
-  }
-  else {
-    console.log(data)
+    alert("something goes wrong on retrieving the product data!");
+  } else {
+    console.log(data);
 
     let containerTemplate = " ";
 
     for (let datum of data) {
-
-
-      containerTemplate +=
-
-        `
+      containerTemplate += `
  <div class="container2_1" id="a${datum.product_id}" >
        <div class="leftBox">
          <div class="checkBox"><input type="checkbox" class="smallcheckbox" name="checkbox" value="checkbox"></div>
@@ -53,8 +46,8 @@ async function displayShoppingCart() {
        </div>  
      </div>
  
- `
-      document.querySelector(".container2").innerHTML = containerTemplate
+ `;
+      document.querySelector(".container2").innerHTML = containerTemplate;
     }
   }
 }
@@ -68,17 +61,15 @@ async function displayShoppingCart() {
 // let idValueNumber=idValue[1];
 // console.log(idValueNumber);
 
-
 // if (idValue[0]=="e"){
 // let number= document.querySelector(`#c${idValueNumber}`).innerHTML;
-// console.log(number);    
+// console.log(number);
 // if (number > 1) {
 //       number = number - 1;
 //       console.log(number, "from cart.js");
 
 //       return (document.querySelector(`#c${idValueNumber}`).innerHTML = number.toString());
 // }}
-
 
 // if(idValue[0]=="f"){
 //   let number= parseInt(document.querySelector(`#c${idValueNumber}`).innerHTML);
@@ -89,44 +80,67 @@ async function displayShoppingCart() {
 //       return (document.querySelector(`#c${idValueNumber}`).innerHTML = number.toString());
 // }
 
-
-
-
-
 // })
-
-
-
-
-
-
 
 //////////////// testing area ///////////////////////////////
 
-
 async function getId() {
-  let idValue = document.querySelector(".container2").addEventListener("click", async (e) => {
-    console.log(e.target)
-    console.log(e.target.id)
-    let idValue = e.target.id;
-    let idValueNumber = idValue[1];
-    console.log(idValueNumber);
+  let idValue = document
+    .querySelector(".container2")
+    .addEventListener("click", async (e) => {
+      console.log(e.target);
+      console.log(e.target.id);
+      let idValue = e.target.id;
+      let idValueNumber = idValue[1];
+      console.log(idValueNumber);
 
+      if (idValue[0] == "e") {
+        let number = parseInt(
+          document.querySelector(`#c${idValueNumber}`).innerHTML
+        );
+        // console.log(number);
+        if (number > 1) {
+          number = number - 1;
+          // console.log(number, "from cart.js");
 
-    if (idValue[0] == "e") {
-      let number = parseInt(document.querySelector(`#c${idValueNumber}`).innerHTML);
-      // console.log(number);
-      if (number > 1) {
-        number = number - 1;
-        // console.log(number, "from cart.js");
+          formBody = {
+            quantity1: number,
+            productId: idValueNumber,
+          };
 
+          // console.log(formBody)
+          const resp = await fetch("/minusQuantity", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formBody),
+          });
+
+          const data = await resp.json();
+          console.log(data.message);
+          // console.log()
+          document.querySelector(`#b${idValueNumber}`).innerHTML = data.message;
+
+          return (document.querySelector(`#c${idValueNumber}`).innerHTML =
+            number.toString());
+        }
+      }
+
+      if (idValue[0] == "f") {
+        let number = parseInt(
+          document.querySelector(`#c${idValueNumber}`).innerHTML
+        );
+
+        number = number + 1;
+        console.log(number, "from cart.js");
         formBody = {
           quantity1: number,
-          productId: idValueNumber
+          productId: idValueNumber,
         };
 
         // console.log(formBody)
-        const resp = await fetch("/minusQuantity", {
+        const resp = await fetch("/addQuantity", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -135,47 +149,46 @@ async function getId() {
         });
 
         const data = await resp.json();
-        console.log(data.message)
-        // console.log()
+        console.log(data.message);
+        // console.log(typeof data.message)
         document.querySelector(`#b${idValueNumber}`).innerHTML = data.message;
 
-        return (document.querySelector(`#c${idValueNumber}`).innerHTML = number.toString());
+        return (document.querySelector(`#c${idValueNumber}`).innerHTML =
+          number.toString());
+        // return (document.querySelector(`#c${idValueNumber}`).innerHTML = number.toString());
       }
+    });
+}
+
+/////////////////////////////////  login / out function //////////////////////
+async function userName() {
+  const userInfo = await fetch("/login");
+  const userInfoObj = await userInfo.json();
+  const username = userInfoObj.username;
+  const usernameDiv = document.querySelector(".username");
+  usernameDiv.innerText = username;
+}
+
+function logout() {
+  const logoutButton = document.querySelector(".logoutbutton");
+  logoutButton.addEventListener("click", async (e) => {
+    e.preventDefault();
+    const resp = await fetch("/logout", { method: "GET" });
+    if (resp.status === 200) {
+      alert("You signed out!!");
+      window.location = "/";
     }
-
-
-    if (idValue[0] == "f") {
-      let number = parseInt(document.querySelector(`#c${idValueNumber}`).innerHTML);
-
-      number = number + 1;
-      console.log(number, "from cart.js");
-      formBody = {
-        quantity1: number,
-        productId: idValueNumber
-      };
-
-      // console.log(formBody)
-      const resp = await fetch("/addQuantity", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formBody),
-      });
-
-      const data = await resp.json();
-      console.log(data.message)
-      // console.log(typeof data.message)
-      document.querySelector(`#b${idValueNumber}`).innerHTML = data.message;
-
-      return (document.querySelector(`#c${idValueNumber}`).innerHTML = number.toString()
-      );
-      // return (document.querySelector(`#c${idValueNumber}`).innerHTML = number.toString());
+  });
+}
+function profile() {
+  const profileButton = document.querySelector(".profilebutton");
+  profileButton.addEventListener("click", async (e) => {
+    e.preventDefault();
+    console.log("hihi");
+    const resp = await fetch("/profile", { method: "GET" });
+    if (resp.status === 200) {
+      alert("hi");
+      window.location = "/profile.html";
     }
-
-
-
-
-
-  })
+  });
 }
