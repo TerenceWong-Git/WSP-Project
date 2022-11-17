@@ -19,6 +19,7 @@ async function displayShoppingCart() {
     alert("something goes wrong on retrieving the product data!");
   } else {
     console.log(data);
+    
 
     let containerTemplate = " ";
 
@@ -54,35 +55,6 @@ async function displayShoppingCart() {
 
 ///////////////////////  quantity control  /////////////////////////////////////////////////
 
-// let idValue=document.querySelector(".container2").addEventListener("click",(e)=>{
-//   console.log(e.target)
-// console.log(e.target.id)
-// let idValue= e.target.id;
-// let idValueNumber=idValue[1];
-// console.log(idValueNumber);
-
-// if (idValue[0]=="e"){
-// let number= document.querySelector(`#c${idValueNumber}`).innerHTML;
-// console.log(number);
-// if (number > 1) {
-//       number = number - 1;
-//       console.log(number, "from cart.js");
-
-//       return (document.querySelector(`#c${idValueNumber}`).innerHTML = number.toString());
-// }}
-
-// if(idValue[0]=="f"){
-//   let number= parseInt(document.querySelector(`#c${idValueNumber}`).innerHTML);
-
-//       number = number + 1;
-//       console.log(number, "from cart.js");
-
-//       return (document.querySelector(`#c${idValueNumber}`).innerHTML = number.toString());
-// }
-
-// })
-
-//////////////// testing area ///////////////////////////////
 
 async function getId() {
   let idValue = document
