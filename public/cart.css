@@ -6,7 +6,6 @@
 body {
   margin: 0;
   top: 10px;
-
 }
 
 .bi,
@@ -26,9 +25,11 @@ body {
   --bs-navbar-color: rgb(255 255 255 / 100%) !important;
   --bs-navbar-hover-color: rgb(255 255 255 / 50%) !important;
   margin-bottom: 2vh;
-  background: linear-gradient(to right,
-      rgba(0, 57, 131, 1),
-      rgba(0, 135, 112, 1)) !important;
+  background: linear-gradient(
+    to right,
+    rgba(0, 57, 131, 1),
+    rgba(0, 135, 112, 1)
+  ) !important;
 }
 
 .navbar-nav {
@@ -146,7 +147,7 @@ body {
   align-items: center;
 }
 
-/* ....................... NAV bar end .................................................... */
+/* ------------------- Navbar CSS ------------------- */
 
 body {
   background-color: #e4effa;
