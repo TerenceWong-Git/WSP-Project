@@ -2,10 +2,10 @@ import express from "express";
 import { client } from "../app";
 // import type { Request, Response } from "express";
 
-export const addCartRoute = express.Router();
+// export const addCartRoute = express.Router();
 
 // Section 1 - Define endpoints (Method, Path = "/memos")
-addCartRoute.post("/add", addToCar);
+// addCartRoute.post("/add", addToCar);
 
 
 
@@ -21,13 +21,20 @@ export async function addToCar(req: express.Request, res: express.Response) {
             `SELECT * FROM decision`
         )
             // console.log(decisions.rows[0])
-
+        let unitPriceOfProduct= await client.query(`
+        SELECT price FROM products WHERE products.id = ${req.session.productRecords.id}`);
+        console.log(unitPriceOfProduct.rows[0].price, "line 26");
+        let totalPricePerProduct= (eachProductQuantity)*(unitPriceOfProduct.rows[0].price);
+        console.log(totalPricePerProduct, "line 28");
 
         for (let decision of decisions.rows){
             if(decision.users_id==req.session.user.id && decision.product_id==req.session.productRecords.id){
+                // console.log(`UPDATE decision SET quantity = quantity + ${eachProductQuantity} WHERE users_id=${req.session.user.id} AND product_id=${req.session.productRecords.id} `)
                 await client.query(
-                    `UPDATE decision set quantity = quantity + ${eachProductQuantity} WHERE users_id=${req.session.user.id} AND product_id=${req.session.productRecords.id} `
+                    `UPDATE decision SET quantity = quantity + ${eachProductQuantity} WHERE users_id=${req.session.user.id} AND product_id=${req.session.productRecords.id} `
                 )
+
+                await client.query(`UPDATE decision SET total_price_per_product = total_price_per_product  +${totalPricePerProduct} WHERE users_id=${req.session.user.id} AND product_id=${req.session.productRecords.id}`)
                 res.status(201).json({ message: "added successfully!" });
                 return;
             }
@@ -38,8 +45,8 @@ export async function addToCar(req: express.Request, res: express.Response) {
         
         
         await client.query(
-            `INSERT INTO decision (users_id, product_id, quantity, created_date) VALUES ($1, $2, $3, $4)`,
-            [req.session.user.id, req.session.productRecords.id, eachProductQuantity, created_date]
+            `INSERT INTO decision (users_id, product_id, quantity, created_date, total_price_per_product) VALUES ($1, $2, $3, $4, $5)`,
+            [req.session.user.id, req.session.productRecords.id, eachProductQuantity, created_date, totalPricePerProduct]
         )
             
         res.status(201).json({ message: "added successfully!" });

@@ -164,7 +164,7 @@ console.log(quantity1)
 let formBody={createdDate:created_date,
           quantity:quantity1 }
           // console.log(formBody)
-    const resp = await fetch("/addToCar/add", {
+    const resp = await fetch("/addToCar", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

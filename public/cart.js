@@ -1,6 +1,6 @@
 window.onload = async () => {
   displayShoppingCart();
-  getID();
+  getId();
 }
 
 
@@ -42,7 +42,7 @@ async function displayShoppingCart() {
          <div class="lower">
            <div class="left">
              <div class="currencySign">HKD</div>
-             <div class="unitPrice">${(datum.price) * (datum.quantity)}</div>
+             <div class="unitPrice" id="b${datum.product_id}">${datum.total_price_per_product}</div>
            </div>
            <div class="right">
              <div class="minus"><button class="minusButton" " min="1" id="e${datum.product_id}">-</button></div>
@@ -103,28 +103,59 @@ async function displayShoppingCart() {
 
 //////////////// testing area ///////////////////////////////
 
-let idValue = document.querySelector(".container2").addEventListener("click", async (e) => {
-  console.log(e.target)
-  console.log(e.target.id)
-  let idValue = e.target.id;
-  let idValueNumber = idValue[1];
-  console.log(idValueNumber);
+
+async function getId() {
+  let idValue = document.querySelector(".container2").addEventListener("click", async (e) => {
+    console.log(e.target)
+    console.log(e.target.id)
+    let idValue = e.target.id;
+    let idValueNumber = idValue[1];
+    console.log(idValueNumber);
 
 
-  if (idValue[0] == "e") {
-    let number = document.querySelector(`#c${idValueNumber}`).innerHTML;
-    // console.log(number);
-    if (number > 1) {
-      number = number - 1;
-      // console.log(number, "from cart.js");
+    if (idValue[0] == "e") {
+      let number = parseInt(document.querySelector(`#c${idValueNumber}`).innerHTML);
+      // console.log(number);
+      if (number > 1) {
+        number = number - 1;
+        // console.log(number, "from cart.js");
 
+        formBody = {
+          quantity1: number,
+          productId: idValueNumber
+        };
+
+        // console.log(formBody)
+        const resp = await fetch("/minusQuantity", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formBody),
+        });
+
+        const data = await resp.json();
+        console.log(data.message)
+        // console.log()
+        document.querySelector(`#b${idValueNumber}`).innerHTML = data.message;
+
+        return (document.querySelector(`#c${idValueNumber}`).innerHTML = number.toString());
+      }
+    }
+
+
+    if (idValue[0] == "f") {
+      let number = parseInt(document.querySelector(`#c${idValueNumber}`).innerHTML);
+
+      number = number + 1;
+      console.log(number, "from cart.js");
       formBody = {
         quantity1: number,
         productId: idValueNumber
       };
 
       // console.log(formBody)
-      const resp = await fetch("/minusQuantity", {
+      const resp = await fetch("/addQuantity", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -134,45 +165,17 @@ let idValue = document.querySelector(".container2").addEventListener("click", as
 
       const data = await resp.json();
       console.log(data.message)
+      // console.log(typeof data.message)
+      document.querySelector(`#b${idValueNumber}`).innerHTML = data.message;
 
-
-      return (document.querySelector(`#c${idValueNumber}`).innerHTML = number.toString());
+      return (document.querySelector(`#c${idValueNumber}`).innerHTML = number.toString()
+      );
+      // return (document.querySelector(`#c${idValueNumber}`).innerHTML = number.toString());
     }
-  }
 
 
 
 
 
-
-
-  if (idValue[0] == "f") {
-    let number = parseInt(document.querySelector(`#c${idValueNumber}`).innerHTML);
-
-    number = number + 1;
-    // console.log(number, "from cart.js");
-    formBody = {
-      quantity1: number,
-      productId: idValueNumber
-    };
-
-    // console.log(formBody)
-    const resp = await fetch("/addQuantity", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formBody),
-    });
-
-    const data = await resp.json();
-    console.log(data.message)
-
-    return (document.querySelector(`#c${idValueNumber}`).innerHTML = number.toString());
-  }
-
-
-
-
-
-})
+  })
+}
