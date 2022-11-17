@@ -1,4 +1,3 @@
-DROP TABLE IF EXISTS purchase_record_products_map;
 DROP TABLE IF EXISTS products_rates_map;
 DROP TABLE IF EXISTS decision;
 DROP TABLE IF EXISTS each_processing;
@@ -66,6 +65,7 @@ CREATE TABLE each_processing (
 CREATE TABLE decision (
   id SERIAL PRIMARY KEY NOT NULL,
   quantity integer,
+  total_price_per_product decimal,
   created_date date,
   users_id integer,
   product_id integer,

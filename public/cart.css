@@ -6,7 +6,7 @@
 body {
   margin: 0;
   top: 10px;
-  
+
 }
 
 .bi,
@@ -148,7 +148,7 @@ body {
 
 /* ....................... NAV bar end .................................................... */
 
-body{ 
+body {
   background-color: #e4effa;
 }
 
@@ -306,23 +306,17 @@ body{
 
 .minusButton,
 .plusButton {
-  height: 90%;
-  width: 90%;
-  padding: 10px;
+  height: 100px;
+  width: 100px;
+  font-size: 55px;
 }
 
-.bye {
-  height: 100%;
-  width: 100%;
-  color: black !important;
-  font-size: 90px;
-}
 
 .unit {
   font-size: 90px;
 }
 
-#container3{
+#container3 {
   background-color: palegoldenrod;
   max-width: 100%;
   height: 450px;
@@ -332,16 +326,18 @@ body{
   flex-wrap: wrap;
 }
 
-#leftPart{display: flex;
-justify-content: space-around;
-align-items: center;
-flex: 1;
-/* background-color: red; */
-background-image: linear-gradient(to right, #0062ce, #007d72);
-/* border: 1px solid black; */
-height: 100%;}
+#leftPart {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex: 1;
+  /* background-color: red; */
+  background-image: linear-gradient(to right, #0062ce, #007d72);
+  /* border: 1px solid black; */
+  height: 100%;
+}
 
-#rightPart{
+#rightPart {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -351,7 +347,9 @@ height: 100%;}
   height: 100%;
 }
 
-#all, #delete, #confirmPart{
+#all,
+#delete,
+#confirmPart {
   /* border: 1px solid black; */
   height: 100%;
   flex: 1;
@@ -359,45 +357,47 @@ height: 100%;}
   justify-content: center;
   align-items: center;
   padding: 10px;
-  
+
 }
 
 
 
-#checkAll, #deleteSome {
-  height:  3vh;
+#checkAll,
+#deleteSome {
+  height: 3vh;
   width: 3vw;
- 
- 
+
+
 }
-#confirmation{
+
+#confirmation {
   height: 90px;
-  width:200px;
+  width: 200px;
   padding: 5px;
   font-size: 20px;
   border-radius: 40px;
 }
 
-label{
+label {
   font-size: 2vh;
 }
 
 
-#totalMark{
+#totalMark {
   font-size: 70px;
   flex: 1;
   display: flex;
   justify-content: center;
 }
 
-#currencyS{
+#currencyS {
   font-size: 70px;
   flex: 1;
   display: flex;
   justify-content: center;
 }
 
-#money{
+#money {
   font-size: 80px;
   font-weight: bold;
   flex: 1;
@@ -405,7 +405,7 @@ label{
   justify-content: center;
 }
 
-#bill{
+#bill {
   /* border: 1px solid black; */
   height: 100%;
   flex: 1;
@@ -414,9 +414,9 @@ label{
   align-items: center;
 }
 
-#billButton{
+#billButton {
   height: 90px;
-  width:200px;
+  width: 200px;
   padding: 5px;
   font-size: 40px;
   border-radius: 40px;
@@ -460,7 +460,7 @@ label{
     background-color: #003d81;
     padding: 20px;
     overflow-y: auto;
-    height: 40vh;
+    height: 1400px;
   }
 
   .container2_1 {
@@ -475,6 +475,7 @@ label{
     margin: 20px;
     overflow-y: auto;
   }
+
   .currencySign {
     /* border: 1px solid black; */
     flex: 1;
@@ -485,7 +486,7 @@ label{
     font-size: 20px;
     padding: 10px;
   }
-  
+
   .unitPrice {
     /* border: 1px solid black; */
     flex: 1;
@@ -496,72 +497,77 @@ label{
     font-size: 20px;
     padding: 10px;
   }
-  .bye {
-    height: 100%;
-    width: 100%;
-    color: black !important;
-    font-size: 20px;
+
+  .minusButton,
+  .plusButton {
+    height: 45px;
+    width: 45px;
+    font-size: 25px;
   }
-  
+
+ 
+
   .unit {
     font-size: 20px;
-}
+  }
 
-#container3{
-  background-color: palegoldenrod;
-  max-width: 100%;
-  height: 250px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
-}
+  #container3 {
+    background-color: palegoldenrod;
+    max-width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+  }
 
-#totalMark{
-  font-size: 30px;
-  flex: 1;
-}
+  #totalMark {
+    font-size: 30px;
+    flex: 1;
+  }
 
-#currencyS{
-  font-size: 30px;
-  flex: 1;
-}
+  #currencyS {
+    font-size: 30px;
+    flex: 1;
+  }
 
-#money{
-  font-size: 30px;
-  font-weight: bold;
-  flex: 1;
-}
+  #money {
+    font-size: 30px;
+    font-weight: bold;
+    flex: 1;
+  }
 
-#bill{
-  /* border: 1px solid black; */
-  height: 100%;
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  #bill {
+    /* border: 1px solid black; */
+    height: 100%;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-#billButton{
-  height: 60px;
-  width:150px;
-  padding: 5px;
-  font-size:20px;
-  border-radius: 40px;
-}
-
-
-#leftPart{display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex: 1;
-  /* background-color: red; */
-  background-image: linear-gradient(to right, #0062ce, #007d72);
-  /* border: 1px solid black; */
-  height: 100%;}
+  #billButton {
+    height: 60px;
+    width: 150px;
+    padding: 5px;
+    font-size: 20px;
+    border-radius: 40px;
+  }
 
 
-  #rightPart{
+  #leftPart {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex: 1;
+    /* background-color: red; */
+    background-image: linear-gradient(to right, #0062ce, #007d72);
+    /* border: 1px solid black; */
+    height: 100%;
+  }
+
+
+  #rightPart {
     display: flex;
     justify-content: space-around;
     align-items: center;

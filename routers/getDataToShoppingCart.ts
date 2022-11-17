@@ -7,7 +7,7 @@ let queryResult= await client.query(`
 SELECT * FROM decision INNER JOIN products ON product_id = products.id `)
 
 
-console.log(queryResult)
+// console.log(queryResult.rows, "from getDataToShopping")
 res.status(201).json(queryResult.rows)
 
 }

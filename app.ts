@@ -30,7 +30,8 @@ import { Productrecords } from "./models";
 import {productSession} from "./routers/productSession";
 import { allCategoryRoute } from "./routers/allCategoryRoute";
 import { getDataToShoppingCart } from "./routers/getDataToShoppingCart";
-
+import {minusQuantity} from "./routers/minusQuantity";
+import {addQuantity1} from "./routers/addQuantity";
 declare module "express-session" {
   interface Session {
     user: User | false;
@@ -87,14 +88,12 @@ app.post("/userData", register);
 
 //////////////////////  registration route handler END ////////////////////////////////////////////////////////////////////////
 app.post("/id1", displayProduct); //ver.1
-// app.get("/product/:id",displayProduct )  //ver.2
-
 app.post("/productsesseion", productSession);
-
 app.get("/buyNow", buyNow);
 app.use("/addToCar", addCartRoute);
-app.get("/getDataToShoppingCart", getDataToShoppingCart )
-
+app.get("/getDataToShoppingCart", getDataToShoppingCart );
+app.post("/minusQuantity", minusQuantity)
+app.post("/addQuantity", addQuantity1);
 ////////////////////// Payment //////////////////////////
 app.post("/create-checkout-session", register);
 ////////////////////// Payment //////////////////////////

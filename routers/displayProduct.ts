@@ -5,13 +5,13 @@ import {client} from "../app";
 /////////////// VER.1 ..///////////////////////////
 export async function displayProduct(req:express.Request,res:express.Response){
     const id=req.body.id;
-    console.log(id);
+    // console.log(id);
   
 
     let queryResult= await client.query(
     `SELECT * FROM products where id='${id}'`
 )
-console.log(queryResult.rows)
+// console.log(queryResult.rows, "from displayProducts.ts")
 // res.status(201).json(queryResult.rows)
 res.json(queryResult.rows)
 
