@@ -41,3 +41,13 @@ export interface Products {
 export interface Productrecords {
   id: number;
 }
+
+export interface ProductPage {
+  id: number;
+  name: string;
+  image: string;
+  description: string;
+  price: number;
+  stock: boolean;
+  quantity: number;
+}
