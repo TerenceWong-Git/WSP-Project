@@ -29,9 +29,3 @@ async function postProductPage(req: Request, res: Response) {
   console.log(req.session.searchProduct);
   res.status(200).json(data);
 }
-
-// async function getProductPage(req: Request, res: Response) {
-//   res.status(200).json(req.session.searchProduct);
-//   // req.session.searchProduct = false;
-//   console.log(req.session.searchProduct);
-// }
