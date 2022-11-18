@@ -16,6 +16,7 @@ import expressSession from "express-session";
 import path from "path";
 // import Stripe from 'stripe';
 // import { forumRoutes } from "./routers/forumRoute";
+import { productSession } from "./routers/productSession";
 import { loginRoutes } from "./routers/loginRoute";
 // import { hashPassword } from "./bcrypt";
 import { ProductPage, User } from "./models";
@@ -28,7 +29,6 @@ import { displayProduct } from "./routers/displayProduct";
 import { buyNow } from "./routers/buyNow";
 import { addToCar } from "./routers/addToCar";
 import { Productrecords } from "./models";
-import { productSession } from "./routers/productSession";
 import { allCategoryRoute } from "./routers/allCategoryRoute";
 import { getDataToShoppingCart } from "./routers/getDataToShoppingCart";
 import { searchBarRoutes } from "./routers/searchBarRoute";
@@ -84,6 +84,7 @@ app.use(grantExpress as express.RequestHandler);
 
 // app.use("/forum", forumRoutes);
 // app.use(datingRoutes);
+app.post("/productsesseion", productSession);
 app.use("/login", loginRoutes); // request received from login.js
 app.use(logoutRoutes); // request received from login.js
 app.use(indexRoute); // request received from index.js
@@ -94,7 +95,6 @@ app.use("/search", searchBarRoutes);
 
 //////////////////////  registration route handler END ////////////////////////////////////////////////////////////////////////
 app.post("/id1", displayProduct); //ver.1
-app.post("/productsesseion", productSession);
 app.get("/buyNow", buyNow);
 app.post("/addToCar", addToCar);
 app.get("/getDataToShoppingCart", getDataToShoppingCart);

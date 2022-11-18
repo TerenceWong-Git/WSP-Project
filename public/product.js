@@ -10,6 +10,7 @@ window.onload = async () => {
   submitComment();
   await getImage();
   await productSession();
+ 
 };
 
 function logout() {
@@ -88,7 +89,7 @@ async function productSession() {
     id: idOfProduct,
   };
   // formBody["category"]=categoryOfProduct;
-  // console.log(formBody);
+  console.log(formBody);
 
   const resp = await fetch("/productsesseion", {
     method: "POST",
@@ -104,7 +105,7 @@ async function productSession() {
   if (resp.status !== 201) {
     console.log("session is not stored successfully");
   } else {
-    console.log("session is not stored successfully");
+    console.log("session is stored successfully");
   }
 }
 
@@ -149,30 +150,42 @@ document.querySelector(".buyNow").addEventListener("click", async () => {
 });
 
 //////////////////////  Add to car  ////////////////////////////////////
+
+
 document.querySelector(".addToCar").addEventListener("click", async () =>
   // {console.log("add to car")
   {
+    setTimeout(function(){window.location.reload()}, 1000)
+    let url = window.location.search;
+    // console.log(url, "haha");
+    let queries = new URLSearchParams(url);
+    let idOfProduct = queries.get("id");
+    console.log(idOfProduct)
+   
     let created_date = new Date().toLocaleDateString();
     console.log(created_date);
 
-    let quantity1 = document.querySelector("#number").innerHTML.toString();
-    console.log(quantity1);
+    let quantity1 = document.querySelector("#number").innerHTML;
+    console.log( quantity1);
 
-    let formBody = { createdDate: created_date, quantity: quantity1 };
+    let formBody = { createdDate: created_date, quantity: quantity1,
+                    product_Id: idOfProduct };
     // console.log(formBody)
-    const resp = await fetch("/addToCar", {
+    const resp = await fetch("/addToCar",{
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(formBody),
+      body:(JSON.stringify(formBody)),
     });
 
     const data = await resp.json();
-    // console.log(data);
+    console.log(data);
     if (data) {
       if (resp.status === 201) {
         alert(data.message);
+      
+       setTimeout(function(){window.location.reload()}, 250)
       }
       if (resp.status !== 201) {
         alert(data.message);
@@ -182,6 +195,9 @@ document.querySelector(".addToCar").addEventListener("click", async () =>
     }
   }
 );
+
+
+
 
 ///////////////////// subtmit comment  ////////////////////
 function submitComment() {

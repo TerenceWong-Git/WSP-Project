@@ -250,7 +250,7 @@ console.log(e.currentTarget)
     
     document.querySelector("#money").innerHTML=data.totalPrice;
      document.querySelector("#quantity").innerHTML=data.numberOfItem;
-     location.reload();
+     setTimeout(function(){window.location.reload()}, 500)
       }
 
 
