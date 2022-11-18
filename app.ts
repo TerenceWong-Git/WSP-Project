@@ -31,14 +31,9 @@ import { Productrecords } from "./models";
 import { productSession } from "./routers/productSession";
 import { allCategoryRoute } from "./routers/allCategoryRoute";
 import { getDataToShoppingCart } from "./routers/getDataToShoppingCart";
-<<<<<<< HEAD
-import {minusQuantity} from "./routers/minusQuantity";
-import {addQuantity1} from "./routers/addQuantity";
-=======
 import { minusQuantity } from "./routers/minusQuantity";
 import { addQuantity1 } from "./routers/addQuantity";
 import { searchBarRoutes } from "./routers/searchBarRoute";
->>>>>>> 5502ca0b0deda9ef7be8b27ec1ab19e006ce99a7
 
 declare module "express-session" {
   interface Session {
@@ -105,7 +100,7 @@ app.get("/getDataToShoppingCart", getDataToShoppingCart);
 app.post("/minusQuantity", minusQuantity);
 app.post("/addQuantity", addQuantity1);
 ////////////////////// Payment //////////////////////////
-;
+
 export const stripe = new Stripe(process.env.STRIPE_PRIVATE_KEY+"",{apiVersion:"2022-11-15"});
 app.use(paymentRoute)
 ////////////////////// Payment //////////////////////////
