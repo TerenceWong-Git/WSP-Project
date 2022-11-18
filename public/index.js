@@ -145,7 +145,7 @@ function searchBar() {
       searchBarRecommend.setAttribute("hidden", "");
       searchBarRecommend.innerHTML = "";
     } else {
-      const resp = await fetch("/search/", {
+      const resp = await fetch("/search", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -188,7 +188,18 @@ function searchBar() {
             console.log(productContainerDiv);
             const formBody = { name };
             console.log(formBody);
-            const resp = await fetch("/search");
+            const resp = await fetch("/search/product", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(formBody),
+            });
+            if (resp.status === 200) {
+              const data = await resp.json();
+              // alert(data);
+              window.location = `/product.html?id=${data.id}`;
+            }
           });
 
           count++;
@@ -197,7 +208,7 @@ function searchBar() {
         searchBarRecommend.innerHTML = "";
         const textDiv = document.createElement("div");
         textDiv.innerText = "No Related Products";
-        textDiv.setAttribute("style", "height: 100px;");
+        textDiv.setAttribute("style", "height: 70px;");
         searchBarRecommend.appendChild(textDiv);
       }
     }

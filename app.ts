@@ -18,7 +18,7 @@ import path from "path";
 // import { forumRoutes } from "./routers/forumRoute";
 import { loginRoutes } from "./routers/loginRoute";
 // import { hashPassword } from "./bcrypt";
-import { User } from "./models";
+import { ProductPage, User } from "./models";
 import { userLogin } from "./middleware";
 import { logoutRoutes } from "./routers/logoutRoute";
 // import {registerRoutes} from "./routers/registerRoute" ;
@@ -39,6 +39,7 @@ declare module "express-session" {
   interface Session {
     user: User | false;
     productRecords: Productrecords | false;
+    searchProduct: ProductPage | false;
     // grant: { response: { access_token: string | null } };
   }
 }

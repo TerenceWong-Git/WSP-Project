@@ -13,6 +13,7 @@ async function importData() {
   await client.connect();
 
   // DELETE FROM tables
+  await client.query("DELETE FROM products");
   await client.query("DELETE FROM category");
   await client.query("insert into category (name) values ('drinks')");
   await client.query("insert into category (name) values ('snacks')");
@@ -21,7 +22,6 @@ async function importData() {
   await client.query("insert into brands (name) values ('a')");
   await client.query("insert into brands (name) values ('bc')");
   await client.query("insert into brands (name) values ('c')");
-  await client.query("DELETE FROM products");
 
   // // Insert dummy data
   const products = [

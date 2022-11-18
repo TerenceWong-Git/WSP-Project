@@ -1,8 +1,11 @@
 import { client } from "../app";
 import { Router, Request, Response } from "express";
+import { ProductPage } from "../models";
 
 export const searchBarRoutes = Router();
 searchBarRoutes.post("/", postProductInfo);
+searchBarRoutes.post("/product", postProductPage);
+// searchBarRoutes.get("/", getProductPage);
 
 async function postProductInfo(req: Request, res: Response) {
   console.log("into post function");
@@ -14,5 +17,15 @@ async function postProductInfo(req: Request, res: Response) {
     res.status(400).json({ message: "NO RESULT" });
     return;
   }
+  res.status(200).json(data);
+}
+
+async function postProductPage(req: Request, res: Response) {
+  console.log("into product page");
+  const searchProductName = req.body.name;
+  console.log(searchProductName);
+  const data = (await client.query<ProductPage>(/* sql */ `SELECT id, name, image, description, price, stock, sales_quantity as quantity from products WHERE name = '${searchProductName}'`)).rows[0];
+  req.session.searchProduct = data;
+  console.log(req.session.searchProduct);
   res.status(200).json(data);
 }
