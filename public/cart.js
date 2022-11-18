@@ -11,6 +11,7 @@ window.onload = async () => {
 ///////////////////  to load the data of product to render the shopping cart page first //////////////////
 
 async function displayShoppingCart() {
+ 
   const resp = await fetch("/getDataToShoppingCart", {
     method: "GET",
   });
@@ -54,7 +55,10 @@ async function displayShoppingCart() {
      </div>
  
  `;
+ 
       document.querySelector(".container2").innerHTML = containerTemplate;
+    
+    
     }
   }
 }
@@ -179,7 +183,7 @@ function profile() {
 
 /////////////////////////////// select product(s) from shopping cart  ///////////////////////////////
 
-function checkBox(){
+async function checkBox(){
 
 document.querySelector("#checkAll").addEventListener("click", (e)=>{
 
@@ -214,7 +218,7 @@ if(document.querySelector("#checkAll").checked==false){
 ///////////////// remove some items from the shopping cart  ////////////////////
 
 
-function removeItem(){
+async function removeItem(){
 document.querySelector("#confirmation").addEventListener("click", async(e)=>{
 console.log(e.currentTarget)
   let checkboxes=document.querySelectorAll(".smallcheckbox")

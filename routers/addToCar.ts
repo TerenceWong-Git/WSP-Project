@@ -40,14 +40,16 @@ export async function addToCar(req: express.Request, res: express.Response) {
             }
 
         
+        
            
         }
-        
         
         await client.query(
             `INSERT INTO decision (users_id, product_id, quantity, created_date, total_price_per_product) VALUES ($1, $2, $3, $4, $5)`,
             [req.session.user.id, req.session.productRecords.id, eachProductQuantity, created_date, totalPricePerProduct]
+           
         )
+        
             
         res.status(201).json({ message: "added successfully!" });
         return; 
