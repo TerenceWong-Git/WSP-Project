@@ -3,12 +3,12 @@
 // import { URLSearchParams } from "url";
 // import { userName } from "./fetchUser.js";
 
-window.onload = () => {
+window.onload = async () => {
   logout();
   // userName();
   submitComment();
-  getImage();
-  productSession();
+  await getImage();
+  await productSession();
 };
 
 function logout() {

@@ -67,11 +67,11 @@ async function getId() {
     .addEventListener("click", async (e) => {
       console.log(e.target);
       console.log(e.target.id);
-      let idValue = e.target.id;
-      let idValueNumber = idValue[1];
+      let idValue = e.target.id.slice(1);
+      let idValueNumber = idValue;
       console.log(idValueNumber);
 
-      if (idValue[0] == "e") {
+      if (e.target.id[0] == "e") {
         let number = parseInt(
           document.querySelector(`#c${idValueNumber}`).innerHTML
         );
@@ -109,7 +109,7 @@ async function getId() {
 
       
 
-      if (idValue[0] == "f") {
+      if (e.target.id[0] == "f") {
         let number = parseInt(
           document.querySelector(`#c${idValueNumber}`).innerHTML
         );
@@ -215,16 +215,16 @@ if(document.querySelector("#checkAll").checked==false){
 
 
 function removeItem(){
-document.querySelector("#confirmation").addEventListener("click", async()=>{
-
+document.querySelector("#confirmation").addEventListener("click", async(e)=>{
+console.log(e.currentTarget)
   let checkboxes=document.querySelectorAll(".smallcheckbox")
   let divOfProduct= document.querySelectorAll(".container2_1")
   // console.log(checkboxes)
   // console.log(divOfProduct);
   for (let checkbox of checkboxes){
-    let idValue=checkbox.id[1];
-    // console.log(checkbox)
-    // console.log(idValue)
+    let idValue=checkbox.id.slice(1);
+    console.log(checkbox)
+    console.log(idValue)
     if (document.querySelector(`#z${idValue}`).checked==true){
       document.querySelector(`#a${idValue}`).classList.add("remove")
 
@@ -243,9 +243,10 @@ document.querySelector("#confirmation").addEventListener("click", async()=>{
       }
       else{
         console.log(" successful removal of items")
-    document.querySelector("#quantity").innerHTML=data.numberOfItem;
+    
     document.querySelector("#money").innerHTML=data.totalPrice;
-
+     document.querySelector("#quantity").innerHTML=data.numberOfItem;
+     location.reload();
       }
 
 
