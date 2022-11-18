@@ -26,9 +26,9 @@ async function postLoginRoutes(req: express.Request, res: express.Response, next
         req.session.user = { id: user.id, username: user.username, email: user.email, password: user.password };
         res.status(200).json({ message: "good good good, loginRoute.ts" });
         console.log({ url });
-        console.log(req.session.user, "refers to loginRoutes.ts");
-        console.log(req.session, "refers to loginRoutes.ts");
-        console.log(req.session.productRecords, "loginRoute.ts");
+        console.log(req.session.user, "refers to loginRoutes.ts, line 29");
+        console.log(req.session, "refers to loginRoutes.ts, line 30");
+        console.log(req.session.productRecords, "loginRoute.ts, line 31");
         // console.log(req.session);
         return;
       }
