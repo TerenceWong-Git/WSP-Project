@@ -417,7 +417,7 @@ label {
   align-items: center;
 }
 
-#billButton {
+.billButton {
   height: 90px;
   width: 200px;
   padding: 5px;
@@ -551,7 +551,7 @@ label {
     align-items: center;
   }
 
-  #billButton {
+  .billButton {
     height: 60px;
     width: 150px;
     padding: 5px;

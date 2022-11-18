@@ -6,6 +6,7 @@ window.onload = async () => {
   userName();
   logout();
   profile();
+  loadCartItem();
 };
 
 ///////////////////  to load the data of product to render the shopping cart page first //////////////////
@@ -250,7 +251,7 @@ console.log(e.currentTarget)
     
     document.querySelector("#money").innerHTML=data.totalPrice;
      document.querySelector("#quantity").innerHTML=data.numberOfItem;
-     setTimeout(function(){window.location.reload()}, 500)
+     setTimeout(function(){window.location.reload()}, 250)
       }
 
 
@@ -260,4 +261,39 @@ console.log(e.currentTarget)
   
 
 })
+}
+
+
+
+
+
+///////////////  Terence Work   ///////////////////////////////////////
+
+
+async function loadCartItem() {
+  // const result = await fetch("/create-checkout-session",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({test:1})})
+  // const url = await result.json()
+  // console.log("check url", url)
+  // window.location = url
+  const resp = await fetch("/checkout");
+  const cartItemList = await resp.json();
+  // let itemList = cartItemList;
+  if (cartItemList) {
+    document
+      .querySelector("#checkout-button")
+      .addEventListener("click", async (e) => {
+        e.preventDefault()
+        const result = await fetch("/create-checkout-session", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(),
+        });
+
+        const url = await result.json();
+        console.log("check url", url);
+        window.location = url;
+      });
+  }
 }
