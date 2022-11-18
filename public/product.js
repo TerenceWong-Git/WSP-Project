@@ -171,13 +171,14 @@ document.querySelector(".addToCar").addEventListener("click", async () =>
     const data = await resp.json();
     // console.log(data);
     if (data) {
+      if (resp.status === 201) {
+        alert(data.message);
+      }
       if (resp.status !== 201) {
         alert(data.message);
         window.location = "/login.html";
       }
-      if (resp.status === 201) {
-        alert(data.message);
-      }
+      
     }
   }
 );

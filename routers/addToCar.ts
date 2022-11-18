@@ -53,13 +53,11 @@ export async function addToCar(req: express.Request, res: express.Response) {
             
         res.status(201).json({ message: "added successfully!" });
         return; 
-
-       
-
-
-
-        
+   
     }
+
+
+    
     else {
         res.status(202).json({ message: "please first login to your account!" })
     }
