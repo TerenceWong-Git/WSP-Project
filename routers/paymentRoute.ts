@@ -1,21 +1,21 @@
 import express from "express";
 import { client, stripe } from "../app";
-import type { Request, Response } from "express";
+// import type { Request, Response } from "express";
 import console from "console";
 
 export const paymentRoute = express.Router();
 // let cartItemList;
 
-// Section 1 - Define endpoints (Method, Path = "/memos")
-paymentRoute.get("/checkout", getpaymentRoute); //create-checkout-session
+// // Section 1 - Define endpoints (Method, Path = "/memos")
+// paymentRoute.get("/checkout", getpaymentRoute); //create-checkout-session
 
-// Section 2 - Define Route Handler
-async function getpaymentRoute(req: Request, res: Response) {
-  const queryResult = await client.query(
-    "SELECT quantity, total_price_per_product, product_id, name, users_id, username FROM decision INNER JOIN products ON product_id = products.id INNER JOIN users on users_id = users.id;"
-  );
-  res.json(queryResult.rows);
-}
+// // Section 2 - Define Route Handler
+// async function getpaymentRoute(req: Request, res: Response) {
+//   const queryResult = await client.query(
+//     "SELECT quantity, total_price_per_product, product_id, name, users_id, username FROM decision INNER JOIN products ON product_id = products.id INNER JOIN users on users_id = users.id;"
+//   );
+//   res.json(queryResult.rows);
+// }
 
 paymentRoute.post("/create-checkout-session", async (req, res) => {
   const queryResult = await client.query(
