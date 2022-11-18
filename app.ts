@@ -28,11 +28,17 @@ import { displayProduct } from "./routers/displayProduct";
 import { buyNow } from "./routers/buyNow";
 import { addToCar } from "./routers/addToCar";
 import { Productrecords } from "./models";
-import {productSession} from "./routers/productSession";
+import { productSession } from "./routers/productSession";
 import { allCategoryRoute } from "./routers/allCategoryRoute";
 import { getDataToShoppingCart } from "./routers/getDataToShoppingCart";
+<<<<<<< HEAD
 import {minusQuantity} from "./routers/minusQuantity";
 import {addQuantity1} from "./routers/addQuantity";
+=======
+import { minusQuantity } from "./routers/minusQuantity";
+import { addQuantity1 } from "./routers/addQuantity";
+import { searchBarRoutes } from "./routers/searchBarRoute";
+>>>>>>> 5502ca0b0deda9ef7be8b27ec1ab19e006ce99a7
 
 declare module "express-session" {
   interface Session {
@@ -88,14 +94,15 @@ app.use(indexRoute); // request received from index.js
 app.use(allCategoryRoute); // request received from allCategory.js
 app.use("/profile", profileRoutes);
 app.post("/userData", register);
+app.use("/search", searchBarRoutes);
 
 //////////////////////  registration route handler END ////////////////////////////////////////////////////////////////////////
 app.post("/id1", displayProduct); //ver.1
 app.post("/productsesseion", productSession);
 app.get("/buyNow", buyNow);
 app.post("/addToCar", addToCar);
-app.get("/getDataToShoppingCart", getDataToShoppingCart );
-app.post("/minusQuantity", minusQuantity)
+app.get("/getDataToShoppingCart", getDataToShoppingCart);
+app.post("/minusQuantity", minusQuantity);
 app.post("/addQuantity", addQuantity1);
 ////////////////////// Payment //////////////////////////
 ;

@@ -1,12 +1,11 @@
-let paramsStringObj = {product:"name", origin:"hongkong",price:"25"};
+let paramsStringObj = { product: "name", origin: "hongkong", price: "25" };
 window.onload = () => {
   loadProducts();
   userName();
   logout();
-  profile();}
-
-  
-
+  profile();
+  searchBar();
+};
 
 async function loadProducts() {
   const resp = await fetch("/index");
@@ -21,24 +20,19 @@ async function loadProducts() {
   let snackCount = 1;
   let noodleCount = 1;
 
-  
-  
-
   for (const product of products) {
-
     console.log(product.category_id);
     if (product.category_id === 1) {
+      const url = "http://localhost:8080/product.html?";
+      const obj = {
+        id: `${product.id}`,
+      };
 
-      const url='http://localhost:8080/product.html?';
-      const obj={
-        id:`${product.id}`,
-      }
-
-      const searchParams= new URLSearchParams(obj);
+      const searchParams = new URLSearchParams(obj);
       // console.log(searchParams);
-      const queryString=searchParams.toString();
+      const queryString = searchParams.toString();
       // console.log(queryString)
-      let pathOfEachProduct=url+queryString;
+      let pathOfEachProduct = url + queryString;
 
       drinkStr += `
     <div class="topSalesProducts${drinkCount}">
@@ -49,18 +43,18 @@ async function loadProducts() {
       <div class="productsPrice">$${product.price}</div>
       </div>
       `;
-      
+
       drinkCount++;
     }
 
     if (product.category_id === 2) {
-      const url='http://localhost:8080/product.html?';
-      const obj={
-        id:`${product.id}`,
-      }
-      const searchParams= new URLSearchParams(obj);
-      const queryString=searchParams.toString();
-      let pathOfEachProduct=url+queryString;
+      const url = "http://localhost:8080/product.html?";
+      const obj = {
+        id: `${product.id}`,
+      };
+      const searchParams = new URLSearchParams(obj);
+      const queryString = searchParams.toString();
+      let pathOfEachProduct = url + queryString;
 
       snackStr += `
     <div class="topSalesProducts${snackCount}">
@@ -73,14 +67,13 @@ async function loadProducts() {
     }
 
     if (product.category_id === 3) {
-
-      const url='http://localhost:8080/product.html?';
-      const obj={
-        id:`${product.id}`,
-      }
-      const searchParams= new URLSearchParams(obj);
-      const queryString=searchParams.toString();
-      let pathOfEachProduct=url+queryString;
+      const url = "http://localhost:8080/product.html?";
+      const obj = {
+        id: `${product.id}`,
+      };
+      const searchParams = new URLSearchParams(obj);
+      const queryString = searchParams.toString();
+      let pathOfEachProduct = url + queryString;
       noodleStr += `
     <div class="topSalesProducts${noodleCount}">
       <a href="${pathOfEachProduct}"><img class="productsImage" src="${product.image}" alt="..."/></a>
@@ -125,5 +118,95 @@ function profile() {
       alert("hi");
       window.location = "/profile.html";
     }
+  });
+}
+
+function searchBar() {
+  console.log("hihihi");
+  const searchBarDiv = document.querySelector(".search-bar-input");
+  const searchBarRecommend = document.querySelector(".search-bar-recommend");
+
+  // searchBarDiv.addEventListener("change", async (e) => {
+  //   const searchBarInput = e.target;
+  //   if (searchBarInput.value === "") {
+  //     searchBarRecommend.setAttribute("hidden", "");
+  //     searchBarRecommend.innerHTML = "";
+  //   }
+  // });
+
+  console.log("byebyebye");
+  searchBarDiv.addEventListener("input", async (e) => {
+    // e.preventDefault();
+    searchBarRecommend.removeAttribute("hidden");
+    const searchBarInput = e.target;
+    const formBody = { name: searchBarInput.value };
+    console.log(formBody);
+    if (searchBarInput.value === "") {
+      searchBarRecommend.setAttribute("hidden", "");
+      searchBarRecommend.innerHTML = "";
+    } else {
+      const resp = await fetch("/search/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formBody),
+      });
+      console.log("finished fetching");
+      if (resp.status === 200) {
+        searchBarRecommend.innerHTML = "";
+        const data = await resp.json();
+        const recommendDiv = document.querySelector(".search-bar-recommend");
+        let count = 1;
+        for (const item of data) {
+          const { image, name, price } = item;
+          console.log(item);
+          const productContainerDiv = document.createElement("div");
+          productContainerDiv.className = "recommend-product-container";
+
+          const productImg = document.createElement("img");
+          productImg.className = "recommend-product-img";
+          productImg.setAttribute("src", image);
+
+          const productNameDiv = document.createElement("div");
+          productNameDiv.className = "recommend-product-name";
+          productNameDiv.innerText = name;
+
+          const productPriceDiv = document.createElement("div");
+          productPriceDiv.className = "recommend-product-price";
+          productPriceDiv.innerText = `$${price}`;
+
+          productContainerDiv.appendChild(productImg);
+          productContainerDiv.appendChild(productNameDiv);
+          productContainerDiv.appendChild(productPriceDiv);
+          recommendDiv.appendChild(productContainerDiv);
+          if (count !== data.length) {
+            productContainerDiv.setAttribute("style", "border-bottom: 1px #CCCCCC solid;");
+          }
+
+          productContainerDiv.addEventListener("click", async (e) => {
+            console.log(productContainerDiv);
+            const formBody = { name };
+            console.log(formBody);
+            const resp = await fetch("/search");
+          });
+
+          count++;
+        }
+      } else {
+        searchBarRecommend.innerHTML = "";
+        const textDiv = document.createElement("div");
+        textDiv.innerText = "No Related Products";
+        textDiv.setAttribute("style", "height: 100px;");
+        searchBarRecommend.appendChild(textDiv);
+      }
+    }
+  });
+
+  const searchBarForm = document.querySelector("#search-bar-form");
+  searchBarDiv.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formBody = form.searchBarInput.value;
   });
 }
