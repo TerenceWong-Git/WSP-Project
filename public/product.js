@@ -3,12 +3,13 @@
 // import { URLSearchParams } from "url";
 // import { userName } from "./fetchUser.js";
 
-window.onload = () => {
+window.onload = async () => {
   logout();
+  // renderProduct();
   // userName();
   submitComment();
-  getImage();
-  productSession();
+  await getImage();
+  await productSession();
 };
 
 function logout() {
@@ -73,8 +74,6 @@ async function getImage() {
   document.querySelector("#details").innerHTML = descrip;
 }
 
-
-
 ///////////////////// help save the req.session of the single product on the product page  ////////////////////////////////////////////////////
 
 async function productSession() {
@@ -106,7 +105,6 @@ async function productSession() {
     console.log("session is not stored successfully");
   } else {
     console.log("session is not stored successfully");
-  
   }
 }
 
@@ -154,39 +152,34 @@ document.querySelector(".buyNow").addEventListener("click", async () => {
 document.querySelector(".addToCar").addEventListener("click", async () =>
   // {console.log("add to car")
   {
-let created_date= new Date().toLocaleDateString();
-console.log(created_date);
+    let created_date = new Date().toLocaleDateString();
+    console.log(created_date);
 
-let quantity1= document.querySelector("#number").innerHTML.toString();
-console.log(quantity1)
+    let quantity1 = document.querySelector("#number").innerHTML.toString();
+    console.log(quantity1);
 
-
-let formBody={createdDate:created_date,
-          quantity:quantity1 }
-          // console.log(formBody)
+    let formBody = { createdDate: created_date, quantity: quantity1 };
+    // console.log(formBody)
     const resp = await fetch("/addToCar", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body:JSON.stringify(formBody)
+      body: JSON.stringify(formBody),
     });
 
     const data = await resp.json();
     // console.log(data);
-if(data){
-    if (resp.status !== 201) {
-      alert(data.message);
-      window.location = "/login.html";
+    if (data) {
+      if (resp.status !== 201) {
+        alert(data.message);
+        window.location = "/login.html";
+      }
+      if (resp.status === 201) {
+        alert(data.message);
+      }
     }
-    if (resp.status === 201) {
-  
-   
-      alert(data.message);
-
-
-    }
-  }}
+  }
 );
 
 ///////////////////// subtmit comment  ////////////////////
@@ -219,3 +212,32 @@ function submitComment() {
 //   const usernameDiv = document.querySelector(".username");
 //   usernameDiv.innerText = username;
 // }
+
+/* Kenneth's Work */
+// async function renderProduct() {
+//   console.log("hi");
+//   const resp = await fetch("/search");
+//   if (resp.status === 200) {
+//     const data = await resp.json();
+//     window.location = `/product.html?id=${data.id}`;
+//   }
+
+// const productNameDiv = document.querySelector("#productName");
+// productNameDiv.innerText = data.name;
+// const productImgDiv = document.querySelector("#productImage");
+// const productImg = document.createElement("img");
+// productImg.setAttribute("src", data.image);
+// productImg.setAttribute("alt", data.name);
+// productImg.setAttribute("id", data.id);
+// productImg.className = "displaying";
+// productImgDiv.appendChild(productImg);
+// const productPriceDiv = document.querySelector("#pricePerGoods");
+// productPriceDiv.innerText = data.price;
+// const productStockDiv = document.querySelector("#stockNumber");
+// productStockDiv.innerText = data.stock;
+// const productSalesDiv = document.querySelector("#salesNumber");
+// productSalesDiv.innerText = data.quantity;
+// const productDetailDiv = document.querySelector("#details");
+// productDetailDiv.innerText = data.description;
+// }
+/* Kenneth's Work */

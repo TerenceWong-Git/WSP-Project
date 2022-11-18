@@ -371,6 +371,8 @@ body {
 
 }
 
+
+
 #confirmation {
   height: 90px;
   width: 200px;
@@ -426,7 +428,9 @@ label {
 
 
 
-
+.remove{
+  display: none;
+}
 
 
 
@@ -577,6 +581,16 @@ label {
     /* border: 1px solid black; */
     height: 100%;
     padding: 10px;
+  }
+
+ 
+  
+  #confirmation {
+    height: 90px;
+    width: 100px;
+    padding: 5px;
+    font-size: 20px;
+    border-radius: 20px;
   }
 
 }

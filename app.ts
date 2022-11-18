@@ -14,11 +14,11 @@ import http from "http";
 // import { Server as SocketIO } from "socket.io";
 import expressSession from "express-session";
 import path from "path";
-import Stripe from 'stripe';
+// import Stripe from 'stripe';
 // import { forumRoutes } from "./routers/forumRoute";
 import { loginRoutes } from "./routers/loginRoute";
 // import { hashPassword } from "./bcrypt";
-import { User } from "./models";
+import { ProductPage, User } from "./models";
 import { userLogin } from "./middleware";
 import { logoutRoutes } from "./routers/logoutRoute";
 // import {registerRoutes} from "./routers/registerRoute" ;
@@ -31,14 +31,15 @@ import { Productrecords } from "./models";
 import { productSession } from "./routers/productSession";
 import { allCategoryRoute } from "./routers/allCategoryRoute";
 import { getDataToShoppingCart } from "./routers/getDataToShoppingCart";
-import { minusQuantity } from "./routers/minusQuantity";
-import { addQuantity1 } from "./routers/addQuantity";
 import { searchBarRoutes } from "./routers/searchBarRoute";
-
+import {minusQuantity} from "./routers/minusQuantity";
+import {addQuantity1} from "./routers/addQuantity";
+import {removeProductRecord} from "./routers/removeProductReord";
 declare module "express-session" {
   interface Session {
     user: User | false;
     productRecords: Productrecords | false;
+    searchProduct: ProductPage | false;
     // grant: { response: { access_token: string | null } };
   }
 }
@@ -50,7 +51,7 @@ const PORT = 8080;
 
 import grant from "grant";
 import { profileRoutes } from "./routers/profileRoute";
-import { paymentRoute } from "./routers/paymentRoute";
+// import { paymentRoute } from "./routers/paymentRoute";
 // import { allCategoryRoute } from "./routers/allCategoryRoute";
 
 const grantExpress = grant.express({
@@ -99,10 +100,11 @@ app.post("/addToCar", addToCar);
 app.get("/getDataToShoppingCart", getDataToShoppingCart);
 app.post("/minusQuantity", minusQuantity);
 app.post("/addQuantity", addQuantity1);
+app.post("/removeProductRecord", removeProductRecord);
 ////////////////////// Payment //////////////////////////
 
-export const stripe = new Stripe(process.env.STRIPE_PRIVATE_KEY+"",{apiVersion:"2022-11-15"});
-app.use(paymentRoute)
+// export const stripe = new Stripe(process.env.STRIPE_PRIVATE_KEY+"",{apiVersion:"2022-11-15"});
+// app.use(paymentRoute)
 ////////////////////// Payment //////////////////////////
 
 app.use(express.static("public"));

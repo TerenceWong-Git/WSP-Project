@@ -20,8 +20,17 @@ SELECT * FROM decision INNER JOIN products ON product_id = products.id WHERE use
 
 
 console.log(queryResult.rows, "from getData line22")
+let numberOfItems= await client.query(`
+SELECT * FROM decision WHERE users_id=${req.session.user.id}`)
 // console.log(queryResult.rows, "from getDataToShopping")
-res.status(201).json(queryResult.rows);
+let totalPriceForPayment= await client.query(`
+SELECT SUM(total_price_per_product) AS total FROM decision WHERE users_id=${req.session.user.id}`)
+
+console.log(totalPriceForPayment, "line 29")
+res.status(201).json({message:queryResult.rows,
+    totalItems: numberOfItems.rowCount,
+    totalAmount: totalPriceForPayment.rows[0].total,
+});
 return;
     }
 }
