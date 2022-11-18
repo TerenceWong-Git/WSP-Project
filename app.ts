@@ -14,7 +14,7 @@ import http from "http";
 // import { Server as SocketIO } from "socket.io";
 import expressSession from "express-session";
 import path from "path";
-// import Stripe from 'stripe';
+import Stripe from 'stripe';
 // import { forumRoutes } from "./routers/forumRoute";
 import { loginRoutes } from "./routers/loginRoute";
 // import { hashPassword } from "./bcrypt";
@@ -51,7 +51,7 @@ const PORT = 8080;
 
 import grant from "grant";
 import { profileRoutes } from "./routers/profileRoute";
-// import { paymentRoute } from "./routers/paymentRoute";
+import { paymentRoute } from "./routers/paymentRoute";
 // import { allCategoryRoute } from "./routers/allCategoryRoute";
 
 const grantExpress = grant.express({
@@ -103,8 +103,8 @@ app.post("/addQuantity", addQuantity1);
 app.post("/removeProductRecord", removeProductRecord);
 ////////////////////// Payment //////////////////////////
 
-// export const stripe = new Stripe(process.env.STRIPE_PRIVATE_KEY+"",{apiVersion:"2022-11-15"});
-// app.use(paymentRoute)
+export const stripe = new Stripe(process.env.STRIPE_PRIVATE_KEY+"",{apiVersion:"2022-11-15"});
+app.use(paymentRoute)
 ////////////////////// Payment //////////////////////////
 
 app.use(express.static("public"));
