@@ -183,7 +183,9 @@ document.querySelector(".addToCar").addEventListener("click", async () =>
     console.log(data);
     if (data) {
       if (resp.status === 201) {
-        alert(data.message);
+        
+        setTimeout(function(){ alert(data.message)}, 250)
+        // alert(data.message);
       
        setTimeout(function(){window.location.reload()}, 250)
       }

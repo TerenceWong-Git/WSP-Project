@@ -7,6 +7,7 @@ window.onload = async () => {
   userName();
   logout();
   profile();
+  loadCartItem();
 };
 
 ///////////////////  to load the data of product to render the shopping cart page first //////////////////
@@ -251,7 +252,7 @@ console.log(e.currentTarget)
     
     document.querySelector("#money").innerHTML=data.totalPrice;
      document.querySelector("#quantity").innerHTML=data.numberOfItem;
-     setTimeout(function(){window.location.reload()}, 500)
+     setTimeout(function(){window.location.reload()}, 250)
       }
 
 

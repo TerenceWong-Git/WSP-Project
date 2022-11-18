@@ -11,13 +11,13 @@ import { client } from "../app";
 
 export async function addToCar(req: express.Request, res: express.Response) {
     
-  
-    if (req.session.user){
-    if (req.session.productRecords) {
+    if (req.session.user ){
+    if (req.session.productRecords ) {
 
         const created_date = req.body.createdDate;
         const eachProductQuantity = req.body.quantity;
         const productID= req.body.product_Id;
+      
 
         let decisions= await client.query(
             `SELECT * FROM decision`
@@ -35,7 +35,7 @@ export async function addToCar(req: express.Request, res: express.Response) {
                 // console.log(`UPDATE decision SET quantity = quantity + ${eachProductQuantity} WHERE users_id=${req.session.user.id} AND product_id=${req.session.productRecords.id} `)
         
                 await client.query(
-                    `UPDATE decision SET quantity = quantity + ${eachProductQuantity} WHERE users_id=${req.session.user.id} AND product_id=${req.session.productRecords.id} `
+                    `UPDATE decision SET quantity = quantity + ${eachProductQuantity} WHERE users_id=${req.session.user.id} AND product_id=${productID} `
                 )
 
                 await client.query(`UPDATE decision SET total_price_per_product = total_price_per_product  +${totalPricePerProduct} WHERE users_id=${req.session.user.id} AND product_id=${req.session.productRecords.id}`)
