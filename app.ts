@@ -14,6 +14,7 @@ import http from "http";
 // import { Server as SocketIO } from "socket.io";
 import expressSession from "express-session";
 import path from "path";
+import Stripe from 'stripe';
 // import { forumRoutes } from "./routers/forumRoute";
 import { loginRoutes } from "./routers/loginRoute";
 // import { hashPassword } from "./bcrypt";
@@ -32,6 +33,7 @@ import { allCategoryRoute } from "./routers/allCategoryRoute";
 import { getDataToShoppingCart } from "./routers/getDataToShoppingCart";
 import {minusQuantity} from "./routers/minusQuantity";
 import {addQuantity1} from "./routers/addQuantity";
+
 declare module "express-session" {
   interface Session {
     user: User | false;
@@ -47,6 +49,7 @@ const PORT = 8080;
 
 import grant from "grant";
 import { profileRoutes } from "./routers/profileRoute";
+import { paymentRoute } from "./routers/paymentRoute";
 // import { allCategoryRoute } from "./routers/allCategoryRoute";
 
 const grantExpress = grant.express({
@@ -95,7 +98,9 @@ app.get("/getDataToShoppingCart", getDataToShoppingCart );
 app.post("/minusQuantity", minusQuantity)
 app.post("/addQuantity", addQuantity1);
 ////////////////////// Payment //////////////////////////
-app.post("/create-checkout-session", register);
+;
+export const stripe = new Stripe(process.env.STRIPE_PRIVATE_KEY+"",{apiVersion:"2022-11-15"});
+app.use(paymentRoute)
 ////////////////////// Payment //////////////////////////
 
 app.use(express.static("public"));
