@@ -3,6 +3,9 @@ import express from "express";
 import {client} from "../app";
 
 export async function addQuantity1(req:express.Request,res:express.Response){
+    if (req.session.user) {
+    
+    
     const{quantity1,productId }=req.body;
     
     console.log(quantity1, productId, "from minusQuantity.ts")
@@ -27,8 +30,14 @@ let totalPrice= quantity1*(queryResult1.rows[0].price);
     let updateTotalPrice= await client.query(
         `SELECT total_price_per_product FROM decision where product_id=${productId}`
     )
-    // console.log(updateTotalPrice.rows[0].total_price_per_product, "line 34")
 
-    res.json({message:updateTotalPrice.rows[0].total_price_per_product})
+    let totalPriceForPayment= await client.query(`
+SELECT SUM(total_price_per_product) AS total FROM decision WHERE users_id=${req.session.user.id}`)
+    // console.log(updateTotalPrice.rows[0].total_price_per_product, "line 34")
+// console.log(totalPriceForPayment.rows[0].total, "from add line 37")
+    res.json({message:updateTotalPrice.rows[0].total_price_per_product,
+        totalAmount: totalPriceForPayment.rows[0].total})
+
+}
 
 }

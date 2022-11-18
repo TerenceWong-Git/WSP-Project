@@ -1,6 +1,8 @@
 window.onload = async () => {
   displayShoppingCart();
   getId();
+  checkBox();
+  removeItem();
   userName();
   logout();
   profile();
@@ -18,16 +20,20 @@ async function displayShoppingCart() {
   if (resp.status !== 201) {
     alert("something goes wrong on retrieving the product data!");
   } else {
-    console.log(data);
-    
+    console.log(data.message);
+    let noOfItem= data.totalItems;
+    let totalMoney=data.totalAmount;
+
+    document.querySelector("#quantity").innerHTML=noOfItem;
+    document.querySelector("#money").innerHTML=totalMoney;
 
     let containerTemplate = " ";
 
-    for (let datum of data) {
+    for (let datum of data.message) {
       containerTemplate += `
  <div class="container2_1" id="a${datum.product_id}" >
        <div class="leftBox">
-         <div class="checkBox"><input type="checkbox" class="smallcheckbox" name="checkbox" value="checkbox"></div>
+         <div class="checkBox"><input type="checkbox" class="smallcheckbox" id="z${datum.product_id}" name="checkbox" value="checkbox"></div>
          <div class="productImage"><img class="image1" src=".${datum.image}"></div>
        </div>
  
@@ -57,8 +63,7 @@ async function displayShoppingCart() {
 
 
 async function getId() {
-  let idValue = document
-    .querySelector(".container2")
+  document.querySelector(".container2")
     .addEventListener("click", async (e) => {
       console.log(e.target);
       console.log(e.target.id);
@@ -93,11 +98,16 @@ async function getId() {
           console.log(data.message);
           // console.log()
           document.querySelector(`#b${idValueNumber}`).innerHTML = data.message;
-
+          document.querySelector("#money").innerHTML=data.totalAmount;
           return (document.querySelector(`#c${idValueNumber}`).innerHTML =
             number.toString());
         }
       }
+
+
+
+
+      
 
       if (idValue[0] == "f") {
         let number = parseInt(
@@ -124,7 +134,7 @@ async function getId() {
         console.log(data.message);
         // console.log(typeof data.message)
         document.querySelector(`#b${idValueNumber}`).innerHTML = data.message;
-
+        document.querySelector("#money").innerHTML=data.totalAmount;
         return (document.querySelector(`#c${idValueNumber}`).innerHTML =
           number.toString());
         // return (document.querySelector(`#c${idValueNumber}`).innerHTML = number.toString());
@@ -136,6 +146,7 @@ async function getId() {
 async function userName() {
   const userInfo = await fetch("/login");
   const userInfoObj = await userInfo.json();
+  console.log(userInfo, "cart.js line 147")
   const username = userInfoObj.username;
   const usernameDiv = document.querySelector(".username");
   usernameDiv.innerText = username;
@@ -163,4 +174,85 @@ function profile() {
       window.location = "/profile.html";
     }
   });
+}
+
+
+/////////////////////////////// select product(s) from shopping cart  ///////////////////////////////
+
+function checkBox(){
+
+document.querySelector("#checkAll").addEventListener("click", (e)=>{
+
+  if(document.querySelector("#checkAll").checked==true){
+  let checkBox=document.querySelectorAll(".smallcheckbox");
+
+
+  for (let i=0;i<checkBox.length;i++){
+  if (checkBox[i].type=="checkbox"){
+    checkBox[i].checked=true;
+  }
+}
+  }
+
+
+if(document.querySelector("#checkAll").checked==false){
+  let checkBox=document.querySelectorAll(".smallcheckbox");
+
+
+  for (let i=0;i<checkBox.length;i++){
+  if (checkBox[i].type=="checkbox"){
+    checkBox[i].checked=false;
+  }
+}
+  }
+
+ 
+}
+)
+}
+
+///////////////// remove some items from the shopping cart  ////////////////////
+
+
+function removeItem(){
+document.querySelector("#confirmation").addEventListener("click", async()=>{
+
+  let checkboxes=document.querySelectorAll(".smallcheckbox")
+  let divOfProduct= document.querySelectorAll(".container2_1")
+  // console.log(checkboxes)
+  // console.log(divOfProduct);
+  for (let checkbox of checkboxes){
+    let idValue=checkbox.id[1];
+    // console.log(checkbox)
+    // console.log(idValue)
+    if (document.querySelector(`#z${idValue}`).checked==true){
+      document.querySelector(`#a${idValue}`).classList.add("remove")
+
+      formBody={productId: idValue}
+      const resp= await fetch ("/removeProductRecord", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formBody),
+      })
+
+      const data= await resp.json();
+      if (resp.status!==201){
+        alert("Sorry, please refresh the browser and do it again")
+      }
+      else{
+        console.log(" successful removal of items")
+    document.querySelector("#quantity").innerHTML=data.numberOfItem;
+    document.querySelector("#money").innerHTML=data.totalPrice;
+
+      }
+
+
+          }
+
+  }
+  
+
+})
 }

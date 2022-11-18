@@ -32,6 +32,7 @@ import { allCategoryRoute } from "./routers/allCategoryRoute";
 import { getDataToShoppingCart } from "./routers/getDataToShoppingCart";
 import {minusQuantity} from "./routers/minusQuantity";
 import {addQuantity1} from "./routers/addQuantity";
+import {removeProductRecord} from "./routers/removeProductReord";
 declare module "express-session" {
   interface Session {
     user: User | false;
@@ -94,6 +95,7 @@ app.post("/addToCar", addToCar);
 app.get("/getDataToShoppingCart", getDataToShoppingCart );
 app.post("/minusQuantity", minusQuantity)
 app.post("/addQuantity", addQuantity1);
+app.post("/removeProductRecord", removeProductRecord);
 ////////////////////// Payment //////////////////////////
 app.post("/create-checkout-session", register);
 ////////////////////// Payment //////////////////////////
