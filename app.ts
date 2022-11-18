@@ -14,6 +14,7 @@ import http from "http";
 // import { Server as SocketIO } from "socket.io";
 import expressSession from "express-session";
 import path from "path";
+// import Stripe from 'stripe';
 // import { forumRoutes } from "./routers/forumRoute";
 import { loginRoutes } from "./routers/loginRoute";
 // import { hashPassword } from "./bcrypt";
@@ -27,9 +28,10 @@ import { displayProduct } from "./routers/displayProduct";
 import { buyNow } from "./routers/buyNow";
 import { addToCar } from "./routers/addToCar";
 import { Productrecords } from "./models";
-import {productSession} from "./routers/productSession";
+import { productSession } from "./routers/productSession";
 import { allCategoryRoute } from "./routers/allCategoryRoute";
 import { getDataToShoppingCart } from "./routers/getDataToShoppingCart";
+
 import {minusQuantity} from "./routers/minusQuantity";
 import {addQuantity1} from "./routers/addQuantity";
 import {removeProductRecord} from "./routers/removeProductReord";
@@ -48,6 +50,7 @@ const PORT = 8080;
 
 import grant from "grant";
 import { profileRoutes } from "./routers/profileRoute";
+// import { paymentRoute } from "./routers/paymentRoute";
 // import { allCategoryRoute } from "./routers/allCategoryRoute";
 
 const grantExpress = grant.express({
@@ -86,18 +89,21 @@ app.use(indexRoute); // request received from index.js
 app.use(allCategoryRoute); // request received from allCategory.js
 app.use("/profile", profileRoutes);
 app.post("/userData", register);
+// app.use("/search", searchBarRoutes);
 
 //////////////////////  registration route handler END ////////////////////////////////////////////////////////////////////////
 app.post("/id1", displayProduct); //ver.1
 app.post("/productsesseion", productSession);
 app.get("/buyNow", buyNow);
 app.post("/addToCar", addToCar);
-app.get("/getDataToShoppingCart", getDataToShoppingCart );
-app.post("/minusQuantity", minusQuantity)
+app.get("/getDataToShoppingCart", getDataToShoppingCart);
+app.post("/minusQuantity", minusQuantity);
 app.post("/addQuantity", addQuantity1);
 app.post("/removeProductRecord", removeProductRecord);
 ////////////////////// Payment //////////////////////////
-app.post("/create-checkout-session", register);
+;
+// export const stripe = new Stripe(process.env.STRIPE_PRIVATE_KEY+"",{apiVersion:"2022-11-15"});
+// app.use(paymentRoute)
 ////////////////////// Payment //////////////////////////
 
 app.use(express.static("public"));
