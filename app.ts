@@ -14,7 +14,7 @@ import http from "http";
 // import { Server as SocketIO } from "socket.io";
 import expressSession from "express-session";
 import path from "path";
-import Stripe from 'stripe';
+import Stripe from "stripe";
 // import { forumRoutes } from "./routers/forumRoute";
 import { productSession } from "./routers/productSession";
 import { loginRoutes } from "./routers/loginRoute";
@@ -32,14 +32,14 @@ import { Productrecords } from "./models";
 import { allCategoryRoute } from "./routers/allCategoryRoute";
 import { getDataToShoppingCart } from "./routers/getDataToShoppingCart";
 import { searchBarRoutes } from "./routers/searchBarRoute";
-import {minusQuantity} from "./routers/minusQuantity";
-import {addQuantity1} from "./routers/addQuantity";
-import {removeProductRecord} from "./routers/removeProductReord";
+import { minusQuantity } from "./routers/minusQuantity";
+import { addQuantity1 } from "./routers/addQuantity";
+import { removeProductRecord } from "./routers/removeProductReord";
 declare module "express-session" {
   interface Session {
     user: User | false;
     productRecords: Productrecords | false;
-    searchProduct: ProductPage | false;
+    searchProduct: { query: string; productArr: ProductPage[] };
     // grant: { response: { access_token: string | null } };
   }
 }
@@ -52,6 +52,9 @@ const PORT = 8080;
 import grant from "grant";
 import { profileRoutes } from "./routers/profileRoute";
 import { paymentRoute } from "./routers/paymentRoute";
+// import { searchBarRoutes } from "./routers/searchBarRoute";
+import { sortingRoute } from "./routers/sortingRoute";
+// import { paymentRoute } from "./routers/paymentRoute";
 // import { allCategoryRoute } from "./routers/allCategoryRoute";
 
 const grantExpress = grant.express({
@@ -92,6 +95,7 @@ app.use(allCategoryRoute); // request received from allCategory.js
 app.use("/profile", profileRoutes);
 app.post("/userData", register);
 app.use("/search", searchBarRoutes);
+app.use("/sort", sortingRoute);
 
 //////////////////////  registration route handler END ////////////////////////////////////////////////////////////////////////
 app.post("/id1", displayProduct); //ver.1
@@ -103,8 +107,8 @@ app.post("/addQuantity", addQuantity1);
 app.post("/removeProductRecord", removeProductRecord);
 ////////////////////// Payment //////////////////////////
 
-export const stripe = new Stripe(process.env.STRIPE_PRIVATE_KEY+"",{apiVersion:"2022-11-15"});
-app.use(paymentRoute)
+export const stripe = new Stripe(process.env.STRIPE_PRIVATE_KEY + "", { apiVersion: "2022-11-15" });
+app.use(paymentRoute);
 ////////////////////// Payment //////////////////////////
 
 app.use(express.static("public"));

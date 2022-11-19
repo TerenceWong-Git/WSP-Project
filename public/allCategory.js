@@ -1,26 +1,28 @@
 //Initially display all products
-import { userName } from "./fetchUser.js";
+import { userName, logout, profile, searchBar } from "./forImport.js";
 import func from "./func.js";
 
-window.onload = () => {
+window.onload = async () => {
+  await userName();
   logout();
-  loadAllCategory();
-  userName();
+  profile();
+  searchBar();
+  await loadAllCategory();
   // import variable from func.js
   console.log(func);
 };
 
-function logout() {
-  const logoutButton = document.querySelector(".logoutbutton");
-  logoutButton.addEventListener("click", async (e) => {
-    e.preventDefault();
-    const resp = await fetch("/logout", { method: "GET" });
-    if (resp.status === 200) {
-      alert("You signed out!!");
-      window.location = "/";
-    }
-  });
-}
+// function logout() {
+//   const logoutButton = document.querySelector(".logoutbutton");
+//   logoutButton.addEventListener("click", async (e) => {
+//     e.preventDefault();
+//     const resp = await fetch("/logout", { method: "GET" });
+//     if (resp.status === 200) {
+//       alert("You signed out!!");
+//       window.location = "/";
+//     }
+//   });
+// }
 
 // async function userName() {
 //   const userInfo = await fetch("/login");
@@ -49,11 +51,7 @@ async function loadAllCategory() {
     const productId = product.category_id;
     const productStock = product.stock;
     const productSale = product.sales_quantity;
-    productCard.classList.add(
-      "productCard",
-      `category-${productId}`,
-      productStock
-    );
+    productCard.classList.add("productCard", `category-${productId}`, productStock);
     productCard.setAttribute("id", productSale);
 
     // Create Image div

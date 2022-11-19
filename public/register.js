@@ -1,5 +1,7 @@
+import { searchBar } from "./forImport.js";
 window.onload = async () => {
   register();
+  searchBar();
   // logout();
 };
 
@@ -26,7 +28,7 @@ function register() {
     const password = form.password.value;
     const phone = form.phone.value;
     const date = form.date.value;
-    console.log(new Date(date))
+    console.log(new Date(date));
 
     const checkbox = form.checkbox.checked;
     formBody["username"] = username;

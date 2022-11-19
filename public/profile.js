@@ -1,34 +1,38 @@
 console.log("hi");
+
+import { userName, logout, profile, searchBar } from "./forImport.js";
 window.onload = async () => {
-  userName();
+  await userName();
   logout();
-  await profile();
+  profile();
+  searchBar();
+  await createProfile();
   editProfile();
   changePassword();
   switchPage();
 };
 
-async function userName() {
-  const userInfo = await fetch("/login");
-  const userInfoObj = await userInfo.json();
-  const username = userInfoObj.username;
-  const usernameDiv = document.querySelector(".username");
-  usernameDiv.innerText = username;
-}
+// async function userName() {
+//   const userInfo = await fetch("/login");
+//   const userInfoObj = await userInfo.json();
+//   const username = userInfoObj.username;
+//   const usernameDiv = document.querySelector(".username");
+//   usernameDiv.innerText = username;
+// }
 
-function logout() {
-  const logoutButton = document.querySelector(".logoutbutton");
-  logoutButton.addEventListener("click", async (e) => {
-    e.preventDefault();
-    const resp = await fetch("/logout", { method: "GET" });
-    if (resp.status === 200) {
-      alert("You signed out!!");
-      window.location = "/";
-    }
-  });
-}
+// function logout() {
+//   const logoutButton = document.querySelector(".logoutbutton");
+//   logoutButton.addEventListener("click", async (e) => {
+//     e.preventDefault();
+//     const resp = await fetch("/logout", { method: "GET" });
+//     if (resp.status === 200) {
+//       alert("You signed out!!");
+//       window.location = "/";
+//     }
+//   });
+// }
 
-async function profile() {
+async function createProfile() {
   const resp = await fetch("/profile");
   const data = await resp.json();
   const user = data[0];

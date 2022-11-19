@@ -36,8 +36,10 @@
             <a class="nav-link">~~~</a>
           </li>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+        <form class="d-flex" role="search" id="search-bar-form">
+          <input class="form-control me-2 search-bar-input" type="search" placeholder="Search" aria-label="Search"
+            autocomplete="off" name="searchBarInput" />
+          <div class="search-bar-recommend" hidden></div>
           <button class="btn btn-outline-success" type="submit">
             <i class="bi bi-search"></i>
           </button>
@@ -57,10 +59,11 @@
 
             <ul class="dropdown-menu">
               <li class="profile-container">
-                <i class="bi bi-file-earmark-person dropdownButton"></i><a class="dropdown-item" href="#">Profile</a>
+                <i class="bi bi-file-earmark-person dropdownButton"></i><a class="dropdown-item profilebutton"
+                  href="#">Profile</a>
               </li>
               <li class="cart-container">
-                <i class="bi bi-cart4 dropdownButton"></i><a class="dropdown-item" href="#">Shopping
+                <i class="bi bi-cart4 dropdownButton"></i><a class="dropdown-item" href="./cart.html">Shopping
                   Cart</a>
               </li>
               <li>

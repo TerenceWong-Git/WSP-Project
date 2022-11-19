@@ -1,8 +1,10 @@
 console.log("hi");
-window.onload = () => {
+import { searchBar } from "./forImport.js";
+window.onload = async () => {
   login();
   // logout();
   // googleLogin();
+  searchBar();
 };
 
 function login() {

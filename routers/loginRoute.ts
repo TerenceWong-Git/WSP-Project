@@ -35,7 +35,7 @@ async function postLoginRoutes(req: express.Request, res: express.Response, next
     }
   }
   req.session.user = false;
-  console.log(req.session.user);
+  console.log(req.session.user, "loginRoute TS");
   res.status(400).json({ message: "unsuccessful login" });
   return;
 }
@@ -44,7 +44,7 @@ async function postLoginRoutes(req: express.Request, res: express.Response, next
 
 async function loginGoogle(req: express.Request, res: express.Response) {
   const accessToken = req.session?.["grant"].response.access_token;
-  console.log(accessToken);
+  // console.log(accessToken);
   const fetchRes = await fetch("https://www.googleapis.com/oauth2/v2/userinfo", {
     method: "get",
     headers: {
@@ -71,5 +71,9 @@ async function loginGoogle(req: express.Request, res: express.Response) {
 }
 
 function getLoginRoutes(req: express.Request, res: express.Response) {
-  res.json(req.session.user);
+  if (req.session.user) {
+    res.status(200).json(req.session.user);
+  } else {
+    res.status(401).json({ message: "Unauthorized" });
+  }
 }

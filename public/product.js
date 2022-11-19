@@ -2,28 +2,29 @@
 
 // import { URLSearchParams } from "url";
 // import { userName } from "./fetchUser.js";
-
+import { userName, logout, profile, searchBar } from "./forImport.js";
 window.onload = async () => {
   logout();
   // renderProduct();
-  // userName();
+  await userName();
+  profile();
+  searchBar();
   submitComment();
   await getImage();
   await productSession();
- 
 };
 
-function logout() {
-  const logoutButton = document.querySelector(".logoutbutton");
-  logoutButton.addEventListener("click", async (e) => {
-    e.preventDefault();
-    const resp = await fetch("/logout", { method: "GET" });
-    if (resp.status === 200) {
-      alert("You signed out!!");
-      window.location = "/";
-    }
-  });
-}
+// function logout() {
+//   const logoutButton = document.querySelector(".logoutbutton");
+//   logoutButton.addEventListener("click", async (e) => {
+//     e.preventDefault();
+//     const resp = await fetch("/logout", { method: "GET" });
+//     if (resp.status === 200) {
+//       alert("You signed out!!");
+//       window.location = "/";
+//     }
+//   });
+// }
 
 ///////////////////////  show certain product on the display box   /////////////////////////
 
@@ -151,55 +152,55 @@ document.querySelector(".buyNow").addEventListener("click", async () => {
 
 //////////////////////  Add to car  ////////////////////////////////////
 
-
 document.querySelector(".addToCar").addEventListener("click", async () =>
   // {console.log("add to car")
   {
-    setTimeout(function(){window.location.reload()}, 1000)
+    setTimeout(function () {
+      window.location.reload();
+    }, 1000);
     let url = window.location.search;
     // console.log(url, "haha");
     let queries = new URLSearchParams(url);
     let idOfProduct = queries.get("id");
-    console.log(idOfProduct)
-   
-    let created_date = new Date().toLocaleDateString();
+    console.log(idOfProduct);
+
+    // let created_date = new Date().toLocaleDateString();
+    let created_date = new Date();
     console.log(created_date);
 
     let quantity1 = document.querySelector("#number").innerHTML;
-    console.log( quantity1);
+    console.log(quantity1);
 
-    let formBody = { createdDate: created_date, quantity: quantity1,
-                    product_Id: idOfProduct };
+    let formBody = { createdDate: created_date, quantity: quantity1, product_Id: idOfProduct };
     // console.log(formBody)
-    const resp = await fetch("/addToCar",{
+    const resp = await fetch("/addToCar", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body:(JSON.stringify(formBody)),
+      body: JSON.stringify(formBody),
     });
 
     const data = await resp.json();
     console.log(data);
     if (data) {
       if (resp.status === 201) {
-        
-        setTimeout(function(){ alert(data.message)}, 250)
+        setTimeout(function () {
+          alert(data.message);
+        }, 250);
         // alert(data.message);
-      
-       setTimeout(function(){window.location.reload()}, 250)
+
+        setTimeout(function () {
+          window.location.reload();
+        }, 250);
       }
       if (resp.status !== 201) {
         alert(data.message);
         window.location = "/login.html";
       }
-      
     }
   }
 );
-
-
-
 
 ///////////////////// subtmit comment  ////////////////////
 function submitComment() {
