@@ -38,9 +38,7 @@ async function loadProducts() {
       drinkStr += `
     <div class="topSalesProducts${drinkCount}">
       <a href="${pathOfEachProduct}"><img class="productsImage" src="${product.image}" alt="..."/></a>
-      
       <div class="productsName">${product.name}</div>
-
       <div class="productsPrice">$${product.price}</div>
       </div>
       `;

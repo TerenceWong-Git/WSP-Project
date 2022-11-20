@@ -1,11 +1,11 @@
 DROP TABLE IF EXISTS each_processing;
 DROP TABLE IF EXISTS products_rates_map;
-DROP TABLE IF EXISTS purchase_record_products_map;
-DROP TABLE IF EXISTS purchase_record_map;
+-- DROP TABLE IF EXISTS purchase_record_products_map;
+-- DROP TABLE IF EXISTS purchase_record_map;
 DROP TABLE IF EXISTS purchase_record;
 DROP TABLE IF EXISTS decision;
 DROP TABLE IF EXISTS comments;
-DROP TABLE IF EXISTS shopping_cart;
+-- DROP TABLE IF EXISTS shopping_cart;
 DROP TABLE IF EXISTS products;
 DROP TABLE IF EXISTS rates;
 DROP TABLE IF EXISTS category;
@@ -82,6 +82,7 @@ CREATE TABLE each_processing (
   FOREIGN KEY (product_id) REFERENCES products(id),
   FOREIGN KEY (users_id) REFERENCES users(id)
 );
+
 /* ............. build users table ................................. */
 -- SELECT *
 -- FROM users;

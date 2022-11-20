@@ -38,7 +38,7 @@ async function importData() {
     { product_category: 3, image: "/productImages/cupNoodles/ichiranTonkotsu.jpg", product_name: "Ichiran Tonkotsu", product_price: "66", stock: false, salesQuantity: 69, brand: 3 },
     { product_category: 3, image: "/productImages/cupNoodles/NISSIN_NOODLE_SEAFOOD.jpg", product_name: "NISSIN SEAFOOD", product_price: "66", stock: false, salesQuantity: 27, brand: 3 },
     { product_category: 3, image: "/productImages/cupNoodles/nissinYubaUdon.jpg", product_name: "Nissin Yuba Udon", product_price: "66", stock: false, salesQuantity: 58, brand: 3 },
-    { product_category: 3, image: "/productImages/cupNoodles/NONG_SHIM_SHIN_RAMEN.jpg", product_name: "NONG SHIM SHIN RAMEN", product_price: "66", stock: true, salesQuantity: 29, brand: 3 },
+    { product_category: 3, image: "/productImages/cupNoodles/NONG_SHIM_SHIN_RAMEN.jpg", product_name: "NONG SHIM RAMEN", product_price: "66", stock: true, salesQuantity: 29, brand: 3 },
   ];
   for (const product of products) {
     await client.query("INSERT INTO products (category_id, image, name, price, stock, sales_quantity, brands_id ) VALUES ($1, $2, $3, $4, $5, $6, $7)", [
