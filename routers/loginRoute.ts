@@ -36,7 +36,7 @@ async function postLoginRoutes(req: express.Request, res: express.Response, next
   }
   req.session.user = false;
   console.log(req.session.user, "loginRoute TS");
-  res.status(400).json({ message: "unsuccessful login" });
+  res.status(400).json({ message: "Unsuccessful login" });
   return;
 }
 

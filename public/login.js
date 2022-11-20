@@ -31,7 +31,7 @@ function login() {
       },
       body: JSON.stringify(formBody),
     });
-    let data = resp.json();
+    // let data = resp.json();
     if (resp.status === 200) {
       // const newNavBar = document.querySelector(".dropdown-container");
       // newNavBar.removeAttribute("hidden");
@@ -40,7 +40,7 @@ function login() {
       // window.location = "/";
     } else {
       const data = await resp.json();
-      alert(data.message);
+      alert(`${data.message}`);
     }
   });
 }

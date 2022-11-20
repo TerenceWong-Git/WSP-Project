@@ -222,3 +222,7 @@ body {
 .price-container {
   font-size: 24px;
 }
+
+.amount-result {
+  text-align: end;
+}
