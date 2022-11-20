@@ -1,25 +1,17 @@
 import express from "express";
 import { client, stripe } from "../app";
-// import type { Request, Response } from "express";
+import type { Request, Response } from "express";
 import console from "console";
 
-export const paymentRoute = express.Router();
-// let cartItemList;
+export const paymentRoute = express.Router()
 
-// // Section 1 - Define endpoints (Method, Path = "/memos")
-// paymentRoute.get("/checkout", getpaymentRoute); //create-checkout-session
-
-// // Section 2 - Define Route Handler
-// async function getpaymentRoute(req: Request, res: Response) {
-//   const queryResult = await client.query(
-//     "SELECT quantity, total_price_per_product, product_id, name, users_id, username FROM decision INNER JOIN products ON product_id = products.id INNER JOIN users on users_id = users.id;"
-//   );
-//   res.json(queryResult.rows);
-// }
-
-paymentRoute.post("/create-checkout-session", async (req, res) => {
+paymentRoute.post("/create-checkout-session", async (req: Request, res: Response) => {
+  console.log("abcd")
+  if (req.session.user) {
+  const userId = req.session.user.id;
   const queryResult = await client.query(
-    "SELECT quantity, total_price_per_product, product_id, name, users_id, username FROM decision INNER JOIN products ON product_id = products.id INNER JOIN users on users_id = users.id;"
+    // "SELECT quantity, total_price_per_product, product_id, name, users_id, username FROM decision INNER JOIN products ON product_id = products.id INNER JOIN users on users_id = users.id;"
+    `SELECT quantity, total_price_per_product, product_id, name, users_id, username from decision inner join products on decision.product_id = products.id inner join users on users.id = decision.user_id where users.id = ${userId};`
   );
 
   // 1. 將database data塞入stripe要求既format
@@ -61,4 +53,5 @@ paymentRoute.post("/create-checkout-session", async (req, res) => {
     console.log("catch here");
     res.status(500).json({ error: "cannnot" });
   }
+}
 });
