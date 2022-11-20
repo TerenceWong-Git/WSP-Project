@@ -200,7 +200,8 @@ body {
 }
 
 .carouselPicture {
-  height: 70vh;
+  max-height: 80vh;
+  max-width: 100%;
 }
 
 .productsArea {
@@ -253,8 +254,8 @@ body {
 .productsImage {
   /* border: 1px solid rgb(0, 69, 92); */
   background-color: #00000045;
-  height: 15vmax;
-  width: 15vmax;
+  height: 14vmax;
+  width: 14vmax;
 }
 
 .productsName {
