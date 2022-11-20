@@ -424,6 +424,11 @@ body {
   margin-right: 0.5vw;
 }
 
+#decision{
+  display: flex;
+  justify-content: center;
+}
+
 .addToCar {
   border: 3px solid rgb(0, 58, 131);
   display: flex;

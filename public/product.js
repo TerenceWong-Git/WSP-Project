@@ -129,26 +129,26 @@ document.querySelector("#plusButton").addEventListener("click", (e) => {
   return (document.querySelector("#number").innerHTML = number.toString());
 });
 
-//////////////////////// Buy now  ///////////////////////////////////////////////////////
-document.querySelector(".buyNow").addEventListener("click", async () => {
-  {
-    console.log("buy");
-  }
-  const resp = await fetch("/buyNow", {
-    method: "GET",
-  });
+// //////////////////////// Buy now  ///////////////////////////////////////////////////////
+// document.querySelector(".buyNow").addEventListener("click", async () => {
+//   {
+//     console.log("buy");
+//   }
+//   const resp = await fetch("/buyNow", {
+//     method: "GET",
+//   });
 
-  const data = await resp.json();
+//   const data = await resp.json();
 
-  if (resp.status !== 201) {
-    alert(data.message);
-    window.location = "/login.html";
-  }
-  if (resp.status === 201) {
-    alert(data.message);
-    window.location = "/payment.html";
-  }
-});
+//   if (resp.status !== 201) {
+//     alert(data.message);
+//     window.location = "/login.html";
+//   }
+//   if (resp.status === 201) {
+//     alert(data.message);
+//     window.location = "/payment.html";
+//   }
+// });
 
 //////////////////////  Add to car  ////////////////////////////////////
 

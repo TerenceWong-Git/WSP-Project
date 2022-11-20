@@ -350,6 +350,7 @@ header {
 .password-submit-button, .left-container-button {
   border-radius: 30px;
   margin-bottom: 30px;
+  width: 15vw;
 }
 
 /* .listnode-password {
@@ -367,7 +368,8 @@ header {
   border: 0!important;
 }
 .all-container {
-  border: solid 2px #000000!important;
+  border: 3px solid rgb(0, 93, 123)!important;
+  padding: 0.5vw;
 }
 
 .profile-content {

@@ -170,7 +170,6 @@ body {
   margin-left: 7px;
 }
 
-
 .recommend-product-container {
   display: flex;
   align-items: center;
@@ -178,142 +177,121 @@ body {
 }
 
 .recommend-product-container:hover {
-  background-color: #CCCCCC;
+  background-color: #cccccc;
 }
 
 /* ------------------- Navbar CSS ------------------- */
 
-body {
-  background-color: #e4effa;
+.divContainer {
+  padding-left: 4vw;
+  padding-right: 4vw;
 }
 
 #container1 {
-  border: 1px solid black;
-  /* background-color: yellow; */
-  padding: 20px;
-  height: 140px;
-  font-size: 30px;
-  /* position: absolute; */
+  height: 15vh;
+  font-size: 5vh;
+  
 }
 
 #shoppingCart {
-  font-weight: 1000;
+  font-family: "Caveat", cursive;
+  font-size: 6vmin;
+  color: #ffc107;
 }
 
-.container2 {
-  /* border: 1px solid black; */
-  margin-top: 20px;
-  /* margin-bottom: 20px; */
-  background-color: #003d81;
-  padding: 20px;
-  overflow-y: auto;
-  height: 70vh;
+#totalQuantity {
+  font-family: "Caveat", cursive;
+  font-size: 4vmin;
+  color: #ffc107;
 }
 
 .container2_1 {
+  border: 3px solid rgb(0, 93, 123);
+  border-radius: 15px;
+  margin-top: 20px;
+  min-width: 100%;
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-around;
-  border-radius: 20px;
-  /* border: 1px solid black; */
-  background-color: rgb(255, 248, 176);
-  padding: 5px;
-  height: 700px;
-  margin: 20px;
-  overflow-y: auto;
+  margin-bottom: 5vh;
+}
+
+#container3 {
+  border-radius: 10px;
+  background-image: linear-gradient(to right, #0062ce, #007d72);
+  position: relative;
+  height: 10vh;
+  display: flex;
+  bottom: 1vh;
+}
+#container4{
+  height: 1vh;
 }
 
 .leftBox {
+  /* border: 3px solid blue; */
   display: flex;
-  /* border: 1px solid black; */
-  margin: 5px;
-  width: 2000px;
-}
-
-.checkBox {
-  flex: 1;
-  /* border: 1px solid black; */
-  display: flex;
-  justify-content: center;
   align-items: center;
-}
-
-.smallcheckbox {
-  width: 150px;
-  height: 150px;
-  box-shadow: 5px 5px 5px black;
-
-}
-
-.productImage {
-  flex: 8;
-  /* border: 1px solid black; */
-  padding: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.image1 {
-  height: 650px;
-
+  width: 20%;
 }
 
 .rightBox {
+  /* border: 3px solid orange; */
   display: flex;
-  /* border: 1px solid black; */
-  margin: 5px;
-  width: 2000px;
   flex-direction: column;
-  padding: 5px;
+  justify-content: center;
+  width: 75%;
+}
+
+.smallcheckbox {
+  width: 30px;
+  height: 30px;
+}
+
+.productImage {
+ max-width: 30vw;
+}
+
+.image1 {
+  max-width: 100%;
 }
 
 .upper {
-  height: 100%;
-  border: 1px solid black;
-  margin: 2.5px;
-  padding: 15px;
-  font-size: 50px;
+  display: flex;
+  justify-content: center;
+  font-family: "Caveat", cursive;
+  font-size: 4vh;
+  color: #ffc107;
+  min-width: 100%;
 }
 
 .lower {
-  height: 100%;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   margin: 2.5px;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  min-width: 100%;
 }
 
 .left {
   flex: 1;
-  /* background-color: red; */
+  border: 3px solid rgb(0, 93, 123);
+  height: 8.5vh;
+  border-radius: 10px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  height: 100%;
+  min-width: 10%;
 }
 
 .currencySign {
-  /* border: 1px solid black; */
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 90%;
-  font-size: 80px;
-  padding: 10px;
+  font-family: "Caveat", cursive;
+  font-size: 4vmin;
 }
 
 .unitPrice {
-  /* border: 1px solid black; */
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 90%;
-  font-size: 80px;
-  padding: 10px;
+  font-family: "Caveat", cursive;
+  font-size: 4vmin;
 }
 
 .right {
@@ -323,7 +301,7 @@ body {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  height: 100%;
+  min-width: 10%;
 }
 
 .minus,
@@ -331,7 +309,7 @@ body {
 .plus {
   flex: 1;
   /* background-color: #ffc107; */
-  height: 100%;
+  max-height: 30%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -341,34 +319,24 @@ body {
 
 .minusButton,
 .plusButton {
-  height: 100px;
-  width: 100px;
-  font-size: 55px;
+  font-size: 5vh;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  background-color: rgb(0, 112, 118);
+  color: white;
 }
-
 
 .unit {
-  font-size: 90px;
-}
-
-#container3 {
-  background-color: palegoldenrod;
-  max-width: 100%;
-  height: 450px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
+  font-family: "Caveat", cursive;
+  font-size: 4vh;
 }
 
 #leftPart {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   flex: 1;
-  /* background-color: red; */
-  background-image: linear-gradient(to right, #0062ce, #007d72);
-  /* border: 1px solid black; */
   height: 100%;
 }
 
@@ -377,65 +345,63 @@ body {
   justify-content: space-around;
   align-items: center;
   flex: 2;
-  background-image: linear-gradient(to right, #0062ce, #007d72);
-  /* border: 1px solid black; */
   height: 100%;
 }
 
-#all,
-#delete,
+#all{
+display: flex;
+font-size: 4vmin;
+font-family: "Caveat", cursive;
+color: white;
+}
+
 #confirmPart {
-  /* border: 1px solid black; */
-  height: 100%;
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-
+display: flex;
 }
-
-
 
 #checkAll,
 #deleteSome {
   height: 3vh;
   width: 3vw;
-
-
+  font-family: "Caveat", cursive;
+  font-size: 4vmin;
 }
 
-
-
 #confirmation {
-  height: 90px;
-  width: 200px;
-  padding: 5px;
-  font-size: 20px;
-  border-radius: 40px;
+min-width: 10vw;
+font-family: "Caveat", cursive;
+  font-size: 4vmin;
+  border-radius: 15px;
 }
 
 label {
+  
   font-size: 2vh;
 }
 
 
 #totalMark {
-  font-size: 70px;
+  font-size: 6vmin;
+  font-family: "Caveat", cursive;
+  color: white;
   flex: 1;
   display: flex;
   justify-content: center;
 }
 
 #currencyS {
-  font-size: 70px;
+  font-size: 6vmin;
+  font-family: "Caveat", cursive;
+  color: white;
   flex: 1;
   display: flex;
   justify-content: center;
 }
 
 #money {
-  font-size: 80px;
+  font-size: 6vmin;
+  font-family: "Caveat", cursive;
+  color: white;
   font-weight: bold;
   flex: 1;
   display: flex;
@@ -443,7 +409,6 @@ label {
 }
 
 #bill {
-  /* border: 1px solid black; */
   height: 100%;
   flex: 1;
   display: flex;
@@ -451,12 +416,10 @@ label {
   align-items: center;
 }
 
-.billButton {
-  height: 90px;
-  width: 200px;
-  padding: 5px;
-  font-size: 40px;
-  border-radius: 40px;
+.checkout-button {
+  font-size: 4vmin;
+  font-family: "Caveat", cursive;
+  border-radius: 15px;
 }
 
 
@@ -474,45 +437,27 @@ label {
 
 /* ................................................. */
 @media screen and (max-width:480px) {
-  .image1 {
-    height: 280px;
-  }
+
 
   .smallcheckbox {
-    width: 28px;
-    height: 28px;
-    box-shadow: 5px 5px 5px black;
-  }
-
-  .upper {
-    height: 100%;
-    border: 1px solid black;
-    margin: 2.5px;
-    padding: 15px;
-    font-size: 15px;
-  }
-
-  .container2 {
-    /* border: 1px solid black; */
-    margin-top: 20px;
-    margin-bottom: 20px;
-    background-color: #003d81;
-    padding: 20px;
-    overflow-y: auto;
-    height: 1400px;
+    width: 15px;
+    height: 15px;
   }
 
   .container2_1 {
+    border: 3px solid rgb(0, 93, 123);
+    margin-top: 20px;
+    min-width: 100%;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    border-radius: 20px;
-    /* border: 1px solid black; */
-    background-color: rgb(255, 248, 176);
-    padding: 5px;
-    height: 400px;
-    margin: 20px;
-    overflow-y: auto;
+    justify-content: space-between;
+  }
+
+  #container3 {
+    background-image: linear-gradient(to right, #0062ce, #007d72);
+    position: relative;
+    height: 10vh;
+    display: flex;
+    top: 20vh;
   }
 
   .currencySign {
@@ -539,25 +484,25 @@ label {
 
   .minusButton,
   .plusButton {
-    height: 45px;
-    width: 45px;
-    font-size: 25px;
+    height: 7vh;
+    max-width: 6vw;
+    font-size: 4vh;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    background-color: rgb(0, 112, 118);
+    color: white;
   }
-
- 
 
   .unit {
     font-size: 20px;
   }
 
   #container3 {
-    background-color: palegoldenrod;
-    max-width: 100%;
-    height: 250px;
+    position: relative;
+    height: 10vh;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
+    top: 20vh;
   }
 
   #totalMark {
@@ -600,7 +545,6 @@ label {
     align-items: center;
     flex: 1;
     /* background-color: red; */
-    background-image: linear-gradient(to right, #0062ce, #007d72);
     /* border: 1px solid black; */
     height: 100%;
   }
@@ -611,7 +555,6 @@ label {
     justify-content: space-around;
     align-items: center;
     flex: 2;
-    background-image: linear-gradient(to right, #0062ce, #007d72);
     /* border: 1px solid black; */
     height: 100%;
     padding: 10px;
@@ -620,11 +563,9 @@ label {
  
   
   #confirmation {
-    height: 90px;
-    width: 100px;
-    padding: 5px;
-    font-size: 20px;
-    border-radius: 20px;
+    min-width: 10vw;
+    font-size: 4vmin;
+    border-radius: 15px;
   }
 
 }
