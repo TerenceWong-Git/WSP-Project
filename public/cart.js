@@ -81,7 +81,7 @@ async function getId() {
         number = number - 1;
         // console.log(number, "from cart.js");
 
-        formBody = {
+        const formBody = {
           quantity1: number,
           productId: idValueNumber,
         };
@@ -109,7 +109,7 @@ async function getId() {
 
       number = number + 1;
       console.log(number, "from cart.js");
-      formBody = {
+      const formBody = {
         quantity1: number,
         productId: idValueNumber,
       };
@@ -170,7 +170,7 @@ async function getId() {
 
 /////////////////////////////// select product(s) from shopping cart  ///////////////////////////////
 
-function checkBox() {
+async function checkBox() {
   document.querySelector("#checkAll").addEventListener("click", (e) => {
     if (document.querySelector("#checkAll").checked == true) {
       let checkBox = document.querySelectorAll(".smallcheckbox");
@@ -196,7 +196,7 @@ function checkBox() {
 
 ///////////////// remove some items from the shopping cart  ////////////////////
 
-function removeItem() {
+async function removeItem() {
   document.querySelector("#confirmation").addEventListener("click", async (e) => {
     console.log(e.currentTarget);
     let checkboxes = document.querySelectorAll(".smallcheckbox");
@@ -210,7 +210,7 @@ function removeItem() {
       if (document.querySelector(`#z${idValue}`).checked == true) {
         document.querySelector(`#a${idValue}`).classList.add("remove");
 
-        formBody = { productId: idValue };
+        const formBody = { productId: idValue };
         const resp = await fetch("/removeProductRecord", {
           method: "POST",
           headers: {
@@ -227,7 +227,9 @@ function removeItem() {
 
           document.querySelector("#money").innerHTML = data.totalPrice;
           document.querySelector("#quantity").innerHTML = data.numberOfItem;
-          location.reload();
+          setTimeout(function () {
+            window.location.reload();
+          }, 250);
         }
       }
     }
@@ -240,14 +242,21 @@ async function loadCartItem() {
   // const url = await result.json()
   // console.log("check url", url)
   // window.location = url
+
+  // let itemList = cartItemList;
   document.querySelector(".checkout-button").addEventListener("click", async (e) => {
     e.preventDefault();
-    console.log("Hi");
-    const result = await fetch("/create-checkout-session", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ test: 1 }) });
+
+    const result = await fetch("/create-checkout-session", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ test: 1 }),
+    });
 
     const url = await result.json();
     console.log("check url", url);
     window.location = url;
   });
-  // }
 }
