@@ -5,7 +5,7 @@ import { ProductPage } from "../models";
 export const searchBarRoutes = Router();
 searchBarRoutes.post("/", postProductInfo);
 searchBarRoutes.post("/product", postProductPage);
-searchBarRoutes.get("/hihi", getSearchPage);
+searchBarRoutes.get("/", getSearchPage);
 
 async function postProductInfo(req: Request, res: Response) {
   console.log("into post function");

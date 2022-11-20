@@ -9,7 +9,7 @@ window.onload = async () => {
 };
 
 async function loadSearchPage() {
-  const resp = await fetch("/search/hihi");
+  const resp = await fetch("/search");
   const data = await resp.json();
   console.log(data);
   const searchQuery = data.query;
@@ -53,25 +53,29 @@ async function loadSearchPage() {
     switch (selectedSorting) {
       case "Sorted by A-Z":
         contentContainer.innerHTML = "";
-        const ascAlphabetProductResp = await fetch("/sort/alphabet/ascending");
+        // const ascAlphabetProductResp = await fetch("/sort/alphabet/ascending");
+        const ascAlphabetProductResp = await fetch("/sort/?alphabet=asc");
         const ascAlphabetProduct = await ascAlphabetProductResp.json();
         createAllDiv(ascAlphabetProduct);
         break;
       case "Sorted by Z-A":
         contentContainer.innerHTML = "";
-        const descAlphabetProductResp = await fetch("/sort/alphabet/descending");
+        // const descAlphabetProductResp = await fetch("/sort/alphabet/descending");
+        const descAlphabetProductResp = await fetch("/sort/?alphabet=desc");
         const descAlphabetProduct = await descAlphabetProductResp.json();
         createAllDiv(descAlphabetProduct);
         break;
       case "Sorted by $-$$$":
         contentContainer.innerHTML = "";
-        const ascPriceProductResp = await fetch("/sort/price/ascending");
+        // const ascPriceProductResp = await fetch("/sort/price/ascending");
+        const ascPriceProductResp = await fetch("/sort/?price=asc");
         const ascPriceProduct = await ascPriceProductResp.json();
         createAllDiv(ascPriceProduct);
         break;
       case "Sorted by $$$-$":
         contentContainer.innerHTML = "";
-        const descPriceProductResp = await fetch("/sort/price/descending");
+        // const descPriceProductResp = await fetch("/sort/price/descending");
+        const descPriceProductResp = await fetch("/sort/?price=desc");
         const descPriceProduct = await descPriceProductResp.json();
         createAllDiv(descPriceProduct);
         break;
