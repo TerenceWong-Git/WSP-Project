@@ -183,6 +183,11 @@ body {
 
 /* ------------------- Navbar CSS ------------------- */
 
+.divContainer {
+  padding-left: 4vw;
+  padding-right: 4vw;
+}
+
 .login-page-container {
   margin: 12px;
   text-align: start;
