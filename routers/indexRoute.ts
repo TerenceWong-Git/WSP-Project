@@ -11,7 +11,7 @@ indexRoute.get("/index", getindexRoute);
 // Section 2 - Define Route Handler
 async function getindexRoute(req: Request, res: Response) {
   const queryResult = await client.query<Products>(
-    "SELECT * FROM products ORDER BY id ASC"
+    "SELECT * FROM products ORDER BY sales_quantity ASC"
   );
   res.json(queryResult.rows);
 }
