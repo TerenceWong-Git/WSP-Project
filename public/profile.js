@@ -41,13 +41,19 @@ async function createProfile() {
   const leftContainer = document.querySelector(".left-container");
   for (const key in user) {
     const containerForAll = document.querySelector(".profile-content-container");
-    const listNodeContainer = document.querySelector(".listnode-container");
-    const contentContainer = document.querySelector(".content-container");
+    // const listNodeContainer = document.querySelector(".listnode-container");
+    // const contentContainer = document.querySelector(".content-container");
     const listNode = document.createElement("div");
-    listNode.className = `${key}-listnode`;
-    listNode.innerText = `${key[0].toUpperCase() + key.slice(1)}: `;
     const content = document.createElement("div");
-    content.classList.add(`${key}-content`);
+    listNode.className = `${key}-listnode`;
+    if (key === "email") {
+      listNode.innerText = `${key[0].toUpperCase() + key.slice(1)} (Unchangeable): `;
+    } else {
+      listNode.innerText = `${key[0].toUpperCase() + key.slice(1)}: `;
+      content.setAttribute("contenteditable", "true");
+      content.classList.add("input-content");
+    }
+    content.classList.add(`${key}-content`, "profile-content");
     if (key === "birthday") {
       const birthday = new Date(user[key]).toLocaleDateString();
       const newBirthdayArr = birthday.split("/");
@@ -61,19 +67,19 @@ async function createProfile() {
     } else {
       content.innerText = user[key];
     }
-    if (key !== "email") {
-      content.setAttribute("contenteditable", "true");
-      content.classList.add("input-content");
-    }
+    // if (key !== "email") {
+    //   content.setAttribute("contenteditable", "true");
+    //   content.classList.add("input-content");
+    // }
     if (key === "subscription") {
       user[key] ? (content.innerText = "Yes") : (content.innerText = "No");
     }
-    listNodeContainer.appendChild(listNode);
-    contentContainer.appendChild(content);
     const listnodeContentContainer = document.querySelector(".listnode-content-container");
+    listnodeContentContainer.appendChild(listNode);
+    listnodeContentContainer.appendChild(content);
     // listnodeContentContainer.className = "listnode-content-container";
-    listnodeContentContainer.appendChild(listNodeContainer);
-    listnodeContentContainer.appendChild(contentContainer);
+    // listnodeContentContainer.appendChild(listNodeContainer);
+    // listnodeContentContainer.appendChild(contentContainer);
     leftContainer.appendChild(listnodeContentContainer);
     containerForAll.appendChild(leftContainer);
   }
