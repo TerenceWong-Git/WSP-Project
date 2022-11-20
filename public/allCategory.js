@@ -64,6 +64,7 @@ async function loadAllCategory() {
     productCard.appendChild(productURL);
 
     const productImage = document.createElement("img");
+    productImage.classList.add("productImg");
     productImage.setAttribute("src", product.image);
 
     productURL.appendChild(productImage);
