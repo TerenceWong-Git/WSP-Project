@@ -178,6 +178,8 @@ function changePassword() {
       } else {
         window.location = "/";
       }
+    } else {
+      alert("Inputs do not match!");
     }
   });
 }
