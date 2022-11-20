@@ -86,8 +86,11 @@ async function createProfile() {
   const submitButton = document.createElement("button");
   submitButton.classList.add("left-container-button", "add-color");
   submitButton.setAttribute("type", "submit");
+  const subimitButtonContainer = document.createElement("div");
+  subimitButtonContainer.className = "left-submit-container";
   submitButton.innerText = "Submit";
-  leftContainer.appendChild(submitButton);
+  subimitButtonContainer.appendChild(submitButton);
+  leftContainer.appendChild(subimitButtonContainer);
 }
 
 function editProfile() {

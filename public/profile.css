@@ -183,10 +183,10 @@ body {
 
 /* ------------------- Navbar CSS ------------------- */
 
-.divContainer {
+/* .divContainer {
   padding-left: 4vw;
   padding-right: 4vw;
-}
+} */
 
 .login-page-container {
   margin: 12px;
@@ -324,12 +324,12 @@ header {
   width: 1200px;
   height: 70px;
   cursor: pointer;
-  border-bottom: #000000 2px solid;
+  border-bottom: 3px solid rgb(0, 93, 123);
   text-align: center;
   padding-top: 7px;
 }
 .password-switcher {
-  border-left: #000000 2px solid;
+  border-left: 3px solid rgb(0, 93, 123);
 }
 #passwordform {
   display: flex;
@@ -355,7 +355,7 @@ header {
 .password-submit-button, .left-container-button {
   border-radius: 30px;
   margin-bottom: 30px;
-  width: 15vw;
+  width: 170px;
 }
 
 /* .listnode-password {
@@ -374,7 +374,6 @@ header {
 }
 .all-container {
   border: 3px solid rgb(0, 93, 123)!important;
-  padding: 0.5vw;
 }
 
 .profile-content {
@@ -416,4 +415,9 @@ header {
   .profile-switcher, .password-switcher {
   font-size: 7vw;
 }
+}
+
+.left-submit-container, .password-submit-container {
+  display: flex;
+  justify-content: center;
 }

@@ -22,6 +22,7 @@ async function loadSearchPage() {
   const headerRightDiv = document.createElement("div");
   headerRightDiv.className = "header-right-container";
   const amountFoundDiv = document.createElement("div");
+  amountFoundDiv.className = "amount-result";
   amountFoundDiv.innerText = `${productArr.length} Results Found`;
 
   const sortingSelect = document.createElement("select");
