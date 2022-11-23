@@ -155,7 +155,7 @@ document.querySelector("#plusButton").addEventListener("click", (e) => {
 document.querySelector(".addToCar").addEventListener("click", async () =>
   // {console.log("add to car")
   {
-    setTimeout(function () {
+    await setTimeout(function () {
       window.location.reload();
     }, 1000);
     let url = window.location.search;
@@ -164,7 +164,7 @@ document.querySelector(".addToCar").addEventListener("click", async () =>
     let idOfProduct = queries.get("id");
     console.log(idOfProduct);
 
-    // let created_date = new Date().toLocaleDateString();
+    // let created_date = new Date().toLoc  aleDateString();
     let created_date = new Date();
     console.log(created_date);
 
@@ -185,14 +185,14 @@ document.querySelector(".addToCar").addEventListener("click", async () =>
     console.log(data);
     if (data) {
       if (resp.status === 201) {
-        setTimeout(function () {
-          alert(data.message);
-        }, 250);
-        // alert(data.message);
+        // setTimeout(function () {
+        //   alert(data.message);
+        // }, 250);
+        alert(data.message);
 
-        setTimeout(function () {
-          window.location.reload();
-        }, 250);
+        // setTimeout(function () {
+        //   window.location.reload();
+        // }, 250);
       }
       if (resp.status !== 201) {
         alert(data.message);

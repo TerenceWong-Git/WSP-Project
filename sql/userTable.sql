@@ -1,3 +1,4 @@
+\c wsp_grp2
 DROP TABLE IF EXISTS each_processing;
 DROP TABLE IF EXISTS products_rates_map;
 -- DROP TABLE IF EXISTS purchase_record_products_map;

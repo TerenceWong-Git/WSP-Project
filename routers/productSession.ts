@@ -4,7 +4,7 @@ import type { Productrecords } from "../models";
 
 export async function productSession(req: express.Request, res: express.Response) {
   const id = req.body.id;
-  const products = await client.query<Productrecords>(/*sql */ `SELECT id, name from products`);
+  const products = await client.query<Productrecords>(/*sql */ `SELECT  id,name from products where id=$1`,[id]);
 
   for (const product of products.rows) {
     if (id == product.id) {
